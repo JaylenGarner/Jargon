@@ -8,7 +8,7 @@ https://dbdiagram.io/d/639a6d8899cb1f3b55a17b71
 
 ## All endpoints that require authentication
 
-All endpoints that require a current user to be logged in.
+All endpoints require a current user to be logged in.
 
 - Request: endpoints that require authentication
 - Error Response: Require authentication
@@ -104,7 +104,7 @@ information.
       "id": 1,
       "firstName": "John",
       "lastName": "Smith",
-      "email": "john.smith@gmail.com"s
+      "email": "john.smith@gmail.com",
       "token": ""
     }
     ```
@@ -215,9 +215,9 @@ user's information.
     }
     ```
 
-## Get all Servers
+## Get all Public Servers
 
-Returns all the servers.
+Returns all servers with the 'public' attribute being true.
 
 - Require Authentication: false
 - Request
@@ -241,7 +241,6 @@ Returns all the servers.
           "ownerId": 1,
           "name": "App Academy",
           "image": "image url",
-          "public": true,
           "createdAt": "2022-12-25 20:39:36",
           "updatedAt": "2021-12-25 20:39:36",
         }
@@ -249,9 +248,9 @@ Returns all the servers.
     }
     ```
 
-## Get all Servers owned by the Current User
+## Get all Public Servers owned by the Current User
 
-Returns all the servers owned (created) by the current user.
+Returns all the servers owned (created) by the current user with the 'public' attribute being true.
 
 - Require Authentication: true
 - Request
@@ -275,13 +274,48 @@ Returns all the servers owned (created) by the current user.
           "ownerId": 1,
           "name": "App Academy",
           "image": "image url",
-          "public": true,
           "createdAt": "2022-12-25 20:39:36",
           "updatedAt": "2021-12-25 20:39:36",
         }
       ]
     }
     ```
+
+## Get all Private Servers (Direct Messages) that the current user owns or is a member of.
+
+Returns all the servers that the user owns with the public 'attibute' being false.
+Also returns all of the servers with a 'private_member_id' equal to the user's id
+
+- Require Authentication: true
+- Request
+
+  - Method: GET
+  - URL: api/direct-messages/
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "Servers": [
+        {
+          "id": 1,
+          "ownerId": 1,
+          "name": "App Academy",
+          "image": "image url",
+          "private_member_id": 2,
+          "createdAt": "2022-12-25 20:39:36",
+          "updatedAt": "2021-12-25 20:39:36",
+        }
+      ]
+    }
+    ```
+
 
 ## Get details of a Server from an id
 
@@ -308,6 +342,7 @@ Returns the details of a server specified by its id.
       "name": "App Academy",
       "image": "image url",
       "public": true,
+      "private_member_id": null,
       "createdAt": "2022-12-25 20:39:36",
       "updatedAt": "2021-12-25 20:39:36"
     }
@@ -327,9 +362,11 @@ Returns the details of a server specified by its id.
     }
     ```
 
-## Create a Server
+## Create a Public Server
 
-Creates and returns a new Server.
+Creates and returns a new Public Server.
+
+* Attribute 'public' should default to true *
 
 - Require Authentication: true
 - Request
@@ -344,7 +381,6 @@ Creates and returns a new Server.
     {
       "name": "App Academy",
       "image": "image url",
-      "public": true,
     }
     ```
 
@@ -361,7 +397,6 @@ Creates and returns a new Server.
       "ownerId": 1,
       "name": "App Academy",
       "image": "image url",
-      "public": true,
       "createdAt": "2022-12-25 20:39:36",
       "updatedAt": "2021-12-25 20:39:36",
     }
@@ -381,7 +416,67 @@ Creates and returns a new Server.
       "errors": {
         "name": "Name is required",
         "image": "Image is required",
-        "public": "Public is required"
+      }
+    }
+    ```
+
+## Create a Private Server
+
+Creates and returns a new Private Server.
+
+* Attribute 'public' should default to false *
+
+- Require Authentication: true
+- Request
+
+  - Method: POST
+  - URL: api/servers
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "name": "App Academy",
+      "image": "image url",
+      "privateMemberId": 2,
+    }
+    ```
+
+- Successful Response
+
+  - Status Code: 201
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "id": 1,
+      "ownerId": 1,
+      "name": "App Academy",
+      "image": "image url",
+      "privateMemberId": 2,
+      "createdAt": "2022-12-25 20:39:36",
+      "updatedAt": "2021-12-25 20:39:36",
+    }
+    ```
+
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Validation Error",
+      "statusCode": 400,
+      "errors": {
+        "name": "Name is required",
+        "image": "Image is required",
+        "privateMemberId": 2,
       }
     }
     ```
@@ -404,7 +499,6 @@ Updates and returns an existing server.
     {
       "name": "App Academy",
       "image": "image url",
-      "public": true
     }
     ```
 
@@ -421,7 +515,6 @@ Updates and returns an existing server.
       "ownerId": 1,
       "name": "App Academy",
       "image": "image url",
-      "public": true,
       "createdAt": "2022-12-25 20:39:36",
       "updatedAt": "2021-12-25 20:39:36"
     }
@@ -441,7 +534,6 @@ Updates and returns an existing server.
       "errors": {
         "name": "Name is required",
         "image": "Image is required",
-        "public": "Public is required"
       }
     }
     ```
@@ -953,7 +1045,6 @@ Return Servers filtered by query parameters.
           "ownerId": 1,
           "name": "Server name",
           "image": "Image url",
-          "public": true,
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36"
         }
