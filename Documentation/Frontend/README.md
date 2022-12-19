@@ -24,7 +24,9 @@ Renders a signup form. Once the user succuessfuly signs up, they are redirected 
 
 This page renders all of the public servers.
 
-* The user will be presented with buttons to 'View Direct Messages', 'View Owned Servers', and 'Create a Server'
+This page renders all of the user's direct messages. (Private servers that the user owns or is a member of)
+
+* The user will be presented with buttons to 'Create a Server' and 'Create Private Server (Direct Messages) *
 
 - Route: "/"
 
@@ -54,13 +56,11 @@ Route: "/servers/:serverId/edit"
 
 *Direct Message Routes*
 
-## Direct Messages (Private Servers)
+## View Direct Messages (Private Servers)
 
-Renders all of the 'private' servers that the user owns or is a member of, otherwise referred to as 'Direct Messages'
+Renders a specific Private Server (Direct Messages)
 
-* The user will have the option to create a new private server via button *
-
--Route: "/direct-messages"
+-Route: "/direct-messages/:directMessageId"
 
 ## Create A Direct Message (Private) Server
 
