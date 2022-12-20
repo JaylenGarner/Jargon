@@ -2,7 +2,7 @@
 
 ## Frontend Route Documentation
 
-## *User Routes*
+## (User Routes)
 
 *The user cannot access any part of the site without being logged in, they should always be redirected to the login page*
 
@@ -12,21 +12,25 @@ Renders a login form. Once the user succuessfuly logs in, they are redirected to
 
 - Route: "/login"
 
+
 ## Sign Up a User
 
 Renders a signup form. Once the user succuessfuly signs up, they are redirected to the home page.
 
 - Route: "/signup"
 
-## *Public Server Routes (CRUD)*
+## Navigation Bar
+
+Visible on every page when the user is logged in. Displays all public servers.
+
+* The user will be presented with buttons to 'Create a Server' (TOP) and 'logout' (BOTTOM) *
+The bottom will also display the user's profile picture and ID.
+
+## (Public Server Routes (CRUD))
 
 ## Home
 
-This page renders all of the public servers.
-
-This page renders all of the user's direct messages. (Private servers that the user owns or is a member of)
-
-* The user will be presented with buttons to 'Create a Server' and 'Create Private Server (Direct Messages) *
+ Renders private servers (direct messages). Will also be occupied by 'friends' for a bonus feature.
 
 - Route: "/"
 
@@ -56,7 +60,7 @@ Route: "/servers/:serverId/edit"
 
 *Direct Message Routes*
 
-## View Direct Messages (Private Servers)
+## View Direct Messages (Private Server)
 
 Renders a specific Private Server (Direct Messages)
 
@@ -72,7 +76,7 @@ Renders a form to create a new private server. Once the form is successfully com
 
 -Route: "/direct-messages/create"
 
-*Channels Routes (CRUD)*
+## (Channels Routes (CRUD))
 
 ## View a channel
 
