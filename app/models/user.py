@@ -15,7 +15,13 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    image = db.Column(db.String(500))
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    #Related data
+    user_messages = db.relationship("Message", back_populates= 'users', cascade='all,delete')
+    user_servers = db.relationship("Server", secondary=server_members, back_populates= 'users', cascade='all,delete')
+
 
     @property
     def password(self):
@@ -28,9 +34,13 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def __repr__(self):
+        return f"<User ID: {self.id}, Username: {self.username}, Email: {self.email}>"
+
     def to_dict(self):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'image': self.image
         }

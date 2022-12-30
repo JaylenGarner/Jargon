@@ -13,11 +13,18 @@ class Message(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False)
-    channel_id = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, nullable=False, db.ForeignKey=('users.id'))
+    channel_id = db.Column(db.Integer, nullable=False, db.ForeignKey=('channels.id'))
     body = db.Column(db.String(500), nullable=False)
 
+    #Relationship
+    user_messages = db.relationship("User", back_populates= 'messages', cascade='all,delete')
+    channel_messages = db.relationship("Channel", back_populates= 'messages', cascade='all,delete')
+
     @property
+    def __repr__(self):
+        return f"<Message ID: {self.id}, User ID: {self.user_id}, Channel ID: {self.channel_id}>"
+
     def to_dict(self):
         return {
             'id': self.id,
