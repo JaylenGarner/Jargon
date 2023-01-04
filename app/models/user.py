@@ -19,8 +19,13 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     #Related data
-    user_messages = db.relationship("Message", back_populates= 'users', cascade='all,delete')
-    user_servers = db.relationship("Server", secondary=server_members, back_populates= 'users', cascade='all,delete')
+
+    # **Server**
+    owned_servers = db.relationship("Server", back_populates= 'server_owner', cascade='all,delete')
+    joined_servers = db.relationship("Server", secondary=server_members, back_populates= 'users')
+
+    # **Messages**
+    messages = db.relationship("Message", back_populates= 'user', cascade='all,delete')
 
 
     @property
@@ -41,6 +46,14 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email,
-            'image': self.image
+            'image': self.image,
+            "ownedServers": [server.to_dict_basic()['id'] for server in self.owned_servers],
+            "joinedServers": [server.to_dict_basic()['id'] for server in self.joined_servers]
+        }
+
+    def to_dict_basic(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'image': self.image,
         }

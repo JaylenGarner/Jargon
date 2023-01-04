@@ -18,8 +18,12 @@ class Message(db.Model):
     body = db.Column(db.String(500), nullable=False)
 
     #Relationship
-    user_messages = db.relationship("User", back_populates= 'messages', cascade='all,delete')
-    channel_messages = db.relationship("Channel", back_populates= 'messages', cascade='all,delete')
+
+    # **User**
+    user = db.relationship("User", back_populates= 'messages')
+
+    # **Channel**
+    channel = db.relationship("Channel", back_populates= 'messages')
 
     @property
     def __repr__(self):
@@ -30,5 +34,6 @@ class Message(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'channel_id': self.channel_id,
-            'body': self.body
+            'body': self.body,
+            'user': [user.to_dict_basic()]
         }

@@ -19,9 +19,14 @@ class Server(db.Model):
     private_member_id = db.Column(db.Integer, db.ForeignKey=('users.id'))
 
     #Relationships
-    server_channels = db.relationship("Channel", back_populates= 'servers', cascade='all,delete')
-    users = db.relationship("User", secondary=server_members, back_populates= 'servers')
+    # // Back populates connects the variable we created on the other model
 
+    # **Channel**
+    channels = db.relationship("Channel", back_populates= 'server', cascade='all,delete')
+
+    # **User**
+    users = db.relationship("User", secondary=server_members, back_populates= 'servers')
+    server_owner = db.relationship("User", back_populates= 'owned_servers')
 
     @property
     def __repr__(self):
@@ -33,6 +38,17 @@ class Server(db.Model):
             'owner_id': self.owner_id,
             'name': self.name,
             'image': self.image,
-            'public': self.public
+            'public': self.public,
+            'private_member_id': self.private_member_id,
+            'channels': [channel.to_dict_basic()['id'] for channel in self.channels]
+        }
+
+    def to_dict_basic(self):
+        return {
+            'id': self.id,
+            'owner_id': self.owner_id,
+            'name': self.name,
+            'image': self.image,
+            'public': self.public,
             'private_member_id': self.private_member_id
         }

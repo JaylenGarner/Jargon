@@ -16,8 +16,13 @@ class Channel(db.Model):
     name = db.Column(db.String(50), nullable=False, unique=True)
 
     #Relationship
-    server_channels = db.relationship("Server", back_populates= 'channels', cascade='all,delete')
-    channel_messages = db.relationship("Message", back_populates= 'channels', cascade='all,delete')
+
+    # **Server**
+    server = db.relationship("Server", back_populates= 'channels')
+
+
+    # **Messages**
+    messages = db.relationship("Message", back_populates= 'channel', cascade='all,delete')
 
 
     @property
@@ -28,5 +33,13 @@ class Channel(db.Model):
         return {
             'id': self.id,
             'server_id': self.server_id,
-            'name': self.name
+            'name': self.name,
+            'messages': [message.to_dict() for message in self.messages]
+        }
+
+    def to_dict_basic(self):
+        return {
+            'id': self.id,
+            'server_id': self.server_id,
+            'name': self.name,
         }
