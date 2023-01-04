@@ -3,8 +3,6 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 # from flask_login import UserMixin
 
 
-# Define relationships!!!!!!
-
 class Message(db.Model):
     __tablename__ = 'messages'
 
@@ -13,8 +11,8 @@ class Message(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False, db.ForeignKey=('users.id'))
-    channel_id = db.Column(db.Integer, nullable=False, db.ForeignKey=('channels.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'), nullable=False)
     body = db.Column(db.String(500), nullable=False)
 
     #Relationship

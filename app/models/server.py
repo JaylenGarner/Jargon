@@ -1,8 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .server_member import server_members
 # from werkzeug.security import generate_password_hash, check_password_hash
 # from flask_login import UserMixin
-
-# Define relationships!!!!!!
 
 class Server(db.Model):
     __tablename__ = 'servers'
@@ -12,11 +11,11 @@ class Server(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    owner_id = db.Column(db.Integer, nullable=False, db.ForeignKey=('users.id'))
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     image = db.Column(db.String(255))
     public = db.Column(db.Boolean, nullable=False, default=True)
-    private_member_id = db.Column(db.Integer, db.ForeignKey=('users.id'))
+    private_member_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     #Relationships
     # // Back populates connects the variable we created on the other model

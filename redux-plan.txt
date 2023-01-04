@@ -14,8 +14,6 @@ const store = {
         }
     },
 
-
-
     *** Public servers that the user is a member of will always be rendered in the nav bar, so they should always be in the store ***
 
     servers: {
