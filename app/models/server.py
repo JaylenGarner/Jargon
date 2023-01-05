@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .server_member import server_members
 # from werkzeug.security import generate_password_hash, check_password_hash
-# from flask_login import UserMixin
+
 
 class Server(db.Model):
     __tablename__ = 'servers'
