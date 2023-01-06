@@ -15,7 +15,7 @@ class Server(db.Model):
     name = db.Column(db.String(50), nullable=False)
     image = db.Column(db.String(255))
     public = db.Column(db.Boolean, nullable=False, default=True)
-    private_member_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    private_member_id = db.Column(db.Integer)
 
     #Relationships
     # // Back populates connects the variable we created on the other model
@@ -24,7 +24,7 @@ class Server(db.Model):
     channels = db.relationship("Channel", back_populates= 'server', cascade='all,delete')
 
     # **User**
-    users = db.relationship("User", secondary=server_members, back_populates= 'servers')
+    users = db.relationship("User", secondary=server_members, back_populates= 'joined_servers')
     server_owner = db.relationship("User", back_populates= 'owned_servers')
 
     @property
