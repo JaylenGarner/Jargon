@@ -1,8 +1,8 @@
-"""remigrating and adding seeders
+"""empty message
 
-Revision ID: 01876c44d268
+Revision ID: d6fa69b0eaaa
 Revises: 
-Create Date: 2023-01-05 18:44:46.563971
+Create Date: 2023-01-05 21:07:21.119844
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '01876c44d268'
+revision = 'd6fa69b0eaaa'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,7 +34,6 @@ def upgrade():
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('image', sa.String(length=255), nullable=True),
     sa.Column('public', sa.Boolean(), nullable=False),
-    sa.Column('private_member_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

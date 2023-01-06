@@ -15,7 +15,6 @@ class Server(db.Model):
     name = db.Column(db.String(50), nullable=False)
     image = db.Column(db.String(255))
     public = db.Column(db.Boolean, nullable=False, default=True)
-    private_member_id = db.Column(db.Integer)
 
     #Relationships
     # // Back populates connects the variable we created on the other model
@@ -38,7 +37,6 @@ class Server(db.Model):
             'name': self.name,
             'image': self.image,
             'public': self.public,
-            'private_member_id': self.private_member_id,
             'channels': [channel.to_dict_basic()['id'] for channel in self.channels]
         }
 
@@ -48,6 +46,6 @@ class Server(db.Model):
             'owner_id': self.owner_id,
             'name': self.name,
             'image': self.image,
-            'public': self.public,
-            'private_member_id': self.private_member_id
+            'public': self.public
         }
+# private and public to dict
