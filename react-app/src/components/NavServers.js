@@ -28,7 +28,12 @@ return (
         <h1>Servers</h1>
         {serversArr.map((server) => {
             if (server.public) {
-            return <div key={server.id}>{server.name}</div>
+              return (
+                <div key={server.id}>
+                    <img src={server.image}></img>
+                    <span>{server.name}</span>
+                </div>
+              )
             }
         })}
     </div>
