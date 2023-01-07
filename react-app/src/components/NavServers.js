@@ -19,9 +19,6 @@ function NavServers() {
     }
 
 
-
-    // console.log(serversArr, 'RJPGIRJNGVR')
-
     useEffect(() => {
        dispatch(loadServersThunk(user.id));
     }, [dispatch]);
@@ -30,9 +27,9 @@ return (
       <div>
         <h1>Servers</h1>
         {serversArr.map((server) => {
-            // console.log(server[0].id)
-            // console.log(server)
+            if (server.public) {
             return <div key={server.id}>{server.name}</div>
+            }
         })}
     </div>
   );
