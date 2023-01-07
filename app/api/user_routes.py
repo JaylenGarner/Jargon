@@ -25,9 +25,18 @@ def user(id):
     return user.to_dict_basic()
 
 
-@user_routes.route('/')
+@user_routes.route('<int:user_id>/servers')
 @login_required
-def joined_servers():
-    owned_servers = Server.query.filter(Server.owner_id == current_user.id)
+def user_servers(user_id):
 
-    return {'servers': [server.to_dict() for server in owned_servers]}
+    res_servers = []
+    servers = Server.query.all()
+
+    for server in servers:
+        users = server.users
+
+        for user in users:
+            if user.id == user_id:
+                res_servers.append(server)
+
+    return {'servers': [server.to_dict() for server in res_servers]}

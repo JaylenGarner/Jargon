@@ -26,7 +26,7 @@ class Server(db.Model):
     users = db.relationship("User", secondary=server_members, back_populates= 'joined_servers')
     server_owner = db.relationship("User", back_populates= 'owned_servers')
 
-    @property
+    # @property
     def __repr__(self):
         return f"<Server ID: {self.id}, Owner ID: {self.owner_id}, Server Name: {self.name}>"
 
@@ -37,7 +37,8 @@ class Server(db.Model):
             'name': self.name,
             'image': self.image,
             'public': self.public,
-            'channels': [channel.to_dict_basic()['id'] for channel in self.channels]
+            'channels': [channel.to_dict_basic()['id'] for channel in self.channels],
+            'users': [user.to_dict_basic()['id'] for user in self.users]
         }
 
     def to_dict_basic(self):
