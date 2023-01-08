@@ -10,9 +10,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user)
 
   return (
-    <div className='nav-bar-container'>
-    <nav>
-      <div className='nav-bar'>
+    <nav className='nav-bar'>
         <div className='discord-logo-container'>
           <NavLink to='/' exact={true} activeClassName='active'>
             <img src='https://support.discord.com/hc/user_images/PRywUXcqg0v5DD6s7C3LyQ.jpeg' class='discord-logo'></img>
@@ -27,9 +25,7 @@ const NavBar = () => {
             Sign Up
           </NavLink>
           <LogoutButton />
-      </div>
     </nav>
-    </div>
   );
 }
 
