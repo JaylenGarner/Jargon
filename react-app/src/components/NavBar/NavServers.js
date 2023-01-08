@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadServersThunk } from '../store/server'
+import { loadServersThunk } from '../../store/server'
 import { NavLink } from 'react-router-dom';
 // import CSS File when created
 
@@ -25,12 +25,11 @@ function NavServers() {
 
 return (
       <div>
-        <h1>Servers</h1>
         {serversArr.map((server) => {
             if (server.public) {
               return (
-                <div key={server.id}>
-                    <img src={server.image}></img>
+                <div key={server.id} className='nav-server-logo-container'>
+                    <img src={server.image} className='nav-server-logo'></img>
                     <span>{server.name}</span>
                 </div>
               )
