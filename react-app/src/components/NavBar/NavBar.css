@@ -1,0 +1,29 @@
+.nav-bar {
+    /* Fix height to fit to screen (scrollable */
+    height: 1000px;
+    width: 70px;
+    background-color: #202225;
+    color: white;
+}
+
+.discord-logo-container {
+    width: 50px;
+    /* padding-bottom: 8px; */
+    border-bottom: solid 2px #373A3F;
+}
+
+.discord-logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+}
+
+.nav-server-logo-container {
+    padding-top: 8px;
+}
+
+.nav-server-logo {
+    height: 50px;
+    width: 50px;
+    border-radius:50px;
+}

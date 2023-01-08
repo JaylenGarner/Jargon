@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+# from app.models import db, User, Server, Message, Channel, server_member
 # from werkzeug.security import generate_password_hash, check_password_hash
 # from flask_login import UserMixin
 
@@ -33,5 +34,6 @@ class Message(db.Model):
             'user_id': self.user_id,
             'channel_id': self.channel_id,
             'body': self.body,
-            'user': [user.to_dict_basic()]
+            # Error for attaching user!!!
+            # 'user': [user.to_dict_basic()]
         }
