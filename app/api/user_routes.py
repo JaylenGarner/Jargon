@@ -25,7 +25,7 @@ def user(id):
     return user.to_dict_basic()
 
 
-@user_routes.route('<int:user_id>/servers')
+@user_routes.route('/<int:user_id>/servers')
 @login_required
 def user_servers(user_id):
 
