@@ -39,7 +39,23 @@ def create_channel():
 
     return channel.to_dict()
 
-# TO DO
-# Create a channel
+
 # Edit a channel
+@channel_routes.route('/<int:id>/edit', methods = ['PUT'])
+@login_required
+def edit_channel(id):
+
+    channel = Channel.query.get(id)
+    server = Server.query.get(channel.server_id)
+
+    if server.owner_id != current_user.id:
+        return auth_error
+
+    channel.server_id = request.json[ "serverId" ]
+    channel.name = request.json[ "name" ]
+
+    db.session.commit()
+    return channel.to_dict()
+
+# TO DO
 # Delete a channel
