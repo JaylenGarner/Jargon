@@ -57,5 +57,19 @@ def edit_channel(id):
     db.session.commit()
     return channel.to_dict()
 
-# TO DO
+
 # Delete a channel
+@channel_routes.route('/<int:id>/delete', methods = ['DELETE'])
+@login_required
+def delete_channel(id):
+
+    channel = Channel.query.get(id)
+    server = Server.query.get(channel.server_id)
+
+    if server.owner_id != current_user.id:
+        return auth_error
+
+    db.session.delete(channel)
+    db.session.commit()
+
+    return 'The channel has been deleted'
