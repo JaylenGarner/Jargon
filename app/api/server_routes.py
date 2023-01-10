@@ -19,11 +19,7 @@ def create_server():
     image = request.json[ "image" ]
 
     user = User.query.get(current_user.id)
-    # print(user, 'BEFORE!!!!')
 
-    print(user, 'USER PRINT')
-
-    # Create Server Obj
     server = Server (
         name = name,
         owner_id = int(current_user.id),
@@ -32,15 +28,26 @@ def create_server():
 
     db.session.add(server)
     db.session.commit()
-
     user.joined_servers.append(server)
-
-    # db.session.update(user)
-    print(user.to_dict(), '!!!!!!!!!!!!')
-    print(server.to_dict(), '!!!!!2@22222')
     db.session.commit()
 
     return user.to_dict()
+
+
+@server_routes.route('/<int:id>/edit', methods = ['PUT'])
+@login_required
+def edit_server(id):
+
+    server = Server.query.get(id)
+
+    if server.owner_id != current_user.id:
+        return 'You are not the owner of this server'
+
+    server.name = request.json[ "name" ]
+    server.image = request.json[ "image" ]
+    db.session.commit()
+
+    return server.to_dict()
 
 # @server_routes.route('/create", methods=[ 'POST' def create server):
 #     name = request. json ["name" ]
