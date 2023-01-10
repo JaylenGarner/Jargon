@@ -6,6 +6,7 @@ server_routes = Blueprint('servers', __name__)
 
 auth_error = 'You are not the owner of this server'
 
+# Get Server By ID
 @server_routes.route('/<int:id>')
 @login_required
 def get_server_by_id(id):
@@ -14,6 +15,7 @@ def get_server_by_id(id):
     return server.to_dict()
 
 
+# Create a server
 @server_routes.route('/create', methods=[ 'POST' ] )
 @login_required
 def create_server():
@@ -33,9 +35,10 @@ def create_server():
     user.joined_servers.append(server)
     db.session.commit()
 
-    return user.to_dict()
+    return server.to_dict()
 
 
+# Edit a server
 @server_routes.route('/<int:id>/edit', methods = ['PUT'])
 @login_required
 def edit_server(id):
@@ -52,6 +55,7 @@ def edit_server(id):
     return server.to_dict()
 
 
+# Delete a server
 @server_routes.route('/<int:id>/delete', methods = ['DELETE'])
 @login_required
 def delete_server(id):
