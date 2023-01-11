@@ -29,7 +29,9 @@ return (
             if (server.public) {
               return (
                 <div key={server.id} className='nav-server-logo-container'>
+                  <NavLink to={`/servers/${server.id}`} exact={true} activeClassName='active'>
                     <img src={server.image} className='nav-server-logo'></img>
+                  </NavLink>
                     <span>{server.name}</span>
                 </div>
               )

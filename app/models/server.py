@@ -37,7 +37,7 @@ class Server(db.Model):
             'name': self.name,
             'image': self.image,
             'public': self.public,
-            'channels': [channel.to_dict_basic()['id'] for channel in self.channels],
+            'channels': [channel.to_dict_basic() for channel in self.channels],
             'users': [user.to_dict_basic()['id'] for user in self.users]
         }
 
