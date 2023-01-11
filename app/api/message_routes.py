@@ -4,7 +4,18 @@ from flask_login import current_user, login_required
 
 message_routes = Blueprint('messages', __name__)
 
-# TO DO
 # Create a message
-# Edit a message
-# Delete a message
+@message_routes.route('/create', methods = ['POST'])
+@login_required
+def create_message():
+
+    message = Message (
+        user_id = current_user.id,
+        channel_id = request.json[ "channelId" ],
+        body = request.json[ "body" ]
+    )
+
+    db.session.add(message)
+    db.session.commit()
+
+    return message.to_dict()
