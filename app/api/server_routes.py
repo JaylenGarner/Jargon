@@ -35,6 +35,16 @@ def create_server():
     user.joined_servers.append(server)
     db.session.commit()
 
+    # Create general Channel
+
+    channel = Channel (
+        server_id = server.id,
+        name = 'general'
+    )
+
+    db.session.add(channel)
+    db.session.commit()
+
     return server.to_dict()
 
 

@@ -1,11 +1,6 @@
 import React from 'react';
-// import { loadServerThunk } from '../../store/server';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-import { useEffect } from 'react';
-import { loadServersThunk } from '../../store/server';
 
 const ServerPage = () => {
     const dispatch = useDispatch();
@@ -14,14 +9,12 @@ const ServerPage = () => {
     const serversArr = []
     const servers = Object.values(useSelector((state) => state.servers))
     let resServer;
-    let serverData;
 
     for (let i = 0; i < servers.length; i++) {
         let innerServers = servers[i]
 
         innerServers.forEach((server) => {
             serversArr.push(server)
-            console.log(server)
             if (server.id == serverId) resServer = server
         });
     }
