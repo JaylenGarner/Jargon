@@ -33,9 +33,10 @@ return (
 
               return (
                 <div key={server.id} className='nav-server-logo-container'>
+                  {firstChannel &&
                   <NavLink to={`/servers/${server.id}/channels/${firstChannel.id}`} exact={true} activeClassName='active'>
                     <img src={server.image} className='nav-server-logo'></img>
-                  </NavLink>
+                  </NavLink>}
                 </div>
               )
             }
