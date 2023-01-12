@@ -46,17 +46,22 @@ const ServerPage = () => {
                     <div className='server-name-container'>
                 <span>{resServer.name}</span>
                     </div>
-                    <div className='text-channels-header'>
-                        <span>CHANNELS</span>
+                    <div className='text-channels-header-container'>
+                        <span className='text-channels-header'>CHANNELS</span>
+                        {(resServer.owner_id == user.id) &&
+                        <NavLink to={`/servers/${serverId}/create-channel`} exact={true} activeClassName='active'>
+                            <button className='create-channel-button'>+</button>
+                        </NavLink>}
+
                     </div>
                  {resServer.channels.map((channel) => {
                         if (!channel) {
                             return null
                         } else {
                             return (
-                                <div key={channel.id}>
+                                <div className='server-channel-name-header-container' key={channel.id}>
                                     <NavLink to={`/servers/${serverId}/channels/${channel.id}`} exact={true} activeClassName='active'>
-                                        <h3>{channel.name}</h3>
+                                        <button className='server-channel-name-header'># {channel.name}</button>
                                     </NavLink>
                                 </div>
                             )
@@ -66,9 +71,6 @@ const ServerPage = () => {
                 <br></br>
                     {(resServer.owner_id == user.id) &&
                     <div>
-                <NavLink to={`/servers/${serverId}/create-channel`} exact={true} activeClassName='active'>
-                    <button>Create Channel</button>
-                </NavLink>
                 <br></br>
                 <br></br>
                 <NavLink to={`/servers/${serverId}/edit-server`} exact={true} activeClassName='active'>
