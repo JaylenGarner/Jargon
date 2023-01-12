@@ -33,16 +33,6 @@ const createServer = payload => {
 }
 
 export const createServerThunk = (name, image) => async (dispatch) => {
-    // const newServer = JSON.stringify(data);
-
-    // const res = await fetch('/api/servers/create', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: newServer
-    // })
-
 
     const res = await fetch('/api/servers/create', {
         method: 'POST',
@@ -70,19 +60,35 @@ const editServer = payload => {
     }
 }
 
-export const editServerThunk = (data) => async (dispatch) => {
-    const editedServer = JSON.stringify(data);
+export const editServerThunk = (serverId, name, image) => async (dispatch) => {
+    // const editedServer = JSON.stringify(data);
 
-    const res = await fetch('/api/servers/edit', {
-        method: "PUT",
+    // const res = await fetch('/api/servers/edit', {
+    //     method: "PUT",
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: editedServer
+    // })
+
+    // if (res.ok) {
+    //     const newData = await res.json();
+    //     dispatch(editServer(newData))
+    // }
+
+    const res = await fetch(`/api/servers/${serverId}/edit`, {
+        method: 'PUT',
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: editedServer
-    })
+        body: JSON.stringify({
+          name,
+          image,
+        }),
+      });
 
-    if (res.ok) {
-        const newData = await res.json();
+      if (res.ok) {
+        const newData = await res.json()
         dispatch(editServer(newData))
     }
 }
@@ -97,7 +103,7 @@ const deleteServer = (serverId) => {
 }
 
 export const deleteServerThunk = (serverId) => async (dispatch) => {
-    const server = await fetch(`/api/servers/${serverId}`, {
+    const server = await fetch(`/api/servers/${serverId}/delete`, {
         method: "DELETE"
     })
 
