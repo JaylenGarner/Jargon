@@ -26,7 +26,7 @@ const ChannelPage = () => {
 
     useEffect(() => {
         dispatch(loadChannelThunk(channelId))
-    }, [dispatch]);
+    }, [dispatch, channelId]);
 
 
     if (!channel) {
