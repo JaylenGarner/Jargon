@@ -51,7 +51,9 @@ const ServerPage = () => {
                         } else {
                             return (
                                 <div key={channel.id}>
-                                    <h3>{channel.name}</h3>
+                                    <NavLink to={`/servers/${serverId}/channels/${channel.id}`} exact={true} activeClassName='active'>
+                                        <h3>{channel.name}</h3>
+                                    </NavLink>
                                 </div>
                             )
                         }

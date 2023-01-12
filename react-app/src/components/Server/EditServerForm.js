@@ -16,14 +16,13 @@ const EditServerForm = () => {
   const [name, setName] = useState('');
   const [image, SetImage] = useState('');
   const user = useSelector(state => state.session.user);
-  const {serverId} = useParams()
+  const {serverId} = useParams();
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    const data = await dispatch(editServerThunk(serverId, name, image));
 
+    const data = await dispatch(editServerThunk(serverId, name, image));
 
     if (data) {
       setErrors(data);
