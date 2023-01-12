@@ -10,6 +10,7 @@ import User from './components/User';
 import ServerPage from './components/Server/ServerPage';
 import { authenticate } from './store/session';
 import CreateServerForm from './components/Server/CreateServerForm';
+import EditServerForm from './components/Server/EditServerForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +49,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/create-server' exact={true} >
           <CreateServerForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/edit-server' exact={true} >
+          <EditServerForm />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>

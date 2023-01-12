@@ -1,7 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { deleteServerThunk } from '../../store/server';
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Server.css';
+
+// TO DO
+// NEEDS TO REDIRECT HOME UPON DELETING A SERVER
 
 const ServerPage = () => {
     const dispatch = useDispatch();
@@ -9,7 +16,15 @@ const ServerPage = () => {
     const user = useSelector((state) => state.session.user)
     const serversArr = []
     const servers = Object.values(useSelector((state) => state.servers))
+    const history = useHistory()
     let resServer;
+
+    const refresh = () => window.location.reload(true)
+
+    const handleDelete = () => {
+         dispatch(deleteServerThunk(serverId)).then(refresh())
+         return <Redirect to='/' />;
+    }
 
     for (let i = 0; i < servers.length; i++) {
         let innerServers = servers[i]
@@ -44,10 +59,12 @@ const ServerPage = () => {
                 </div>
                 <br></br>
                 <div>
+                <NavLink to={`/servers/${serverId}/edit-server`} exact={true} activeClassName='active'>
                     <button>Edit Server</button>
+                </NavLink>
                     <br></br>
                     <br></br>
-                    <button>Delete Server</button>
+                    <button onClick={handleDelete}>Delete Server</button>
                 </div>
             </nav>)
         }

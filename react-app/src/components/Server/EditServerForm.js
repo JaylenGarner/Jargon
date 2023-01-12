@@ -2,24 +2,27 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
-import { createServerThunk } from '../../store/server';
+import { editServerThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
 import ServerPage from './ServerPage';
+import { useParams } from 'react-router-dom';
+
 
 // TO DO
 // REDIRECT USER TO NEWLY CREATED SERVER , NEED TO GET SERVER ID POST CREATION
 
-const CreateServerForm = () => {
+const EditServerForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
   const [image, SetImage] = useState('');
   const user = useSelector(state => state.session.user);
+  const {serverId} = useParams()
   const dispatch = useDispatch();
   const history = useHistory()
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
-    const data = await dispatch(createServerThunk(name, image));
+    const data = await dispatch(editServerThunk(serverId, name, image));
 
 
     if (data) {
@@ -48,7 +51,7 @@ const CreateServerForm = () => {
         <input
           name='name'
           type='text'
-          placeholder='Enter your server name'
+          placeholder={name}
           value={name}
           onChange={updateName}
         />
@@ -58,14 +61,14 @@ const CreateServerForm = () => {
         <input
           name='image'
           type='text'
-          placeholder='Enter a valid image url'
+          placeholder={image}
           value={image}
           onChange={updateImage}
         />
-        <button type='submit'>Create Server</button>
+        <button type='submit'>Edit Server</button>
       </div>
     </form>
   );
 };
 
-export default CreateServerForm;
+export default EditServerForm;
