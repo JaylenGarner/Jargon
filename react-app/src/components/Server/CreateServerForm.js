@@ -20,6 +20,9 @@ const CreateServerForm = () => {
   const handleSubmit = async (e) => {
     // e.preventDefault();
     const data = await dispatch(createServerThunk(name, image));
+    // return dispatch(createServerThunk(name, image))
+    // .then(history.push(`/servers/`))
+    // .then(refresh())
 
 
     if (data) {

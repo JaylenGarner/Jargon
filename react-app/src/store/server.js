@@ -61,20 +61,7 @@ const editServer = payload => {
 }
 
 export const editServerThunk = (serverId, name, image) => async (dispatch) => {
-    // const editedServer = JSON.stringify(data);
 
-    // const res = await fetch('/api/servers/edit', {
-    //     method: "PUT",
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: editedServer
-    // })
-
-    // if (res.ok) {
-    //     const newData = await res.json();
-    //     dispatch(editServer(newData))
-    // }
 
     const res = await fetch(`/api/servers/${serverId}/edit`, {
         method: 'PUT',

@@ -9,8 +9,6 @@ import './NavBar.css';
 const NavBar = () => {
   const user = useSelector((state) => state.session.user)
 
-
-
   return (
     <nav className='nav-bar'>
         <div className='discord-logo-container'>
@@ -19,9 +17,9 @@ const NavBar = () => {
           </NavLink>
         </div>
         {user && <NavServers />}
-        <NavLink to='/create-server' exact={true} activeClassName='active'>
+        {user && <NavLink to='/create-server' exact={true} activeClassName='active'>
             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJw0vLOOSkBPLlJbxN8DIvbx45WiIe0OYKmH-rBalLz9ueOgyJcos2FsWgIPzffz3Gu3o&usqp=CAU' className='create-server-logo'></img>
-        </NavLink>
+        </NavLink>}
         <br></br>
         {!user &&
         <div>

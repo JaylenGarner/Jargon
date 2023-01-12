@@ -12,6 +12,8 @@ import { authenticate } from './store/session';
 import CreateServerForm from './components/Server/CreateServerForm';
 import EditServerForm from './components/Server/EditServerForm';
 import ChannelPage from './components/Channel/ChannelPage';
+import CreateChannelForm from './components/Channel/CreateChannel';
+import EditChannelForm from './components/Channel/EditChannel';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,11 +54,20 @@ function App() {
           <CreateServerForm />
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId/edit-server' exact={true} >
+          <ServerPage />
           <EditServerForm />
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId/channels/:channelId' exact={true} >
           <ServerPage />
           <ChannelPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/create-channel' exact={true} >
+          <ServerPage />
+          <CreateChannelForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/channels/:channelId/edit-channel' exact={true} >
+          <ServerPage />
+          <EditChannelForm />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>

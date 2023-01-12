@@ -7,32 +7,45 @@ import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { loadChannelThunk } from '../../store/channel';
 import { useEffect } from 'react';
+import { deleteChannelThunk } from '../../store/channel';
 
 
 const ChannelPage = () => {
     const dispatch = useDispatch();
-    const { channelId } = useParams()
+    const { serverId, channelId } = useParams()
     const user = useSelector((state) => state.session.user)
     const channel = useSelector((state) => state.channels)
-    console.log(channel)
-    // const history = useHistory()
-    // const refresh = () => window.location.reload(true)
+    const history = useHistory()
+    const refresh = () => window.location.reload(true)
 
-    // const handleDelete = () => {
-    //      dispatch(deleteServerThunk(serverId)).then(refresh())
-    //      return <Redirect to='/' />;
-    // }
+    const handleDelete = () => {
+        //  dispatch(deleteChannelThunk(channelId)).then(refresh())
+         return dispatch(deleteChannelThunk(channelId))
+        .then(history.push(`/servers/${serverId}`))
+        .then(refresh())
+    }
 
 
     useEffect(() => {
         dispatch(loadChannelThunk(channelId))
     }, [dispatch, channelId]);
 
-
     if (!channel) {
         return null
     } else {
-        return (<h1>{channel.name}</h1>)
+        return (
+            <div>
+                <h1>{channel.name}</h1>
+                <NavLink to={`/servers/${serverId}/channels/${channelId}/edit-channel`} exact={true} activeClassName='active'>
+                <button>Edit Channel</button>
+                </NavLink>
+                <button onClick={handleDelete}>Delete Channel</button>
+                <br></br>
+                <br></br>
+                <br></br>
+                <h2>***Messages area***</h2>
+            </div>
+        )
     }
 }
 

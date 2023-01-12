@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { login } from '../../store/session';
 import { editServerThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
-import ServerPage from './ServerPage';
 import { useParams } from 'react-router-dom';
 
 
@@ -20,14 +18,14 @@ const EditServerForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const refresh = () => window.location.reload(true)
+
   const handleSubmit = async (e) => {
 
-    const data = await dispatch(editServerThunk(serverId, name, image));
-
-    if (data) {
-      setErrors(data);
-      return <Redirect to='/' />;
-    }
+    // const data = await dispatch(editServerThunk(serverId, name, image));
+    return dispatch(editServerThunk(serverId, name, image))
+    .then(history.push(`/servers/${serverId}`))
+    .then(refresh())
   };
 
   const updateName = (e) => {

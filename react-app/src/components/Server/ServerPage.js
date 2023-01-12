@@ -5,10 +5,12 @@ import { deleteServerThunk } from '../../store/server';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import CreateChannelForm from '../Channel/CreateChannel';
 import './Server.css';
 
 // TO DO
 // NEEDS TO REDIRECT HOME UPON DELETING A SERVER
+// WHEN OPENING A SERVER, AUTOMATICALLY OPEN GENERAL CHANNEL
 
 const ServerPage = () => {
     const dispatch = useDispatch();
@@ -23,7 +25,9 @@ const ServerPage = () => {
 
     const handleDelete = () => {
          dispatch(deleteServerThunk(serverId)).then(refresh())
-         return <Redirect to='/' />;
+         return dispatch(deleteServerThunk(serverId))
+        .then(history.push(`/`))
+        .then(refresh())
     }
 
     for (let i = 0; i < servers.length; i++) {
@@ -61,6 +65,11 @@ const ServerPage = () => {
                 </div>
                 <br></br>
                 <div>
+                <NavLink to={`/servers/${serverId}/create-channel`} exact={true} activeClassName='active'>
+                    <button>Create Channel</button>
+                </NavLink>
+                <br></br>
+                <br></br>
                 <NavLink to={`/servers/${serverId}/edit-server`} exact={true} activeClassName='active'>
                     <button>Edit Server</button>
                 </NavLink>
@@ -71,23 +80,6 @@ const ServerPage = () => {
             </nav>)
         }
     }
-
-
-
-    // return (
-        //     <nav className='nav-bar'>
-        //         <div className='discord-logo-container'>
-        //           <NavLink to='/' exact={true} activeClassName='active'>
-        //             <img src='https://support.discord.com/hc/user_images/PRywUXcqg0v5DD6s7C3LyQ.jpeg' className='discord-logo'></img>
-        //           </NavLink>
-        //         </div>
-        //         {user && <NavServers />}
-        //         <br></br>
-        //     </nav>
-        //   );
-        // }
-
-
 
 
 export default ServerPage;
