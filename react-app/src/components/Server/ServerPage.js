@@ -2,10 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { deleteServerThunk } from '../../store/server';
-import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import CreateChannelForm from '../Channel/CreateChannel';
 import './Server.css';
 
 // TO DO
@@ -64,7 +62,8 @@ const ServerPage = () => {
                     })}
                 </div>
                 <br></br>
-                <div>
+                    {(resServer.owner_id == user.id) &&
+                    <div>
                 <NavLink to={`/servers/${serverId}/create-channel`} exact={true} activeClassName='active'>
                     <button>Create Channel</button>
                 </NavLink>
@@ -77,6 +76,7 @@ const ServerPage = () => {
                     <br></br>
                     <button onClick={handleDelete}>Delete Server</button>
                 </div>
+                }
             </nav>)
         }
     }

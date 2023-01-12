@@ -79,3 +79,15 @@ def delete_server(id):
     db.session.commit()
 
     return 'The server has been deleted'
+
+# @server_routes.route('/<int:id>/invite', methods = ['POST'])
+# @login_required
+# def invite_user(id):
+
+#     server = Server.query.get(id)
+#     user = User.query.get(request.json[ "username" ])
+
+#     user.joined_servers.append(server)
+#     db.session.commit()
+
+#     return 'The user has been added'

@@ -18,31 +18,53 @@ const ChannelPage = () => {
     const history = useHistory()
     const refresh = () => window.location.reload(true)
 
+    const serversArr = []
+    const servers = Object.values(useSelector((state) => state.servers))
+    let resServer;
+
     const handleDelete = () => {
-        //  dispatch(deleteChannelThunk(channelId)).then(refresh())
          return dispatch(deleteChannelThunk(channelId))
         .then(history.push(`/servers/${serverId}`))
         .then(refresh())
     }
 
+    for (let i = 0; i < servers.length; i++) {
+        let innerServers = servers[i]
+
+        innerServers.forEach((server) => {
+            serversArr.push(server)
+            if (server.id == serverId) resServer = server
+        });
+    }
 
     useEffect(() => {
         dispatch(loadChannelThunk(channelId))
     }, [dispatch, channelId]);
 
+    console.log(resServer)
+
     if (!channel) {
+        return null
+    } else if (!resServer) {
         return null
     } else {
         return (
             <div>
+                <div>
                 <h1>{channel.name}</h1>
+
+                {(user.id == resServer.owner_id) &&
+                <div>
                 <NavLink to={`/servers/${serverId}/channels/${channelId}/edit-channel`} exact={true} activeClassName='active'>
                 <button>Edit Channel</button>
                 </NavLink>
                 <button onClick={handleDelete}>Delete Channel</button>
+                </div>}
+
                 <br></br>
                 <br></br>
                 <br></br>
+                </div>
                 <h2>***Messages area***</h2>
             </div>
         )
