@@ -1,137 +1,72 @@
-// import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { useHistory } from "react-router-dom";
-// import { createServer } from '../../store/server'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { login } from '../../store/session';
+import { createServerThunk } from '../../store/server';
+import { useHistory } from 'react-router-dom';
+import ServerPage from './ServerPage';
 
-// const ServerAddForm = () => {
-//   const history = useHistory()
-//   const dispatch = useDispatch();
-//   const [errors, setErrors] = useState([]);
-//   const [name, setName] = useState("");
-//   const [image, setImage] = useState(null);
+// TO DO
+// REDIRECT USER TO NEWLY CREATED SERVER , NEED TO GET SERVER ID POST CREATION
 
+const CreateServerForm = () => {
+  const [errors, setErrors] = useState([]);
+  const [name, setName] = useState('');
+  const [image, SetImage] = useState('');
+  const user = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+  const history = useHistory()
 
-//   const onServerCreation = async (e) => {
-//     e.preventDefault();
-//     const formData = new FormData();
-//         formData.append("image", image);
-
-//     const data = await dispatch(createServer(name, image)).catch(e=>setErrors(e));
-//     if (data) {
-//       history.push('/');
-//     }
-//   }
-
-//   const updateName = (e) => {
-//     setName(e.target.value);
-//   }
-
-//   const updateImage = (e) => {
-//     setImage(e.target.value);
-//   }
-
-//   return (
-//     <form onSubmit={onServerCreation} className='server_form'>
-//       <div>
-//         {errors.map((error) => (
-//           <div>{error}</div>
-//         ))}
-//       </div>
-//       <div className='server_div'>
-//         <label htmlFor="name">Name</label>
-//         <input
-//           name="name"
-//           type="text"
-//           placeholder="Name"
-//           value={name}
-//           onChange={updateName}
-//           className='server_input'
-//         />
-//       </div>
-//       <div className='server_div'>
-//         <label htmlFor="image">Image</label>
-//         <input
-//           name="image"
-//           type="file"
-//           accept="image/*"
-//           onChange={updateImage}
-//           className='server_input_image'
-//         />
-//       </div>
-
-//       <div className="create">
-//         <button className="server-button" type="submit">Create Server</button>
-//       </div>
-//     </form>
-//   )
-// }
-
-// export default ServerAddForm;
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    const data = await dispatch(createServerThunk(name, image));
 
 
+    if (data) {
+      setErrors(data);
 
-// import React, { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
+      return <Redirect to='/' />;
+    }
+  };
 
-// const LoginForm = () => {
-// //   const [errors, setErrors] = useState([]);
-// //   const [email, setEmail] = useState('');
-// //   const [password, setPassword] = useState('');
-//   const user = useSelector(state => state.session.user);
-//   const dispatch = useDispatch();
+  const updateName = (e) => {
+    setName(e.target.value);
+  };
 
-// //   const onLogin = async (e) => {
-// //     e.preventDefault();
-// //     const data = await dispatch(login(email, password));
-// //     if (data) {
-// //       setErrors(data);
-// //     }
-// //   };
+  const updateImage = (e) => {
+    SetImage(e.target.value);
+  };
 
-// //   const updateEmail = (e) => {
-// //     setEmail(e.target.value);
-// //   };
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
+      <div>
+        <label htmlFor='name'>Server Name</label>
+        <input
+          name='name'
+          type='text'
+          placeholder='Enter your server name'
+          value={name}
+          onChange={updateName}
+        />
+      </div>
+      <div>
+        <label htmlFor='image'>Server image</label>
+        <input
+          name='image'
+          type='text'
+          placeholder='Enter a valid image url'
+          value={image}
+          onChange={updateImage}
+        />
+        <button type='submit'>Create Server</button>
+      </div>
+    </form>
+  );
+};
 
-// //   const updatePassword = (e) => {
-// //     setPassword(e.target.value);
-// //   };
-
-// //   if (user) {
-// //     return <Redirect to='/' />;
-// //   }
-
-//   return (
-//     // <form onSubmit={onLogin}>
-//     <form>
-//       {/* <div>
-//         {errors.map((error, ind) => (
-//           <div key={ind}>{error}</div>
-//         ))}
-//       </div> */}
-//       <div>
-//         <label htmlFor='email'>Email</label>
-//         <input
-//           name='email'
-//           type='text'
-//           placeholder='Enter Server Name'
-//           value={email}
-//           onChange={updateEmail}
-//         />
-//       </div>
-//       <div>
-//         <label htmlFor='password'>Password</label>
-//         <input
-//           name='password'
-//           type='password'
-//           placeholder='Password'
-//           value={password}
-//           onChange={updatePassword}
-//         />
-//         <button type='submit'>Login</button>
-//       </div>
-//     </form>
-//   );
-// };
-
-// export default LoginForm;
+export default CreateServerForm;

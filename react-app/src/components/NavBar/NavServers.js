@@ -32,7 +32,6 @@ return (
                   <NavLink to={`/servers/${server.id}`} exact={true} activeClassName='active'>
                     <img src={server.image} className='nav-server-logo'></img>
                   </NavLink>
-                    <span>{server.name}</span>
                 </div>
               )
             }

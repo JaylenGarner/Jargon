@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import './Server.css';
 
 const ServerPage = () => {
     const dispatch = useDispatch();
@@ -23,11 +24,13 @@ const ServerPage = () => {
         return null
     } else {
         return (
-            <div>
+            <nav className='server-page-nav'>
                 <div>
-                    <h1>{resServer.name}</h1>
-                    <h2>Channels</h2>
-                    {resServer.channels.map((channel) => {
+                    <div className='server-name-container'>
+                <h1>{resServer.name}</h1>
+                    </div>
+                <h2>Channels</h2>
+                 {resServer.channels.map((channel) => {
                         if (!channel) {
                             return null
                         } else {
@@ -41,13 +44,31 @@ const ServerPage = () => {
                 </div>
                 <br></br>
                 <div>
-                    <button>Delete Server</button>
                     <button>Edit Server</button>
+                    <br></br>
+                    <br></br>
+                    <button>Delete Server</button>
                 </div>
-            </div>
-        )
+            </nav>)
+        }
     }
-}
+
+
+
+    // return (
+        //     <nav className='nav-bar'>
+        //         <div className='discord-logo-container'>
+        //           <NavLink to='/' exact={true} activeClassName='active'>
+        //             <img src='https://support.discord.com/hc/user_images/PRywUXcqg0v5DD6s7C3LyQ.jpeg' className='discord-logo'></img>
+        //           </NavLink>
+        //         </div>
+        //         {user && <NavServers />}
+        //         <br></br>
+        //     </nav>
+        //   );
+        // }
+
+
 
 
 export default ServerPage;

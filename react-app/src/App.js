@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ServerPage from './components/Server/ServerPage';
 import { authenticate } from './store/session';
+import CreateServerForm from './components/Server/CreateServerForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,6 +45,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId' exact={true} >
           <ServerPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/create-server' exact={true} >
+          <CreateServerForm />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
