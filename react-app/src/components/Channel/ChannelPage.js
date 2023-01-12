@@ -42,7 +42,6 @@ const ChannelPage = () => {
         dispatch(loadChannelThunk(channelId))
     }, [dispatch, channelId]);
 
-    console.log(resServer)
 
     if (!channel) {
         return null

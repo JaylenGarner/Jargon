@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { deleteServerThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import ChannelPage from '../Channel/ChannelPage';
 import './Server.css';
 
 // TO DO
@@ -18,6 +19,9 @@ const ServerPage = () => {
     const servers = Object.values(useSelector((state) => state.servers))
     const history = useHistory()
     let resServer;
+    let firstChannel;
+
+    if (resServer) firstChannel = resServer.channels[0]
 
     const refresh = () => window.location.reload(true)
 
@@ -59,9 +63,11 @@ const ServerPage = () => {
                             return null
                         } else {
                             return (
-                                <div className='server-channel-name-header-container' key={channel.id}>
+                                <div key={channel.id} >
                                     <NavLink to={`/servers/${serverId}/channels/${channel.id}`} exact={true} activeClassName='active'>
+                                        <div className='server-channel-name-header-container'>
                                         <button className='server-channel-name-header'># {channel.name}</button>
+                                        </div>
                                     </NavLink>
                                 </div>
                             )
@@ -81,7 +87,8 @@ const ServerPage = () => {
                     <button onClick={handleDelete}>Delete Server</button>
                 </div>
                 }
-            </nav>)
+            </nav>
+        )
         }
     }
 
