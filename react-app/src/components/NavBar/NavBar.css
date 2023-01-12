@@ -10,7 +10,7 @@
 .discord-logo-container {
     width: 50px;
     /* padding-bottom: 8px; */
-    border-bottom: solid 2px #373A3F;
+    border-bottom: solid 0.2px #373A3F;
 }
 
 .discord-logo {

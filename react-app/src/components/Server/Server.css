@@ -2,13 +2,25 @@
     /* Fix height to fit to screen (scrollable */
     height: 1000px;
     width: 200px;
-    background-color: #202225;
+    background-color: #2F3136;
     color: white;
-    border-left: solid 2px #373A3F;
     text-align: center;
 }
 
 .server-name-container {
-    border-bottom: solid 2px #373A3F;
+    border-bottom: solid 1.5px #202225;
+    padding-bottom: 10px;
+    padding-top:10px;
+    /* text-align: center; */
+    font-weight: bold;
+    font-size: 20px;
+}
 
+.text-channels-header {
+    margin-top: 20px;
+    color: #96989D;
+    text-align: left;
+    font-size: 14px;
+    padding-left: 6px;
+    font-weight: bold;
 }

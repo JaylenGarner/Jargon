@@ -44,9 +44,11 @@ const ServerPage = () => {
             <nav className='server-page-nav'>
                 <div>
                     <div className='server-name-container'>
-                <h1>{resServer.name}</h1>
+                <span>{resServer.name}</span>
                     </div>
-                <h2>Channels</h2>
+                    <div className='text-channels-header'>
+                        <span>CHANNELS</span>
+                    </div>
                  {resServer.channels.map((channel) => {
                         if (!channel) {
                             return null
