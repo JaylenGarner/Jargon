@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './SignupForm.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -43,15 +44,17 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} className="signup-container">
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label>User Name</label>
+        <h1 className='login-header'>Create an account</h1>
+        <p className='username-header'>USERNAME</p>
         <input
+          className='username-input'
           type='text'
           name='username'
           onChange={updateUsername}
@@ -59,8 +62,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <p className='signup-email-header'>EMAIL</p>
         <input
+          className='signup-email-input'
           type='text'
           name='email'
           onChange={updateEmail}
@@ -68,8 +72,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <p className='signup-password-header'>PASSWORD</p>
         <input
+          className='signup-password-input'
           type='password'
           name='password'
           onChange={updatePassword}
@@ -77,8 +82,9 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <p className='repeat-password-header'>REPEAT PASSWORD</p>
         <input
+          className='repeat-password-input'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
@@ -86,7 +92,10 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <div className='signup-button-container'>
+      <button type='submit' className='signup-button'>Sign Up</button>
+      </div>
+      <p className='account-owner'>Already have an account?</p>
     </form>
   );
 };
