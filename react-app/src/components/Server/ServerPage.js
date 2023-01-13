@@ -77,6 +77,7 @@ const ServerPage = () => {
                 <br></br>
                     {(resServer.owner_id == user.id) &&
                     <div>
+                        <button>Add User</button>
                 <br></br>
                 <br></br>
                 <NavLink to={`/servers/${serverId}/edit-server`} exact={true} activeClassName='active'>
