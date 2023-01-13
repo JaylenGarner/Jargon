@@ -14,6 +14,7 @@ import EditServerForm from './components/Server/EditServerForm';
 import ChannelPage from './components/Channel/ChannelPage';
 import CreateChannelForm from './components/Channel/CreateChannel';
 import EditChannelForm from './components/Channel/EditChannel';
+import InviteUser from './components/Server/InviteUser';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -68,6 +69,10 @@ function App() {
         <ProtectedRoute path='/servers/:serverId/channels/:channelId/edit-channel' exact={true} >
           <ServerPage />
           <EditChannelForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/invite' exact={true} >
+          <ServerPage />
+          <InviteUser />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>

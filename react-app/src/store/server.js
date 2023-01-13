@@ -4,6 +4,7 @@ const LOAD_SERVERS = 'servers/LOAD_SERVERS';
 const CREATE_SERVER = 'servers/CREATE_SERVER';
 const EDIT_SERVER = 'servers/EDIT_SERVER';
 const DELETE_SERVER = 'servers/DELETE_SERVER';
+const ADD_USER = 'servers/ADD_USER'
 
 // GET
 
@@ -80,6 +81,31 @@ export const editServerThunk = (serverId, name, image) => async (dispatch) => {
     }
 }
 
+const addUser = (payload) => {
+    return {
+        type: ADD_USER,
+        payload
+    }
+}
+
+export const addUserThunk = (serverId, username) => async (dispatch) => {
+
+    const res = await fetch(`/api/servers/${serverId}/invite`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username
+        }),
+      });
+
+      if (res.ok) {
+        const newData = await res.json()
+        dispatch(addUser(newData))
+    }
+}
+
 // DELETE
 
 const deleteServer = (serverId) => {
@@ -97,6 +123,7 @@ export const deleteServerThunk = (serverId) => async (dispatch) => {
     if (server.ok) dispatch(deleteServer(serverId))
 }
 
+
 export default function reducer(state = defaultState, action) {
     const newState = {...state}
 
@@ -107,6 +134,9 @@ export default function reducer(state = defaultState, action) {
             newState[action.payload] = action.payload
             return newState;
         case EDIT_SERVER:
+            newState[action.payload] = action.payload
+            return newState;
+        case ADD_USER:
             newState[action.payload] = action.payload
             return newState;
         case DELETE_SERVER:

@@ -5,6 +5,7 @@ import { deleteServerThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import ChannelPage from '../Channel/ChannelPage';
+import InviteUser from './InviteUser';
 import './Server.css';
 
 // TO DO
@@ -77,7 +78,9 @@ const ServerPage = () => {
                 <br></br>
                     {(resServer.owner_id == user.id) &&
                     <div>
+                        <NavLink to={`/servers/${serverId}/invite`} exact={true} activeClassName='active'>
                         <button>Add User</button>
+                        </NavLink>
                 <br></br>
                 <br></br>
                 <NavLink to={`/servers/${serverId}/edit-server`} exact={true} activeClassName='active'>
