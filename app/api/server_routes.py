@@ -81,16 +81,27 @@ def delete_server(id):
     return 'The server has been deleted'
 
 
-@server_routes.route('/<int:id>/invite', methods = ['GET'])
+@server_routes.route('/<int:id>/invite', methods = ['PUT'])
 @login_required
 def invite_user(id):
 
     username = request.json[ "username" ]
-
     server = Server.query.get(id)
-    user = User.query.get(username)
+    users = User.query.all()
+    res_user = None
 
-    # user.joined_servers.append(server)
-    # db.session.commit()
-    return user.to_dict()
-    # return 'The user has been added'
+    for user in users:
+        if user.username == username:
+            res_user = user
+
+    if res_user == None:
+        return 'No user found with that username'
+
+    joinedServs = res_user.to_dict()['joinedServers']
+
+    if id not in joinedServs:
+        res_user.joined_servers.append(server)
+        db.session.commit()
+        return 'User has been added to the server'
+    else:
+        return 'User is already a member of this server'
