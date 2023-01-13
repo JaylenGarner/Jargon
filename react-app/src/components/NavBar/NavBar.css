@@ -7,6 +7,14 @@
     padding-left: 12px;
 }
 
+.hide-nav-bar {
+   background-color: #37393E;
+   height: 1000px;
+   width: 75px;
+   color: white;
+   padding-left: 12px;
+}
+
 .discord-logo-container {
     width: 50px;
     /* padding-bottom: 8px; */
