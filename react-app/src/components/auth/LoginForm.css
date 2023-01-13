@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Work+Sans:300,400,700,900%27);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,600,700%7CWork+Sans:300,400,700,900%27);
 
 .form-container {
     background-image: url('https://i.ibb.co/1RV16c5/dsicord-logo.png');
@@ -16,6 +16,10 @@
     background-color: #2e3035;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
     width: 20em;
+}
+
+.login-hyperlink {
+    color: white
 }
 
 .login-button {
