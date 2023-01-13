@@ -60,6 +60,8 @@ def edit_server(id):
 
     server.name = request.json[ "name" ]
     server.image = request.json[ "image" ]
+    server.user = request.json[ "user" ]
+    server.user.joined_servers.append(server)
     db.session.commit()
 
     return server.to_dict()
@@ -81,16 +83,14 @@ def delete_server(id):
     return 'The server has been deleted'
 
 
-@server_routes.route('/<int:id>/invite', methods = ['GET'])
-@login_required
-def invite_user(id):
+# @server_routes.route('/<int:id>/invite', methods = ['POST'])
+# @login_required
+# def invite_user(id):
 
-    username = request.json[ "username" ]
+#     server = Server.query.get(id)
+#     user = User.query.get(id)
 
-    server = Server.query.get(id)
-    user = User.query.get(username)
-
-    # user.joined_servers.append(server)
-    # db.session.commit()
-    return user.to_dict()
-    # return 'The user has been added'
+#     user.joined_servers.append(server)
+#     db.session.commit()
+#     print('The user has been added to your server')
+#     return server.to_dict()

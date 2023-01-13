@@ -13,10 +13,20 @@ const EditServerForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
   const [image, SetImage] = useState('');
-  const user = useSelector(state => state.session.user);
+  const [userid, setUserid] = useState(null);
+  // const user = useSelector(state => state.session.user);
+  const servers = useSelector(state => state.servers)
   const {serverId} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+
+  console.log(servers, "!!!!")
+
+  // const allOtherUsers = [];
+  //   const albums = Object.values(useSelector(state => state.albums));
+  //   albums.forEach((album) => {
+  //       if (album.userId === user.id) myAlbums.push(album)
+  //   })
 
   const refresh = () => window.location.reload(true)
 
@@ -35,6 +45,10 @@ const EditServerForm = () => {
   const updateImage = (e) => {
     SetImage(e.target.value);
   };
+
+  const updateUser = e => {
+    setUserid(e.target.value)
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -62,6 +76,13 @@ const EditServerForm = () => {
           value={image}
           onChange={updateImage}
         />
+        <button type='submit'>Edit Server</button>
+      </div>
+      <div>
+        <label htmlFor='users'>Add a User</label>
+        <select name="users" className='user-selector'>
+          <option value={userid}></option>
+        </select>
         <button type='submit'>Edit Server</button>
       </div>
     </form>
