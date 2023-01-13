@@ -49,6 +49,7 @@ const LoginForm = () => {
           placeholder='Email'
           value={email}
           onChange={updateEmail}
+          required
         />
         <p className='password-header'>PASSWORD</p>
         <label htmlFor='password'></label>
@@ -59,6 +60,7 @@ const LoginForm = () => {
           placeholder='Password'
           value={password}
           onChange={updatePassword}
+          required
         />
         <p className='forgot-password'>Forgot your password?</p>
       <div>

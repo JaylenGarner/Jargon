@@ -54,6 +54,7 @@ const EditServerForm = () => {
           placeholder={name}
           value={name}
           onChange={updateName}
+          required
         />
       </div>
       <div>
@@ -65,6 +66,7 @@ const EditServerForm = () => {
           placeholder={image}
           value={image}
           onChange={updateImage}
+          required
         />
         <div className='edit-form-button-container'>
         <button type='submit' className='edit-form-button'>Edit Server</button>

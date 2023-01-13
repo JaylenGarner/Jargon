@@ -56,6 +56,7 @@ const CreateChannelForm = () => {
             placeholder='Enter your channel name'
             value={name}
             onChange={updateName}
+            required
           />
         </div>
         <div className='create-channel-button-2-container'>

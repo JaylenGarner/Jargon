@@ -40,6 +40,7 @@ const InviteUser = () => {
             placeholder='Enter a username'
             value={username}
             onChange={updateUsername}
+            required
           />
         </div>
         <div >

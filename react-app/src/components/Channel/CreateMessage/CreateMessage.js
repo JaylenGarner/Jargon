@@ -40,6 +40,7 @@ const CreateMessage = ({channelName}) => {
             placeholder={`Message #${channelName}`}
             value={body}
             onChange={updateBody}
+            required
           />
         </div>
         <div>

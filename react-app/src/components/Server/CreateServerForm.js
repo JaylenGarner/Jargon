@@ -60,6 +60,7 @@ const CreateServerForm = () => {
           placeholder='Enter your server name'
           value={name}
           onChange={updateName}
+          required
         />
       </div>
       <div>
@@ -71,6 +72,7 @@ const CreateServerForm = () => {
           placeholder='Enter a valid image url'
           value={image}
           onChange={updateImage}
+          required
         />
         <div className='create-form-button-container'>
         <button type='submit' className='create-form-button'>Create Server</button>

@@ -46,6 +46,7 @@ const EditChannelForm = () => {
             placeholder='Edit your channel name'
             value={name}
             onChange={updateName}
+            required
           />
         </div>
         <div className='edit-channel-button-container'>
