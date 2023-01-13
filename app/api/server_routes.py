@@ -95,13 +95,13 @@ def invite_user(id):
             res_user = user
 
     if res_user == None:
-        return 'No user found with that username'
+        return {"error": "User not found"}
 
     joinedServs = res_user.to_dict()['joinedServers']
 
     if id not in joinedServs:
         res_user.joined_servers.append(server)
         db.session.commit()
-        return 'User has been added to the server'
+        return {"msg": "User has been added"}
     else:
-        return 'User is already a member of this server'
+        return {"msg": "User is already a member of the server"}

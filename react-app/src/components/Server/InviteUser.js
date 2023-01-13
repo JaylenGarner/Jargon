@@ -18,6 +18,7 @@ const InviteUser = () => {
     const handleSubmit = async (e) => {
       return dispatch(addUserThunk(serverId, username))
       .then(history.push(`/servers/${serverId}`))
+      .then(refresh())
     }
 
     const updateUsername = (e) => {

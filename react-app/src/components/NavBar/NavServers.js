@@ -11,6 +11,7 @@ function NavServers() {
     const servers = Object.values(useSelector((state) => state.servers))
     let firstChannel;
 
+    if (servers) {
     for (let i = 0; i < servers.length; i++) {
         let innerServers = servers[i]
 
@@ -18,6 +19,7 @@ function NavServers() {
             serversArr.push(server)
         });
     }
+  }
 
     useEffect(() => {
        dispatch(loadServersThunk(user.id));
