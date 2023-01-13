@@ -1,13 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { deleteServerThunk } from '../../store/server';
-import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { loadChannelThunk } from '../../store/channel';
 import { useEffect } from 'react';
 import { deleteChannelThunk } from '../../store/channel';
+import CreateMessage from './CreateMessage/CreateMessage';
 import './Channel.css';
 
 
@@ -86,6 +85,9 @@ const ChannelPage = () => {
                         </div>
                     )
                 })}
+                </div>
+                <div>
+                    <CreateMessage channelName={channel.name}/>
                 </div>
             </div>
         )
