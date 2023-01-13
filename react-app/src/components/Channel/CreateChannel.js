@@ -5,6 +5,7 @@ import { login } from '../../store/session';
 import { createChannelThunk } from '../../store/channel';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import './CreateChannel.css'
 
 // TO DO
 // REDIRECT TO NEWLY CREATED CHANNEL
@@ -36,15 +37,20 @@ const CreateChannelForm = () => {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="create-channel-form-container">
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div>
-          <label htmlFor='name'>Channel Name</label>
+          <h1 className='create-channel-header'>Create a channel</h1>
+          <p className='create-channel-intro'>
+            Send messages, images, GIFs, emoji, opinions, and puns
+          </p>
+          <p className='create-channel-name'>CHANNEL NAME</p>
           <input
+            className='create-channel-name-input'
             name='name'
             type='text'
             placeholder='Enter your channel name'
@@ -52,8 +58,8 @@ const CreateChannelForm = () => {
             onChange={updateName}
           />
         </div>
-        <div>
-          <button type='submit'>Create Channel</button>
+        <div className='create-channel-button-2-container'>
+          <button type='submit' className='create-channel-button-2'>Create Channel</button>
         </div>
       </form>
     );

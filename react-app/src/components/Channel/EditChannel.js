@@ -4,6 +4,7 @@ import { editChannelThunk } from '../../store/channel';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Redirect } from "react-router-dom";
+import './EditChannel.css'
 
 
 const EditChannelForm = () => {
@@ -29,15 +30,17 @@ const EditChannelForm = () => {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="edit-channel-form-container">
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div>
-          <label htmlFor='name'>Channel Name</label>
+          <h1 className='edit-channel-header'>Edit Channel</h1>
+          <p className='edit-channel-name'>Channel Name</p>
           <input
+            className='edit-channel-name-input'
             name='name'
             type='text'
             placeholder='Edit your channel name'
@@ -45,8 +48,8 @@ const EditChannelForm = () => {
             onChange={updateName}
           />
         </div>
-        <div>
-          <button type='submit'>Edit Channel</button>
+        <div className='edit-channel-button-container'>
+          <button type='submit' className='edit-channel-button'>Edit Channel</button>
         </div>
       </form>
     );

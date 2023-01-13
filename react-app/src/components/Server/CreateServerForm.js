@@ -5,6 +5,7 @@ import { login } from '../../store/session';
 import { createServerThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
 import ServerPage from './ServerPage';
+import './CreateServer.css'
 
 // TO DO
 // REDIRECT USER TO NEWLY CREATED SERVER , NEED TO GET SERVER ID POST CREATION
@@ -40,15 +41,20 @@ const CreateServerForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='create-form-container'>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor='name'>Server Name</label>
+      <h1 className='create-form-header'>Create a server</h1>
+      <p className='create-form-intro'>Your server is where you and your friends hang out.
+          Make yours and start talking.
+      </p>
+        <p className='create-form-server'>SERVER NAME</p>
         <input
+          className='create-form-name-input'
           name='name'
           type='text'
           placeholder='Enter your server name'
@@ -57,15 +63,18 @@ const CreateServerForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='image'>Server image</label>
+        <p className='create-form-image'>SERVER IMAGE</p>
         <input
+          className='create-form-image-input'
           name='image'
           type='text'
           placeholder='Enter a valid image url'
           value={image}
           onChange={updateImage}
         />
-        <button type='submit'>Create Server</button>
+        <div className='create-form-button-container'>
+        <button type='submit' className='create-form-button'>Create Server</button>
+        </div>
       </div>
     </form>
   );

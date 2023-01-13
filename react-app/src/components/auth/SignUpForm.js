@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './SignupForm.css';
 
@@ -113,7 +113,9 @@ const SignUpForm = () => {
       <div className='signup-button-container'>
       <button type='submit' className='signup-button'>Sign Up</button>
       </div>
+      <Link to='/login' className='signup-hyperlink'>
       <p className='account-owner'>Already have an account?</p>
+      </Link>
     </form>
   );
 };

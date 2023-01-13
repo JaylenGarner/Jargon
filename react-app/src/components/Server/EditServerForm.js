@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { editServerThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import './EditServerForm.css'
 
 
 // TO DO
@@ -37,15 +38,17 @@ const EditServerForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='edit-server-form-container'>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor='name'>Server Name</label>
+        <h1 className='edit-form-header'>Edit Server</h1>
+        <p className='edit-form-server'>Server Name</p>
         <input
+          className='edit-form-name-input'
           name='name'
           type='text'
           placeholder={name}
@@ -54,15 +57,18 @@ const EditServerForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='image'>Server image</label>
+        <p className='edit-form-image-server'>Server Image</p>
         <input
+          className='edit-form-image-input'
           name='image'
           type='text'
           placeholder={image}
           value={image}
           onChange={updateImage}
         />
-        <button type='submit'>Edit Server</button>
+        <div className='edit-form-button-container'>
+        <button type='submit' className='edit-form-button'>Edit Server</button>
+        </div>
       </div>
     </form>
   );

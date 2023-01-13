@@ -1,0 +1,81 @@
+.edit-server-form-container {
+    background-image: url('https://i.ibb.co/rwSS20W/discord-characters-2.png');
+    background-repeat: no-repeat;
+    background-position: left 10px bottom 20px;
+    background-size: 45%;
+    padding-left: 300px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
+    width: 20em;
+}
+
+.edit-form-header {
+    font-size: 20px;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: center;
+    padding-right: 50px;
+    color: black;
+}
+
+.edit-form-server {
+    display: flex;
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.edit-form-name-input {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-form-image-server {
+    display: flex;
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.edit-form-image-input {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.edit-form-button-container {
+    margin-right: 24px;
+    margin-left: -15px;
+}
+
+.edit-form-button:hover {
+    background-color: #44474e ;
+}
+
+.edit-form-button {
+        background-color: rgb(151, 151, 151) ;
+        color: rgb(151, 151, 151);
+        display: flex;
+        padding: 10px;
+        width: 85%;
+        padding-left: 90px;
+        padding-right: 90px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        font-family: Montserrat;
+        margin: 15px;
+}
