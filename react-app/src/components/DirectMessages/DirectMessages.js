@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadServersThunk } from '../../store/server'
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import './DirectMessages.css'
+
 
 
 const DirectMessages = () => {
@@ -31,7 +33,12 @@ const DirectMessages = () => {
 
 console.log(directMessageServs)
   return (
-    <div>
+    <nav className='dm-page-nav'>
+      <div className='dms-header-container'>
+       <span className='dms-header'>Direct Messages</span>
+      </div>
+
+      <div>
       {directMessageServs.map((server) => {
 
           if (server) {
@@ -46,12 +53,15 @@ console.log(directMessageServs)
                   <img src={server.image} className='nav-server-logo'></img>
                 </NavLink>}
                 <h1>{server.name}</h1>
-              </div>
+               </div>
             )
           }
       })}
   </div>
-);
-  }
+    </nav>
+  )
+
+
+}
 
 export default DirectMessages;
