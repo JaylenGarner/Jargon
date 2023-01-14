@@ -85,6 +85,10 @@ function App() {
           <DirectMessages />
           <DirectMessageChat />
         </ProtectedRoute>
+        <ProtectedRoute path='/direct-messages/:serverId/:channelId' exact={true} >
+          <DirectMessages />
+          <ChannelPage/>
+        </ProtectedRoute>
         <Route path='/' exact={true} >
           <DirectMessages />
         </Route>

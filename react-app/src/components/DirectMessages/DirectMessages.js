@@ -59,7 +59,8 @@ const DirectMessages = () => {
             return (
               <div key={server.id} className='nav-server-logo-container'>
                 {firstChannel &&
-                <NavLink to={`/direct-messages/${server.id}`} exact={true} activeClassName='active'>
+                <NavLink to={`/direct-messages/${server.id}/${firstChannel.id}`} exact={true} activeClassName='active'>
+                <img src={otherUser.image} className='dm-user-image'></img>
                 <h1>{otherUser.username}</h1>
                 </NavLink>}
                </div>
@@ -74,7 +75,6 @@ const DirectMessages = () => {
       }
     </nav>
   )
-
 
 }
 
