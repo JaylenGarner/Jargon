@@ -20,14 +20,14 @@ def seed_channels():
     gary_gloria = Channel(
         server_id= 5, name ='Direct Message')
 
-    db.session.add(general_cb)
-    db.session.add(updates_cb)
-    db.session.add(general_sc)
-    db.session.add(updates_sc)
-    db.session.add(general_aa)
-    db.session.add(updates_aa)
-    db.session.add(marnie_bobbie)
-    db.session.add(gary_gloria)
+    # db.session.add(general_cb)
+    # db.session.add(updates_cb)
+    # db.session.add(general_sc)
+    # db.session.add(updates_sc)
+    # db.session.add(general_aa)
+    # db.session.add(updates_aa)
+    # db.session.add(marnie_bobbie)
+    # db.session.add(gary_gloria)
     db.session.commit()
 
 

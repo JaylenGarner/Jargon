@@ -15,11 +15,11 @@ def seed_users():
     gary = User(
         username='gary', email='gary@aa.io', password='password', image = 'https://images.unsplash.com/photo-1619451683205-1f77097aa8d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=710&q=80', joined_servers=[certified_coder_bois, stamp_club, app_academy, gloria_dm])
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.add(gloria)
-    db.session.add(gary)
+    # db.session.add(demo)
+    # db.session.add(marnie)
+    # db.session.add(bobbie)
+    # db.session.add(gloria)
+    # db.session.add(gary)
     db.session.commit()
 
 
