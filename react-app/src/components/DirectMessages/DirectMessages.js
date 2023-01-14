@@ -57,6 +57,10 @@ console.log(directMessageServs)
             )
           }
       })}
+
+      <NavLink to={`/direct-messages/invite`} exact={true} activeClassName='active'>
+        <button>Message a user</button>
+      </NavLink>
   </div>
     </nav>
   )
