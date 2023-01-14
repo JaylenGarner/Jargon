@@ -51,7 +51,6 @@ def edit_channel(id):
     if server.owner_id != current_user.id:
         return auth_error
 
-    channel.server_id = request.json[ "serverId" ]
     channel.name = request.json[ "name" ]
 
     db.session.commit()

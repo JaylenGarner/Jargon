@@ -1,0 +1,121 @@
+.signup-container {
+    background-image: url('https://i.ibb.co/1RV16c5/dsicord-logo.png');
+    background-repeat: no-repeat;
+    background-position: left 60px bottom 90px;
+    background-size: 30%;
+    padding-left: 300px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #2e3035;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    width: 20em;
+}
+
+.signup-hyperlink {
+    color: white
+}
+
+.username-header {
+    display: flex;
+    font-size: 10px;
+    color: rgb(151, 151, 151);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.username-input {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signup-email-header {
+    display: flex;
+    font-size: 10px;
+    color: rgb(151, 151, 151);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.signup-email-input {
+    width: 80%;
+    display: flex;
+}
+
+.signup-password-header {
+    display: flex;
+    font-size: 10px;
+    color: rgb(151, 151, 151);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.signup-password-input {
+    width: 80%;
+    display: flex;
+}
+
+.repeat-password-header {
+    display: flex;
+    font-size: 10px;
+    color: rgb(151, 151, 151);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.repeat-password-input {
+    width: 80%;
+    display: flex;
+}
+
+.signup-button {
+    background-color: #7289DA ;
+    color: #7289DA;
+    display: flex;
+    padding: 10px;
+    width: 85%;
+    padding-left: 90px;
+    padding-right: 90px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Montserrat;
+    margin: 15px;
+}
+
+.signup-button-container {
+    margin-right: 24px;
+    margin-left: -15px;
+}
+
+.submit-button:hover {
+    background-color: #677BC4;
+}
+
+.account-owner {
+    font-size: 12px;
+    color: rgb(151, 151, 151);
+    display: flex;
+    align-items: flex-start;
+    font-family: Montserrat;
+}
+
+.signup-image-header {
+    display: flex;
+    font-size: 10px;
+    color: rgb(151, 151, 151);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.signup-image-input {
+    width: 80%;
+    display: flex;
+}

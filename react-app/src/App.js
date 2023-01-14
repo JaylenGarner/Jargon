@@ -9,6 +9,15 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ServerPage from './components/Server/ServerPage';
 import { authenticate } from './store/session';
+import CreateServerForm from './components/Server/CreateServerForm';
+import EditServerForm from './components/Server/EditServerForm';
+import ChannelPage from './components/Channel/ChannelPage';
+import CreateChannelForm from './components/Channel/CreateChannel';
+import EditChannelForm from './components/Channel/EditChannel';
+import InviteUser from './components/Server/InviteUser';
+import DirectMessages from './components/DirectMessages/DirectMessages';
+import DirectMessageChat from './components/DirectMessages/DirectMessageChat';
+import MessageUserForm from './components/DirectMessages/MessageUserForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,8 +54,43 @@ function App() {
         <ProtectedRoute path='/servers/:serverId' exact={true} >
           <ServerPage />
         </ProtectedRoute>
+        <ProtectedRoute path='/create-server' exact={true} >
+          <CreateServerForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/edit-server' exact={true} >
+          <ServerPage />
+          <EditServerForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/channels/:channelId' exact={true} >
+          <ServerPage />
+          <ChannelPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/create-channel' exact={true} >
+          <ServerPage />
+          <CreateChannelForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/channels/:channelId/edit-channel' exact={true} >
+          <ServerPage />
+          <EditChannelForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/servers/:serverId/invite' exact={true} >
+          <ServerPage />
+          <InviteUser />
+        </ProtectedRoute>
+        <ProtectedRoute path='/direct-messages/invite' exact={true} >
+          <DirectMessages />
+          <MessageUserForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/direct-messages/:serverId' exact={true} >
+          <DirectMessages />
+          <DirectMessageChat />
+        </ProtectedRoute>
+        <ProtectedRoute path='/direct-messages/:serverId/:channelId' exact={true} >
+          <DirectMessages />
+          <ChannelPage/>
+        </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <DirectMessages />
         </Route>
       </Switch>
       </div>

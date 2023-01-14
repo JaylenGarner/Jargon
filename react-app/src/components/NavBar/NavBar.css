@@ -1,21 +1,36 @@
 .nav-bar {
     /* Fix height to fit to screen (scrollable */
     height: 1000px;
-    width: 70px;
+    width: 75px;
     background-color: #202225;
     color: white;
+    padding-left: 12px;
+}
+
+.hide-nav-bar {
+   background-color: #37393E;
+   height: 1000px;
+   width: 75px;
+   color: white;
+   padding-left: 12px;
 }
 
 .discord-logo-container {
     width: 50px;
     /* padding-bottom: 8px; */
-    border-bottom: solid 2px #373A3F;
+    border-bottom: solid 0.2px #373A3F;
 }
 
 .discord-logo {
     height: 50px;
     width: 50px;
     border-radius: 15px;
+}
+
+.create-server-logo {
+    height: 50px;
+    width: 50px;
+    border-radius:50px;
 }
 
 .nav-server-logo-container {

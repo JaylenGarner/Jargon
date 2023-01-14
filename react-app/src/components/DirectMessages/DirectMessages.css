@@ -1,0 +1,28 @@
+.dm-page-nav {
+    /* Fix height to fit to screen (scrollable */
+    height: 1000px;
+    width: 200px;
+    background-color: #2F3136;
+    color: white;
+    text-align: center;
+}
+
+.dms-header-container {
+    padding-top: 10px;
+    color: #96989D;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dms-header {
+    padding-top: 6px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.dm-user-image {
+    height: 50px;
+    width: 50px;
+    border-radius:50px;
+}

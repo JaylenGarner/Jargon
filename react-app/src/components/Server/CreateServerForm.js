@@ -1,137 +1,85 @@
-// import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { useHistory } from "react-router-dom";
-// import { createServer } from '../../store/server'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { login } from '../../store/session';
+import { createServerThunk } from '../../store/server';
+import { useHistory } from 'react-router-dom';
+import ServerPage from './ServerPage';
+import './CreateServer.css'
 
-// const ServerAddForm = () => {
-//   const history = useHistory()
-//   const dispatch = useDispatch();
-//   const [errors, setErrors] = useState([]);
-//   const [name, setName] = useState("");
-//   const [image, setImage] = useState(null);
+// TO DO
+// REDIRECT USER TO NEWLY CREATED SERVER , NEED TO GET SERVER ID POST CREATION
 
+const CreateServerForm = () => {
+  const [errors, setErrors] = useState([]);
+  const [name, setName] = useState('');
+  const [image, SetImage] = useState('');
+  const user = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+  const history = useHistory()
 
-//   const onServerCreation = async (e) => {
-//     e.preventDefault();
-//     const formData = new FormData();
-//         formData.append("image", image);
-
-//     const data = await dispatch(createServer(name, image)).catch(e=>setErrors(e));
-//     if (data) {
-//       history.push('/');
-//     }
-//   }
-
-//   const updateName = (e) => {
-//     setName(e.target.value);
-//   }
-
-//   const updateImage = (e) => {
-//     setImage(e.target.value);
-//   }
-
-//   return (
-//     <form onSubmit={onServerCreation} className='server_form'>
-//       <div>
-//         {errors.map((error) => (
-//           <div>{error}</div>
-//         ))}
-//       </div>
-//       <div className='server_div'>
-//         <label htmlFor="name">Name</label>
-//         <input
-//           name="name"
-//           type="text"
-//           placeholder="Name"
-//           value={name}
-//           onChange={updateName}
-//           className='server_input'
-//         />
-//       </div>
-//       <div className='server_div'>
-//         <label htmlFor="image">Image</label>
-//         <input
-//           name="image"
-//           type="file"
-//           accept="image/*"
-//           onChange={updateImage}
-//           className='server_input_image'
-//         />
-//       </div>
-
-//       <div className="create">
-//         <button className="server-button" type="submit">Create Server</button>
-//       </div>
-//     </form>
-//   )
-// }
-
-// export default ServerAddForm;
+  const handleSubmit = async (e) => {
+    // e.preventDefault();
+    const data = await dispatch(createServerThunk(name, image));
+    // return dispatch(createServerThunk(name, image))
+    // .then(history.push(`/servers/`))
+    // .then(refresh())
 
 
+    if (data) {
+      setErrors(data);
+      return <Redirect to='/' />;
+    }
+  };
 
-// import React, { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
+  const updateName = (e) => {
+    setName(e.target.value);
+  };
 
-// const LoginForm = () => {
-// //   const [errors, setErrors] = useState([]);
-// //   const [email, setEmail] = useState('');
-// //   const [password, setPassword] = useState('');
-//   const user = useSelector(state => state.session.user);
-//   const dispatch = useDispatch();
+  const updateImage = (e) => {
+    SetImage(e.target.value);
+  };
 
-// //   const onLogin = async (e) => {
-// //     e.preventDefault();
-// //     const data = await dispatch(login(email, password));
-// //     if (data) {
-// //       setErrors(data);
-// //     }
-// //   };
+  return (
+    <form onSubmit={handleSubmit} className='create-form-container'>
+      <div>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
+      <div>
+      <h1 className='create-form-header'>Create a server</h1>
+      <p className='create-form-intro'>Your server is where you and your friends hang out.
+          Make yours and start talking.
+      </p>
+        <p className='create-form-server'>SERVER NAME</p>
+        <input
+          className='create-form-name-input'
+          name='name'
+          type='text'
+          placeholder='Enter your server name'
+          value={name}
+          onChange={updateName}
+          required
+        />
+      </div>
+      <div>
+        <p className='create-form-image'>SERVER IMAGE</p>
+        <input
+          className='create-form-image-input'
+          name='image'
+          type='text'
+          placeholder='Enter a valid image url'
+          value={image}
+          onChange={updateImage}
+          required
+        />
+        <div className='create-form-button-container'>
+        <button type='submit' className='create-form-button'>Create Server</button>
+        </div>
+      </div>
+    </form>
+  );
+};
 
-// //   const updateEmail = (e) => {
-// //     setEmail(e.target.value);
-// //   };
-
-// //   const updatePassword = (e) => {
-// //     setPassword(e.target.value);
-// //   };
-
-// //   if (user) {
-// //     return <Redirect to='/' />;
-// //   }
-
-//   return (
-//     // <form onSubmit={onLogin}>
-//     <form>
-//       {/* <div>
-//         {errors.map((error, ind) => (
-//           <div key={ind}>{error}</div>
-//         ))}
-//       </div> */}
-//       <div>
-//         <label htmlFor='email'>Email</label>
-//         <input
-//           name='email'
-//           type='text'
-//           placeholder='Enter Server Name'
-//           value={email}
-//           onChange={updateEmail}
-//         />
-//       </div>
-//       <div>
-//         <label htmlFor='password'>Password</label>
-//         <input
-//           name='password'
-//           type='password'
-//           placeholder='Password'
-//           value={password}
-//           onChange={updatePassword}
-//         />
-//         <button type='submit'>Login</button>
-//       </div>
-//     </form>
-//   );
-// };
-
-// export default LoginForm;
+export default CreateServerForm;
