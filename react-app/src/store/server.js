@@ -42,7 +42,7 @@ export const createServerThunk = (name, image) => async (dispatch) => {
         },
         body: JSON.stringify({
           name,
-          image,
+          image
         }),
       });
 
