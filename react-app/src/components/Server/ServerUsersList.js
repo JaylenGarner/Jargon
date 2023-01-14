@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import './ServersUsersList.css';
+
 
 function ServerUsersList() {
   const [users, setUsers] = useState([]);
@@ -44,7 +46,7 @@ function ServerUsersList() {
     if (user.id === resServer.owner_id) {
         return (
             <div>
-                <span>👑 </span>
+                <span>👑 &nbsp;</span>
 
         {/* <img src={user.image}></img> */}
                 <span>{user.username}</span>
@@ -63,10 +65,12 @@ function ServerUsersList() {
 });
 
   return (
-    <>
+    // <div className='server-page-nav-container'>
+    <nav className='server-users-nav'>
       <h1>Members</h1>
       <div>{userComponents}</div>
-    </>
+      </nav>
+    //   </div>
   );
   } else {
     return null
