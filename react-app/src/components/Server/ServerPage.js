@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import ChannelPage from '../Channel/ChannelPage';
 import InviteUser from './InviteUser';
+import UsersList from '../UsersList'
 import './Server.css';
 
 // TO DO
