@@ -51,7 +51,6 @@ const DirectMessages = () => {
 
           if (server) {
             getOtherUser(server)
-            console.log(otherUser)
             if (server.channels) {
               firstChannel = server.channels[0]
             }
