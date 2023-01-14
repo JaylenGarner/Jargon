@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { addUserThunk } from '../../store/server';
+import './InviteUser.css'
 
 
 const InviteUser = () => {
@@ -33,8 +34,12 @@ const InviteUser = () => {
           ))}
         </div>
         <div>
-          <p >Invite user</p>
+          <p className='invite-user-header' >Invite user</p>
+          <p className='invite-user-intro'>
+            Invite a user to the server!
+          </p>
           <input
+            className='invite-user-input'
             name='invite'
             type='text'
             placeholder='Enter a username'
@@ -43,8 +48,8 @@ const InviteUser = () => {
             required
           />
         </div>
-        <div >
-          <button type='submit'>Invite</button>
+        <div className='invite-user-button-container'>
+          <button type='submit' className='invite-user-button'>Invite</button>
         </div>
       </form>
     );

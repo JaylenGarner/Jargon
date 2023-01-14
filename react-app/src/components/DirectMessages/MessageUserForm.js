@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { createDirectMessageThunk } from '../../store/server';
 import { loadServersThunk } from '../../store/server';
+import './MessageUserForm.css'
 
 
 const MessageUserForm = () => {
@@ -35,16 +36,21 @@ const MessageUserForm = () => {
       setUsername(e.target.value);
     };
 
+
     return (
-      <form onSubmit={handleSubmit} className="invite-user-form-container">
+      <form onSubmit={handleSubmit} className="dm-user-form-container">
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div>
-          <p >Direct message a user</p>
+          <p className='dm-user-header'>Direct message a user</p>
+          <p className='dm-user-intro'>
+            Start a conversation!
+          </p>
           <input
+            className='dm-user-input'
             name='invite'
             type='text'
             placeholder='Enter a username'
@@ -53,8 +59,8 @@ const MessageUserForm = () => {
             required
           />
         </div>
-        <div >
-          <button type='submit'>Start conversation</button>
+        <div className='dm-user-button-container'>
+          <button type='submit' className='dm-user-button'>Start conversation</button>
         </div>
       </form>
     );
