@@ -12,6 +12,7 @@ const DirectMessages = () => {
   const history = useHistory()
   const user = useSelector((state) => state.session.user)
   const directMessageServs = []
+  let otherUser;
   const servers = Object.values(useSelector((state) => state.servers))
   let firstChannel;
 
@@ -31,17 +32,26 @@ const DirectMessages = () => {
   }
 }
 
-console.log(directMessageServs)
+  const getOtherUser = (server) => {
+    server.users.forEach((el) => {
+      if (el.id !== user.id) otherUser = el;
+    })
+  }
+
+
   return (
+
     <nav className='dm-page-nav'>
       <div className='dms-header-container'>
-       <span className='dms-header'>Direct Messages</span>
+        {user && <span className='dms-header'>Direct Messages</span>}
       </div>
-
+      {user &&
       <div>
       {directMessageServs.map((server) => {
 
           if (server) {
+            getOtherUser(server)
+            console.log(otherUser)
             if (server.channels) {
               firstChannel = server.channels[0]
             }
@@ -50,9 +60,8 @@ console.log(directMessageServs)
               <div key={server.id} className='nav-server-logo-container'>
                 {firstChannel &&
                 <NavLink to={`/direct-messages/${server.id}`} exact={true} activeClassName='active'>
-                  <img src={server.image} className='nav-server-logo'></img>
+                <h1>{otherUser.username}</h1>
                 </NavLink>}
-                <h1>{server.name}</h1>
                </div>
             )
           }
@@ -62,6 +71,7 @@ console.log(directMessageServs)
         <button>Message a user</button>
       </NavLink>
   </div>
+      }
     </nav>
   )
 

@@ -2,22 +2,32 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { addUserThunk } from '../../store/server';
+import { createDirectMessageThunk } from '../../store/server';
+import { loadServersThunk } from '../../store/server';
 
 
 const MessageUserForm = () => {
     const [errors, setErrors] = useState([]);
     const [username, setUsername] = useState('');
     const user = useSelector(state => state.session.user);
+    const serversArr = []
+    const servers = Object.values(useSelector((state) => state.servers))
     const dispatch = useDispatch();
-    const {serverId} = useParams()
     const history = useHistory()
-
     const refresh = () => window.location.reload(true)
 
+    if (servers) {
+        for (let i = 0; i < servers.length; i++) {
+            let innerServers = servers[i]
+            innerServers.forEach((server) => {
+                serversArr.push(server)
+            });
+        }
+      }
+
     const handleSubmit = async (e) => {
-      return dispatch(addUserThunk(serverId, username))
-      .then(history.push(`/direct-messages/${serverId}`))
+      return dispatch(createDirectMessageThunk(username))
+      .then(history.push(`/`))
       .then(refresh())
     }
 

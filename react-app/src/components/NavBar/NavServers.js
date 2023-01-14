@@ -14,7 +14,6 @@ function NavServers() {
     if (servers) {
     for (let i = 0; i < servers.length; i++) {
         let innerServers = servers[i]
-
         innerServers.forEach((server) => {
             serversArr.push(server)
         });

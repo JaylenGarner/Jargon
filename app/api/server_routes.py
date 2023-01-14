@@ -84,15 +84,11 @@ def create_direct_message():
     db.session.add(channel)
     db.session.commit()
 
-    joinedServs = res_user.to_dict()['joinedServers']
+    res_user.joined_servers.append(server)
+    user.joined_servers.append(server)
+    db.session.commit()
 
-    if id not in joinedServs:
-        res_user.joined_servers.append(server)
-        user.joined_servers.append(server)
-        db.session.commit()
-        return server.to_dict()
-    else:
-        return {"msg": "User is already a member of the server"}
+    return server.to_dict()
 
 
 
