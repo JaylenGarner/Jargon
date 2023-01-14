@@ -56,6 +56,15 @@
     display: flex;
     border-bottom: solid 0.2px #43464C;
     border-top: solid 0.2px #43464C;
+    background-color: #5a5a5a;
+    font-size: 14px;
+    height: 60px;
+    padding-bottom: 25px;
+}
+
+.channel-message:hover {
+    background-color: #414449;
+    border-radius: 4px;
 }
 
 .channel-message-user-image-container {
@@ -68,5 +77,41 @@
 }
 
 .message-content-container {
-    padding-bottom: 30px;
+    font-family: Montserrat;
+}
+
+.add-media-button {
+    color: #96989D;
+    border: none;
+    background: none;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 5px;
+    margin-left: 10px;
+}
+
+.create-message-input {
+    background-color: #40444b;
+    border: 1px solid #40444b ;
+    border-radius: 5px;
+    height:20px;
+    margin: 7px;
+    font-family: Montserrat;
+    color: whitesmoke;
+}
+
+.create-message-button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    height: 24px;
+    margin: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-message-button:hover {
+    background-color: #414449;
+    border-radius: 4px;
 }

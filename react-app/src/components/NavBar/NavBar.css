@@ -7,6 +7,12 @@
     padding-left: 12px;
 }
 
+.nav-server-logo-container .active {
+    background-color: #f0f0f0;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
 .hide-nav-bar {
    background-color: #37393E;
    height: 1000px;
@@ -41,4 +47,17 @@
     height: 50px;
     width: 50px;
     border-radius:50px;
+}
+
+.logout-button {
+    color: #4EACEE;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding: 6px;
+}
+
+.logout-button:hover {
+    background-color: #414449;
+    border-radius: 4px;
 }

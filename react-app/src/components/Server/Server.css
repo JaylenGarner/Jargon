@@ -45,7 +45,6 @@
     border: none;
     background: none;
     font-size: 16px;
-    font-weight: bold;
     padding-bottom: 10px;
     padding-top: 10px;
 }
@@ -56,4 +55,63 @@
     background: none;
     font-size: 22px;
     font-weight: bold;
+}
+
+.add-user-to-server-button {
+    color: #4EACEE;
+    margin-left: 20px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.add-user-to-server-button:hover {
+    background-color: #414449;
+    border-radius: 4px;
+}
+
+
+.server-buttons-container {
+    text-align: left;
+    margin: -10px;
+}
+
+.edit-to-server-header {
+    color: #96989D;
+    border: none;
+    background: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: Montserrat;
+}
+
+.edit-user-to-server-button {
+    color: #4EACEE;
+    margin-left: 20px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.edit-user-to-server-button:hover {
+    background-color: #414449;
+    border-radius: 4px;
+}
+
+.delete-server-button {
+    color: #4EACEE;
+    margin-left: 20px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.delete-server-button:hover {
+    background-color: #414449;
+    border-radius: 4px;
 }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createMessageThunk } from '../../../store/message';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import './CreateMessage.css'
 
 // TO DO
 // REDIRECT TO NEWLY CREATED CHANNEL
@@ -26,25 +27,27 @@ const CreateMessage = ({channelName}) => {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='create-message-container'>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
+        <div className='add-media-button'>+</div>
         <div>
           <label htmlFor='body'></label>
           <input
+            className='create-message-input'
             name='body'
             type='text'
-            placeholder={`Message #${channelName}`}
+            placeholder={`MESSAGE #${channelName}`}
             value={body}
             onChange={updateBody}
             required
           />
         </div>
         <div>
-          <button type='submit' onSubmit={handleSubmit}>Send</button>
+          <button type='submit' onSubmit={handleSubmit} className='create-message-button'>Send</button>
         </div>
       </form>
     );

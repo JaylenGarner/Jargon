@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import ChannelPage from '../Channel/ChannelPage';
 import InviteUser from './InviteUser';
-import UsersList from '../UsersList'
 import './Server.css';
 
 // TO DO
@@ -78,18 +77,16 @@ const ServerPage = () => {
                 </div>
                 <br></br>
                     {(resServer.owner_id == user.id) &&
-                    <div>
-                        <NavLink to={`/servers/${serverId}/invite`} exact={true} activeClassName='active'>
-                        <button>Add User</button>
+                    <div className='server-buttons-container'>
+                        <NavLink to={`/servers/${serverId}/invite`} exact={true} activeClassName='active' className= 'server-add-user-button'>
+                        <button className='add-user-to-server-button'>Add User</button>
                         </NavLink>
                 <br></br>
-                <br></br>
                 <NavLink to={`/servers/${serverId}/edit-server`} exact={true} activeClassName='active'>
-                    <button>Edit Server</button>
+                    <button className='edit-user-to-server-button'>Edit Server</button>
                 </NavLink>
                     <br></br>
-                    <br></br>
-                    <button onClick={handleDelete}>Delete Server</button>
+                    <button onClick={handleDelete} className='delete-server-button'>Delete Server</button>
                 </div>
                 }
             </nav>
