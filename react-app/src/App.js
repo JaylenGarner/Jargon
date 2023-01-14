@@ -18,6 +18,7 @@ import InviteUser from './components/Server/InviteUser';
 import DirectMessages from './components/DirectMessages/DirectMessages';
 import DirectMessageChat from './components/DirectMessages/DirectMessageChat';
 import MessageUserForm from './components/DirectMessages/MessageUserForm';
+import ServerUsersList from './components/Server/ServerUsersList';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,13 +47,14 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <ServerUsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId' exact={true} >
           <ServerPage />
+          <ServerUsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/create-server' exact={true} >
           <CreateServerForm />
@@ -60,22 +62,27 @@ function App() {
         <ProtectedRoute path='/servers/:serverId/edit-server' exact={true} >
           <ServerPage />
           <EditServerForm />
+          <ServerUsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId/channels/:channelId' exact={true} >
           <ServerPage />
           <ChannelPage />
+          <ServerUsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId/create-channel' exact={true} >
           <ServerPage />
           <CreateChannelForm />
+          <ServerUsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId/channels/:channelId/edit-channel' exact={true} >
           <ServerPage />
           <EditChannelForm />
+          <ServerUsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId/invite' exact={true} >
           <ServerPage />
           <InviteUser />
+          <ServerUsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/direct-messages/invite' exact={true} >
           <DirectMessages />

@@ -16,11 +16,11 @@ gloria_dm = Server(
         owner_id= 5, name ='gloria', image ='https://images.unsplash.com/photo-1620216464337-69f08c564cf1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZhdCUyMGxhZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60', public = False)
 
 def seed_servers():
-    db.session.add(certified_coder_bois)
-    db.session.add(stamp_club)
-    db.session.add(app_academy)
-    db.session.add(marnie_dm)
-    db.session.add(gloria_dm)
+#     db.session.add(certified_coder_bois)
+#     db.session.add(stamp_club)
+#     db.session.add(app_academy)
+#     db.session.add(marnie_dm)
+#     db.session.add(gloria_dm)
     db.session.commit()
 
 
