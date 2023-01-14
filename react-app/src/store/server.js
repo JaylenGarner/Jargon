@@ -2,6 +2,7 @@ const defaultState = {}
 
 const LOAD_SERVERS = 'servers/LOAD_SERVERS';
 const CREATE_SERVER = 'servers/CREATE_SERVER';
+const CREATE_DIRECT_MESSAGE = 'servers/CREATE_DIRECT_MESSAGE'
 const EDIT_SERVER = 'servers/EDIT_SERVER';
 const DELETE_SERVER = 'servers/DELETE_SERVER';
 const ADD_USER = 'servers/ADD_USER'
@@ -42,13 +43,38 @@ export const createServerThunk = (name, image) => async (dispatch) => {
         },
         body: JSON.stringify({
           name,
-          image,
+          image
         }),
       });
 
       if (res.ok) {
         const newData = await res.json()
         dispatch(createServer(newData))
+    }
+}
+
+const createDirectMessage = payload => {
+    return {
+        type: CREATE_SERVER,
+        payload
+    }
+}
+
+export const createDirectMessageThunk = (username) => async (dispatch) => {
+
+    const res = await fetch('/api/servers/create-dm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username
+        }),
+      });
+
+      if (res.ok) {
+        const newData = await res.json()
+        dispatch(createDirectMessage(newData))
     }
 }
 
@@ -131,6 +157,9 @@ export default function reducer(state = defaultState, action) {
         case LOAD_SERVERS:
             return {...newState, ...action.payload}
         case CREATE_SERVER:
+            newState[action.payload] = action.payload
+            return newState;
+        case CREATE_DIRECT_MESSAGE:
             newState[action.payload] = action.payload
             return newState;
         case EDIT_SERVER:

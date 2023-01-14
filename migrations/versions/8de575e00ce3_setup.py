@@ -1,8 +1,8 @@
-"""Post merge DB reset
+"""setup
 
-Revision ID: da744f0e0bf0
+Revision ID: 8de575e00ce3
 Revises: 
-Create Date: 2023-01-12 16:21:44.347668
+Create Date: 2023-01-13 18:32:57.579342
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'da744f0e0bf0'
+revision = '8de575e00ce3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('image', sa.String(length=500), nullable=True),
+    sa.Column('image', sa.String(length=1000), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),

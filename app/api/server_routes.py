@@ -48,6 +48,51 @@ def create_server():
     return server.to_dict()
 
 
+#Create direct message server
+@server_routes.route('/create-dm', methods=[ 'POST' ] )
+@login_required
+def create_direct_message():
+    user = User.query.get(current_user.id)
+    username = request.json[ "username" ]
+
+    users = User.query.all()
+    res_user = None
+
+    for user in users:
+        if user.username == username:
+            res_user = user
+
+    if res_user == None:
+        return {"error": "User not found"}
+
+
+    server = Server (
+        name = f'{user.username}-{res_user.username}',
+        owner_id = int(current_user.id),
+        image = f'{res_user.image}',
+        public = False
+    )
+
+    db.session.add(server)
+    db.session.commit()
+
+    channel = Channel (
+        server_id = server.id,
+        name = 'chat'
+    )
+
+    db.session.add(channel)
+    db.session.commit()
+
+    res_user.joined_servers.append(server)
+    user.joined_servers.append(server)
+    db.session.commit()
+
+    return server.to_dict()
+
+
+
+
 # Edit a server
 @server_routes.route('/<int:id>/edit', methods = ['PUT'])
 @login_required

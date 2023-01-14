@@ -15,6 +15,9 @@ import ChannelPage from './components/Channel/ChannelPage';
 import CreateChannelForm from './components/Channel/CreateChannel';
 import EditChannelForm from './components/Channel/EditChannel';
 import InviteUser from './components/Server/InviteUser';
+import DirectMessages from './components/DirectMessages/DirectMessages';
+import DirectMessageChat from './components/DirectMessages/DirectMessageChat';
+import MessageUserForm from './components/DirectMessages/MessageUserForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -74,8 +77,16 @@ function App() {
           <ServerPage />
           <InviteUser />
         </ProtectedRoute>
+        <ProtectedRoute path='/direct-messages/invite' exact={true} >
+          <DirectMessages />
+          <MessageUserForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/direct-messages/:serverId' exact={true} >
+          <DirectMessages />
+          <DirectMessageChat />
+        </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <DirectMessages />
         </Route>
       </Switch>
       </div>
