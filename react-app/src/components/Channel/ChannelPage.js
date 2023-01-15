@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { loadChannelThunk } from '../../store/channel';
 import { useEffect } from 'react';
 import { deleteChannelThunk } from '../../store/channel';
+import { loadServersThunk } from '../../store/server';
 import CreateMessage from './CreateMessage/CreateMessage';
 import './Channel.css';
 
@@ -14,7 +15,7 @@ const ChannelPage = () => {
     const dispatch = useDispatch();
     const { serverId, channelId } = useParams()
     const user = useSelector((state) => state.session.user)
-    const channel = useSelector((state) => state.channels)
+    const channel = useSelector((state) => state.channel)
     const history = useHistory()
     const servers = Object.values(useSelector((state) => state.servers))
     let resServer;
@@ -22,6 +23,7 @@ const ChannelPage = () => {
     const handleDelete = () => {
          return dispatch(deleteChannelThunk(channelId))
         .then(history.push(`/servers/${serverId}`))
+        .then(dispatch(loadServersThunk(user.id)))
     }
 
         servers.forEach((server) => {
@@ -32,7 +34,7 @@ const ChannelPage = () => {
         dispatch(loadChannelThunk(channelId))
     }, [dispatch, channelId]);
 
-
+    // NOT GETTING CHANNEL HERE
     if (!channel) {
         return null
     } else if (!resServer) {

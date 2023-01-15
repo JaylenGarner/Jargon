@@ -30,9 +30,9 @@ const ServerPage = () => {
         history.push("/");
     }
 
-    // useEffect(() => {
-    //    dispatch(deleteServerThunk(serverId))
-    // }, [dispatch])
+    useEffect(() => {
+
+    }, [dispatch, resServer])
 
         servers.forEach((server) => {
             if (server.id == serverId) resServer = server
