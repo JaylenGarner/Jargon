@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { deleteServerThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
 import ChannelPage from '../Channel/ChannelPage';
 import InviteUser from './InviteUser';
 import './Server.css';
@@ -16,31 +17,26 @@ const ServerPage = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams()
     const user = useSelector((state) => state.session.user)
-    const serversArr = []
     const servers = Object.values(useSelector((state) => state.servers))
+    console.log(servers)
     const history = useHistory()
     let resServer;
     let firstChannel;
 
     if (resServer) firstChannel = resServer.channels[0]
 
-    const refresh = () => window.location.reload(true)
-
-    const handleDelete = () => {
-         dispatch(deleteServerThunk(serverId)).then(refresh())
-         return dispatch(deleteServerThunk(serverId))
-        .then(history.push(`/`))
-        .then(refresh())
+    const handleDelete = (serverId) => {
+        dispatch(deleteServerThunk(serverId))
+        history.push("/");
     }
 
-    for (let i = 0; i < servers.length; i++) {
-        let innerServers = servers[i]
+    // useEffect(() => {
+    //    dispatch(deleteServerThunk(serverId))
+    // }, [dispatch])
 
-        innerServers.forEach((server) => {
-            serversArr.push(server)
+        servers.forEach((server) => {
             if (server.id == serverId) resServer = server
         });
-    }
 
     if (!resServer) {
         return null
@@ -86,7 +82,7 @@ const ServerPage = () => {
                     <button className='edit-user-to-server-button'>Edit Server</button>
                 </NavLink>
                     <br></br>
-                    <button onClick={handleDelete} className='delete-server-button'>Delete Server</button>
+                    <button onClick={() => handleDelete(serverId)} className='delete-server-button'>Delete Server</button>
                 </div>
                 }
             </nav>

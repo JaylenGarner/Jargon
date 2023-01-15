@@ -16,26 +16,17 @@ const ChannelPage = () => {
     const user = useSelector((state) => state.session.user)
     const channel = useSelector((state) => state.channels)
     const history = useHistory()
-    const refresh = () => window.location.reload(true)
-
-    const serversArr = []
     const servers = Object.values(useSelector((state) => state.servers))
     let resServer;
 
     const handleDelete = () => {
          return dispatch(deleteChannelThunk(channelId))
         .then(history.push(`/servers/${serverId}`))
-        .then(refresh())
     }
 
-    for (let i = 0; i < servers.length; i++) {
-        let innerServers = servers[i]
-
-        innerServers.forEach((server) => {
-            serversArr.push(server)
+        servers.forEach((server) => {
             if (server.id == serverId) resServer = server
         });
-    }
 
     useEffect(() => {
         dispatch(loadChannelThunk(channelId))
@@ -46,6 +37,38 @@ const ChannelPage = () => {
         return null
     } else if (!resServer) {
         return null
+    } else if (!resServer.public) {
+        return (
+            <div className='channel-page-container'>
+                <div>
+                    <div className='channel-name-header-container'>
+                        <span className='channel-name-header-hashtag'>#   </span>
+                        <span className='channel-name-header'>Direct Message</span>
+                    </div>
+                </div>
+                <div className='channel-messages-container'>
+
+                { channel.messages && channel.messages.map((message) => {
+                    return (
+                        <div className='channel-message'>
+                            <div className='channel-message-user-image-container'>
+                            <img src={message.user.image} className='channel-message-user-image'></img>
+                            </div>
+
+                            <br></br>
+                            <div className='message-content-container'>
+                            <h3>{message.user.username}</h3>
+                            <span className='message-body'>{message.body}</span>
+                            </div>
+                        </div>
+                    )
+                })}
+                </div>
+                <div>
+                    <CreateMessage channelName={channel.name}/>
+                </div>
+            </div>
+        )
     } else {
         return (
             <div className='channel-page-container'>

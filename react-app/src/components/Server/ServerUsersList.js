@@ -8,7 +8,6 @@ import './ServersUsersList.css';
 function ServerUsersList() {
   const [users, setUsers] = useState([]);
   const {serverId} = useParams()
-  const serversArr = []
   const servers = Object.values(useSelector((state) => state.servers))
   let resServer;
   let usersArr;
@@ -17,16 +16,13 @@ function ServerUsersList() {
   for (let i = 0; i < servers.length; i++) {
     let innerServers = servers[i]
 
-    innerServers.forEach((server) => {
-        serversArr.push(server)
+    servers.forEach((server) => {
         if (server.id == serverId) {
             usersArr = server.users
             resServer= server
         }
     });
 }
-
-
 
   useEffect(() => {
     async function fetchData() {

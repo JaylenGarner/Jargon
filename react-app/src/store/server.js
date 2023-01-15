@@ -157,19 +157,20 @@ export default function reducer(state = defaultState, action) {
         case LOAD_SERVERS:
             return {...newState, ...action.payload}
         case CREATE_SERVER:
-            newState[action.payload] = action.payload
+            newState[action.payload.id] = action.payload
             return newState;
         case CREATE_DIRECT_MESSAGE:
             newState[action.payload] = action.payload
             return newState;
         case EDIT_SERVER:
-            newState[action.payload] = action.payload
+            newState[action.payload.id] = action.payload
             return newState;
         case ADD_USER:
             newState[action.payload] = action.payload
             return newState;
         case DELETE_SERVER:
-            delete newState[action.serverId]
+        delete newState[action.serverId]
+        return newState
         default:
             return state;
     }

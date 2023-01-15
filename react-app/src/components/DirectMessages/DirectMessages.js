@@ -20,17 +20,17 @@ const DirectMessages = () => {
     history.push(`/login`)
   }
 
-  if (servers) {
-  for (let i = 0; i < servers.length; i++) {
-      let innerServers = servers[i]
+  // if (servers) {
+//   for (let i = 0; i < servers.length; i++) {
+//       let innerServers = servers[i]
 
-      innerServers.forEach((server) => {
-        if (server.public === false) {
-          directMessageServs.push(server)
-        }
-      });
-  }
-}
+//       innerServers.forEach((server) => {
+//         if (server.public === false) {
+//           directMessageServs.push(server)
+//         }
+//       });
+//   }
+// }
 
   const getOtherUser = (server) => {
     server.users.forEach((el) => {
@@ -51,7 +51,7 @@ const DirectMessages = () => {
 
           if (server) {
             getOtherUser(server)
-            console.log(otherUser)
+
             if (server.channels) {
               firstChannel = server.channels[0]
             }
