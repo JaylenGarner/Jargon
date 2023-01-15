@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { addUserThunk } from '../../store/server';
+import { addUserThunk, loadServersThunk } from '../../store/server';
 import './InviteUser.css'
 
 
@@ -14,12 +14,10 @@ const InviteUser = () => {
     const {serverId} = useParams()
     const history = useHistory()
 
-    const refresh = () => window.location.reload(true)
-
     const handleSubmit = async (e) => {
       return dispatch(addUserThunk(serverId, username))
       .then(history.push(`/servers/${serverId}`))
-      .then(refresh())
+      .then(dispatch(loadServersThunk(user.id)))
     }
 
     const updateUsername = (e) => {
