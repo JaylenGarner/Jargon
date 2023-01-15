@@ -15,8 +15,6 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
 
-  console.log(image)
-
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {

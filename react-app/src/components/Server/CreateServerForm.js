@@ -19,9 +19,10 @@ const CreateServerForm = () => {
   const history = useHistory()
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const data = await dispatch(createServerThunk(name, image));
-    // return dispatch(createServerThunk(name, image))
+
+    return data
     // .then(history.push(`/servers/`))
     // .then(refresh())
 
