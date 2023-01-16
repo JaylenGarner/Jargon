@@ -23,8 +23,6 @@ const CreateServerForm = () => {
     const data = await dispatch(createServerThunk(name, image));
 
     return data
-    // .then(history.push(`/servers/`))
-    // .then(refresh())
 
 
     if (data) {

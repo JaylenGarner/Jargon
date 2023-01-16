@@ -4,6 +4,8 @@ import { createMessageThunk } from '../../../store/message';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './CreateMessage.css'
+import { loadChannelThunk } from '../../../store/channel';
+import { loadServersThunk } from '../../../store/server';
 
 // TO DO
 // REDIRECT TO NEWLY CREATED CHANNEL
@@ -12,14 +14,17 @@ const CreateMessage = ({channelName}) => {
     const [body, setBody] = useState('');
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const {channelId} = useParams()
+    const {serverId, channelId} = useParams()
     const history = useHistory()
 
-    const refresh = () => window.location.reload(true)
-
     const handleSubmit = async (e) => {
+      if (user) {
+      e.preventDefault()
       return dispatch(createMessageThunk(channelId, body))
-      .then(refresh())
+      .then(dispatch(loadServersThunk(user.id)))
+      .then(dispatch(loadChannelThunk(channelId)))
+      .then(history.push(`/servers/${serverId}/channels/${channelId}`))
+      }
     };
 
     const updateBody = (e) => {

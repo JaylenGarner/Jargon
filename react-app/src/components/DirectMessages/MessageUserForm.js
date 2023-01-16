@@ -29,7 +29,6 @@ const MessageUserForm = () => {
     const handleSubmit = async (e) => {
       return dispatch(createDirectMessageThunk(username))
       .then(history.push(`/`))
-      .then(refresh())
     }
 
     const updateUsername = (e) => {
