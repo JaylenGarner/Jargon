@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { deleteChannelThunk } from '../../store/channel';
 import { loadServersThunk } from '../../store/server';
 import CreateMessage from './CreateMessage/CreateMessage';
+import { deleteServerThunk } from '../../store/server';
 import './Channel.css';
 
 
@@ -20,19 +21,28 @@ const ChannelPage = () => {
     const servers = Object.values(useSelector((state) => state.servers))
     let resServer;
 
-    const handleDelete = () => {
-         return dispatch(deleteChannelThunk(channelId))
-        .then(history.push(`/servers/${serverId}`))
-        .then(dispatch(loadServersThunk(user.id)))
-    }
 
         servers.forEach((server) => {
             if (server.id == serverId) resServer = server
         });
 
+        const handleDelete = () => {
+            return dispatch(deleteChannelThunk(channelId))
+            .then(dispatch(loadServersThunk(user.id)))
+           // .then(history.push(`/servers/${serverId}`))
+           .then(() => {
+                if (resServer.channels.length <= 1) {
+                    dispatch(deleteServerThunk(resServer.id))
+                    .then(history.push('/'))
+                } else {
+                    history.push(`/servers/${serverId}`)
+                }
+           })
+       }
+
     useEffect(() => {
         dispatch(loadChannelThunk(channelId))
-    }, [dispatch, channelId]);
+    }, [dispatch, channelId, resServer]);
 
     // NOT GETTING CHANNEL HERE
     if (!channel) {

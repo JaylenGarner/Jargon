@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -7,30 +7,47 @@ import './InviteUser.css'
 
 
 const InviteUser = () => {
-    const [errors, setErrors] = useState([]);
+    const [error, setError] = useState(null);
     const [username, setUsername] = useState('');
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const {serverId} = useParams()
     const history = useHistory()
+    const [users, setUsers] = useState([]);
 
     const handleSubmit = async (e) => {
-      return dispatch(addUserThunk(serverId, username))
-      .then(history.push(`/servers/${serverId}`))
-      .then(dispatch(loadServersThunk(user.id)))
+      e.preventDefault()
+
+      let usernames = []
+          users.forEach((el) => {
+              usernames.push(el.username)
+          })
+         if (!usernames.includes(username)) {
+          setError("User does not exist")
+         } else {
+          setError(null)
+           const data = dispatch(addUserThunk(serverId, username))
+           .then(history.push(`/servers/${serverId}`))
+           .then(dispatch(loadServersThunk(user.id)))
+         }
     }
 
     const updateUsername = (e) => {
       setUsername(e.target.value);
     };
 
+    useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, [dispatch, error]);
+
     return (
       <form onSubmit={handleSubmit} className="invite-user-form-container">
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
+        {(error !== null) && <h1 className='invite-to-server-error'>{error}</h1>}
         <div>
           <p className='invite-user-header' >Invite user</p>
           <p className='invite-user-intro'>

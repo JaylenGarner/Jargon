@@ -14,22 +14,33 @@ const MessageUserForm = () => {
     const servers = Object.values(useSelector((state) => state.servers))
     const dispatch = useDispatch();
     const history = useHistory()
+    const [users, setUsers] = useState([]);
 
-
-    useEffect(() => {
-      // dispatch(loadChannelThunk(channelId))
-    }, [dispatch, error])
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, [dispatch, error]);
 
 
       const handleSubmit = async (e) => {
       e.preventDefault()
 
-        const data = await dispatch(createDirectMessageThunk(username));
-        if (!data.ok) {
-          setError("Conversation already exists or User doesn't exist")
+      const data = await dispatch(createDirectMessageThunk(username));
+
+        let usernames = []
+          users.forEach((el) => {
+              usernames.push(el.username)
+          })
+         if (!usernames.includes(username)) {
+          setError("User does not exist")
+         } else if (!data.ok) {
+          setError("Conversation already exists")
         } else {
           setError(null)
-          console.log(data.JSON)
         }
       }
 
