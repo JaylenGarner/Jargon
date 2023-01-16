@@ -1,7 +1,7 @@
 """setup
 
 Revision ID: 73b2ebeda933
-Revises: 
+Revises:
 Create Date: 2023-01-14 11:43:14.297005
 
 """
@@ -31,7 +31,7 @@ def upgrade():
     op.create_table('servers',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=50), nullable=False),
+    sa.Column('name', sa.String(length=50), nullable=False, unique=True),
     sa.Column('image', sa.String(length=255), nullable=True),
     sa.Column('public', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),

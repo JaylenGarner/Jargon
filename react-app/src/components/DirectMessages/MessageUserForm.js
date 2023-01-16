@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -8,27 +8,30 @@ import './MessageUserForm.css'
 
 
 const MessageUserForm = () => {
-    const [errors, setErrors] = useState([]);
+    const [error, setError] = useState(null);
     const [username, setUsername] = useState('');
     const user = useSelector(state => state.session.user);
-    // const serversArr = []
     const servers = Object.values(useSelector((state) => state.servers))
     const dispatch = useDispatch();
     const history = useHistory()
 
-    // if (servers) {
-    //     for (let i = 0; i < servers.length; i++) {
-    //         let innerServers = servers[i]
-    //         innerServers.forEach((server) => {
-    //             serversArr.push(server)
-    //         });
-    //     }
-    //   }
 
-    const handleSubmit = async (e) => {
-      return dispatch(createDirectMessageThunk(username))
-      .then(history.push(`/`))
-    }
+    useEffect(() => {
+      // dispatch(loadChannelThunk(channelId))
+    }, [dispatch, error])
+
+
+      const handleSubmit = async (e) => {
+      e.preventDefault()
+
+        const data = await dispatch(createDirectMessageThunk(username));
+        if (!data.ok) {
+          setError("Conversation already exists or User doesn't exist")
+        } else {
+          setError(null)
+          console.log(data.JSON)
+        }
+      }
 
     const updateUsername = (e) => {
       setUsername(e.target.value);
@@ -38,9 +41,11 @@ const MessageUserForm = () => {
     return (
       <form onSubmit={handleSubmit} className="dm-user-form-container">
         <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+
+        {/* {errors && errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))} */}
+        {(error !== null) && <h1 className='dm-user-error'>{error}</h1>}
         </div>
         <div>
           <p className='dm-user-header'>Direct message a user</p>
@@ -62,6 +67,6 @@ const MessageUserForm = () => {
         </div>
       </form>
     );
-  };
+  }
 
   export default MessageUserForm;

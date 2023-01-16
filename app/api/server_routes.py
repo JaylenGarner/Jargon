@@ -6,6 +6,7 @@ server_routes = Blueprint('servers', __name__)
 
 auth_error = 'You are not the owner of this server'
 
+
 # Get Server By ID
 @server_routes.route('/<int:id>')
 @login_required
@@ -23,6 +24,7 @@ def create_server():
     image = request.json[ "image" ]
 
     user = User.query.get(current_user.id)
+
 
     server = Server (
         name = name,
@@ -53,6 +55,7 @@ def create_server():
 @login_required
 def create_direct_message():
     user = User.query.get(current_user.id)
+    servers = Server.query.all()
     username = request.json[ "username" ]
 
     users = User.query.all()
@@ -63,7 +66,7 @@ def create_direct_message():
             res_user = user
 
     if res_user == None:
-        return {"error": "User not found"}
+        return 500;
 
 
     server = Server (
@@ -72,6 +75,12 @@ def create_direct_message():
         image = f'{res_user.image}',
         public = False
     )
+
+    for serv in servers:
+        if serv.name == server.name:
+            err = {"error": "Conversation already exists"}
+            print(err, 'ERROR!!!!!!!!!!')
+            return {err, 500}
 
     db.session.add(server)
     db.session.commit()

@@ -76,6 +76,9 @@ export const createDirectMessageThunk = (username) => async (dispatch) => {
       if (res.ok) {
         const newData = await res.json()
         dispatch(createDirectMessage(newData))
+        return res
+    } else {
+        return res
     }
 }
 
@@ -170,7 +173,7 @@ export default function reducer(state = defaultState, action) {
             newState[action.payload.id] = action.payload
             return newState;
         case CREATE_DIRECT_MESSAGE:
-            newState[action.payload] = action.payload
+            newState[action.payload.id] = action.payload
             return newState;
         case EDIT_SERVER:
             newState[action.payload.id] = action.payload
