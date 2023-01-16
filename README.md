@@ -1,4 +1,4 @@
-# Dibored (Discord Clone) React Project
+# Disbored (Discord Clone) React Project
 
 Disbored(A discord clone) is a place where friends can come together and chat using live messaging so that users can chat real time! 
 
