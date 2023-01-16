@@ -10,10 +10,23 @@ const InviteUser = () => {
     const [error, setError] = useState(null);
     const [username, setUsername] = useState('');
     const user = useSelector(state => state.session.user);
+    const servers = Object.values(useSelector((state) => state.servers))
     const dispatch = useDispatch();
     const {serverId} = useParams()
     const history = useHistory()
     const [users, setUsers] = useState([]);
+    let resServer;
+    let serverMembers = []
+
+    servers.forEach((server) => {
+      if (server.id == serverId) resServer = server
+    });
+
+    if (resServer) {
+      resServer.users.forEach((el) => {
+        serverMembers.push(el.username)
+      })
+    }
 
     const handleSubmit = async (e) => {
       e.preventDefault()
@@ -24,11 +37,13 @@ const InviteUser = () => {
           })
          if (!usernames.includes(username)) {
           setError("User does not exist")
-         } else {
+         } else if (serverMembers.includes(username)) {
+          setError("User is already a member of this server")
+        } else {
           setError(null)
-           const data = dispatch(addUserThunk(serverId, username))
-           .then(history.push(`/servers/${serverId}`))
-           .then(dispatch(loadServersThunk(user.id)))
+          const data = dispatch(addUserThunk(serverId, username))
+          .then(history.push(`/servers/${serverId}`))
+          .then(dispatch(loadServersThunk(user.id)))
          }
     }
 
@@ -43,7 +58,7 @@ const InviteUser = () => {
       setUsers(responseData.users);
     }
     fetchData();
-  }, [dispatch, error]);
+  }, [dispatch, error, resServer]);
 
     return (
       <form onSubmit={handleSubmit} className="invite-user-form-container">
