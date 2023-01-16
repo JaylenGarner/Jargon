@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createMessageThunk } from '../../../store/message';
 import { useHistory } from 'react-router-dom';
@@ -14,22 +14,34 @@ const CreateMessage = ({channelName}) => {
     const [body, setBody] = useState('');
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const {serverId, channelId} = useParams()
+    const {channelId} = useParams()
     const history = useHistory()
+    // let created = false
+
+    const reloadChannel = () => {
+      setTimeout(() => {
+        dispatch(loadChannelThunk(channelId))
+      }, 100)
+    }
 
     const handleSubmit = async (e) => {
       if (user) {
       e.preventDefault()
-      return dispatch(createMessageThunk(channelId, body))
-      .then(dispatch(loadServersThunk(user.id)))
-      .then(dispatch(loadChannelThunk(channelId)))
-      .then(history.push(`/servers/${serverId}/channels/${channelId}`))
+      const data = await dispatch(createMessageThunk(channelId, body))
+      .then(reloadChannel())
+      // .then(created = true)
+      // .then(created = false)
+      return data
       }
     };
 
     const updateBody = (e) => {
       setBody(e.target.value);
     };
+
+    useEffect(() => {
+      // dispatch(loadChannelThunk(channelId))
+    }, [dispatch, channelId])
 
     return (
       <form onSubmit={handleSubmit} className='create-message-container'>

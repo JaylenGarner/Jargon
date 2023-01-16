@@ -11,20 +11,19 @@ const MessageUserForm = () => {
     const [errors, setErrors] = useState([]);
     const [username, setUsername] = useState('');
     const user = useSelector(state => state.session.user);
-    const serversArr = []
+    // const serversArr = []
     const servers = Object.values(useSelector((state) => state.servers))
     const dispatch = useDispatch();
     const history = useHistory()
-    const refresh = () => window.location.reload(true)
 
-    if (servers) {
-        for (let i = 0; i < servers.length; i++) {
-            let innerServers = servers[i]
-            innerServers.forEach((server) => {
-                serversArr.push(server)
-            });
-        }
-      }
+    // if (servers) {
+    //     for (let i = 0; i < servers.length; i++) {
+    //         let innerServers = servers[i]
+    //         innerServers.forEach((server) => {
+    //             serversArr.push(server)
+    //         });
+    //     }
+    //   }
 
     const handleSubmit = async (e) => {
       return dispatch(createDirectMessageThunk(username))
