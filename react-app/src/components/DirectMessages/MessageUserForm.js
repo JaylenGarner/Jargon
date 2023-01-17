@@ -38,10 +38,13 @@ const MessageUserForm = () => {
          if (!usernames.includes(username)) {
           setError("User does not exist")
           setUsername('')
+        } else if (username === user.username) {
+         setError('You cannot message yourself')
+         setUsername('')
          } else if (!data.ok) {
           setError("Conversation already exists")
           setUsername('')
-        } else {
+         } else {
           setError(null)
           setUsername('')
         }
