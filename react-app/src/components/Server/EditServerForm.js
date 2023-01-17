@@ -19,14 +19,11 @@ const EditServerForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const refresh = () => window.location.reload(true)
-
   const handleSubmit = async (e) => {
 
     // const data = await dispatch(editServerThunk(serverId, name, image));
     return dispatch(editServerThunk(serverId, name, image))
     .then(history.push(`/servers/${serverId}`))
-    .then(refresh())
   };
 
   const updateName = (e) => {

@@ -28,6 +28,7 @@ def user(id):
 @user_routes.route('/<int:user_id>/servers')
 @login_required
 def user_servers(user_id):
+    res = {}
 
     res_servers = []
     servers = Server.query.all()
@@ -39,4 +40,8 @@ def user_servers(user_id):
             if user.id == user_id:
                 res_servers.append(server)
 
-    return {'servers': [server.to_dict() for server in res_servers]}
+    for server in res_servers:
+        res[f'{server.id}'] = server.to_dict()
+
+    # return {'servers': [server.to_dict() for server in res_servers]}
+    return res

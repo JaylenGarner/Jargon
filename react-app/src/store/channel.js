@@ -3,6 +3,7 @@ const defaultState = {}
 const LOAD_CHANNEL = 'channels/LOAD_CHANNEL';
 const CREATE_CHANNEL = 'channels/CREATE_CHANNEL';
 const EDIT_CHANNEL = 'channels/EDIT_CHANNEL';
+const CLEAR_CHANNEL = 'channels/CLEAR_CHANNEL'
 const DELETE_CHANNEL = 'channels/DELETE_CHANNEL';
 
 // GET
@@ -94,20 +95,31 @@ export const deleteChannelThunk = (channelId) => async (dispatch) => {
     if (channel.ok) dispatch(deleteChannel(channelId))
 }
 
+const clearChannel = () => {
+    return {
+        type: CLEAR_CHANNEL
+    }
+}
+
+export const clearChannelThunk = () => async (dispatch) => {
+    dispatch(clearChannel())
+}
+
+
 export default function reducer(state = defaultState, action) {
     const newState = {...state}
 
     switch (action.type) {
         case LOAD_CHANNEL:
-            return {...newState, ...action.payload}
+            return {...action.payload}
         case CREATE_CHANNEL:
-            newState[action.payload] = action.payload
-            return newState;
+            return {...action.payload}
         case EDIT_CHANNEL:
-            newState[action.payload] = action.payload
-            return newState;
+            return {...action.payload}
         case DELETE_CHANNEL:
             delete newState[action.channelId]
+        case CLEAR_CHANNEL:
+            return defaultState
         default:
             return state;
     }

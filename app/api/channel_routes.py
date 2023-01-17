@@ -39,6 +39,9 @@ def create_channel():
 
     return channel.to_dict()
 
+    return res
+    # return channel.to_dict()
+
 
 # Edit a channel
 @channel_routes.route('/<int:id>/edit', methods = ['PUT'])

@@ -68,3 +68,7 @@
     font-family: Montserrat;
     margin: 15px;
 }
+
+.invite-to-server-error {
+    color: black;
+}

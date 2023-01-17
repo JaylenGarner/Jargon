@@ -49,8 +49,7 @@ export default function reducer(state = defaultState, action) {
 
     switch (action.type) {
         case CREATE_MESSAGE:
-            newState[action.payload] = action.payload
-            return newState;
+            return {...action.payload}
         default:
             return state;
     }

@@ -1,38 +1,68 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { addUserThunk } from '../../store/server';
+import { addUserThunk, loadServersThunk } from '../../store/server';
 import './InviteUser.css'
 
 
 const InviteUser = () => {
-    const [errors, setErrors] = useState([]);
+    const [error, setError] = useState(null);
     const [username, setUsername] = useState('');
     const user = useSelector(state => state.session.user);
+    const servers = Object.values(useSelector((state) => state.servers))
     const dispatch = useDispatch();
     const {serverId} = useParams()
     const history = useHistory()
+    const [users, setUsers] = useState([]);
+    let resServer;
+    let serverMembers = []
 
-    const refresh = () => window.location.reload(true)
+    servers.forEach((server) => {
+      if (server.id == serverId) resServer = server
+    });
+
+    if (resServer) {
+      resServer.users.forEach((el) => {
+        serverMembers.push(el.username)
+      })
+    }
 
     const handleSubmit = async (e) => {
-      return dispatch(addUserThunk(serverId, username))
-      .then(history.push(`/servers/${serverId}`))
-      .then(refresh())
+      e.preventDefault()
+
+      let usernames = []
+          users.forEach((el) => {
+              usernames.push(el.username)
+          })
+         if (!usernames.includes(username)) {
+          setError("User does not exist")
+         } else if (serverMembers.includes(username)) {
+          setError("User is already a member of this server")
+        } else {
+          setError(null)
+          const data = dispatch(addUserThunk(serverId, username))
+          .then(history.push(`/servers/${serverId}`))
+          .then(dispatch(loadServersThunk(user.id)))
+         }
     }
 
     const updateUsername = (e) => {
       setUsername(e.target.value);
     };
 
+    useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, [dispatch, error, resServer]);
+
     return (
       <form onSubmit={handleSubmit} className="invite-user-form-container">
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
+        {(error !== null) && <h1 className='invite-to-server-error'>{error}</h1>}
         <div>
           <p className='invite-user-header' >Invite user</p>
           <p className='invite-user-intro'>

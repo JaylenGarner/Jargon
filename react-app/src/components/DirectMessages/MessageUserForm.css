@@ -63,3 +63,7 @@
     font-family: Montserrat;
     margin: 15px;
 }
+
+.dm-user-error {
+    color: black;
+}
