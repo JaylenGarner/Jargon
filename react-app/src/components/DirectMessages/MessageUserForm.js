@@ -15,6 +15,7 @@ const MessageUserForm = () => {
     const dispatch = useDispatch();
     const history = useHistory()
     const [users, setUsers] = useState([]);
+    let convoExists = false
 
   useEffect(() => {
     async function fetchData() {
@@ -26,16 +27,36 @@ const MessageUserForm = () => {
   }, [dispatch, error, username]);
 
 
+
       const handleSubmit = async (e) => {
       e.preventDefault()
 
-      const data = await dispatch(createDirectMessageThunk(username));
+      if (user && username) {
+        if (servers) {
+          Object.values(servers).forEach((el) => {
+            console.log(el.name)
+            if (el.name === `${user.username}-${username}` || (el.name === `${username}-${user.username}`)) {
+              convoExists = true
+            }
+          })
+        }
+      }
 
+
+      if (convoExists === true) {
+        setError("Conversation already exists")
+        setUsername('')
+        console.log("TRUE")
+      } else {
+        const data = await dispatch(createDirectMessageThunk(username));
+        console.log('FALSE')
         let usernames = []
           users.forEach((el) => {
               usernames.push(el.username)
           })
-         if (!usernames.includes(username)) {
+
+
+          if (!usernames.includes(username)) {
           setError("User does not exist")
           setUsername('')
         } else if (username === user.username) {
@@ -49,6 +70,8 @@ const MessageUserForm = () => {
           setUsername('')
         }
       }
+      }
+
 
     const updateUsername = (e) => {
       setUsername(e.target.value);
