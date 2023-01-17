@@ -19,6 +19,9 @@ import DirectMessages from './components/DirectMessages/DirectMessages';
 import DirectMessageChat from './components/DirectMessages/DirectMessageChat';
 import MessageUserForm from './components/DirectMessages/MessageUserForm';
 import ServerUsersList from './components/Server/ServerUsersList';
+import HomePage from './components/HomePage';
+import FourOFour from './components/fourOFour';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,6 +43,9 @@ function App() {
     <div className='app'>
       <NavBar />
       <Switch>
+      <Route path='/' exact={true} >
+            <HomePage />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -84,6 +90,9 @@ function App() {
           <InviteUser />
           <ServerUsersList />
         </ProtectedRoute>
+        <ProtectedRoute path='/direct-messages' exact={true} >
+          <DirectMessages />
+        </ProtectedRoute>
         <ProtectedRoute path='/direct-messages/invite' exact={true} >
           <DirectMessages />
           <MessageUserForm />
@@ -96,9 +105,7 @@ function App() {
           <DirectMessages />
           <ChannelPage/>
         </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <DirectMessages />
-        </Route>
+        <Route component={FourOFour}></Route>
       </Switch>
       </div>
     </BrowserRouter>
