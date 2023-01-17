@@ -24,7 +24,7 @@ const ChannelPage = () => {
     const reloadServer = () => {
         setTimeout(() => {
           dispatch(loadServersThunk(user.id))
-        }, 100)
+        }, 1500)
       }
 
 

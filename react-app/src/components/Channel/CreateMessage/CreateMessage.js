@@ -21,7 +21,7 @@ const CreateMessage = ({channelName}) => {
     const reloadChannel = () => {
       setTimeout(() => {
         dispatch(loadChannelThunk(channelId))
-      }, 100)
+      }, 1500)
     }
 
     const handleSubmit = async (e) => {
