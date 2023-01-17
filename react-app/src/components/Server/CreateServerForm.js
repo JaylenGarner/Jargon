@@ -5,13 +5,14 @@ import { login } from '../../store/session';
 import { createServerThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
 import ServerPage from './ServerPage';
+import { useEffect } from 'react';
 import './CreateServer.css'
 
 // TO DO
 // REDIRECT USER TO NEWLY CREATED SERVER , NEED TO GET SERVER ID POST CREATION
 
 const CreateServerForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState(null);
   const [name, setName] = useState('');
   const [image, SetImage] = useState('');
   const user = useSelector(state => state.session.user);
@@ -20,16 +21,23 @@ const CreateServerForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
     const data = await dispatch(createServerThunk(name, image));
 
-    return data
-
-
-    if (data) {
-      setErrors(data);
-      return <Redirect to='/' />;
+    if (!data.ok) {
+      setError("Server name is in use")
+      setName('')
+      SetImage('')
+    } else {
+      setError(null)
     }
+
   };
+
+  useEffect(() => {
+
+  }, [dispatch, error]);
 
   const updateName = (e) => {
     setName(e.target.value);
@@ -42,9 +50,7 @@ const CreateServerForm = () => {
   return (
     <form onSubmit={handleSubmit} className='create-form-container'>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+      {(error !== null) && <h1 className='dm-user-error'>{error}</h1>}
       </div>
       <div>
       <h1 className='create-form-header'>Create a server</h1>

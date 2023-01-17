@@ -21,10 +21,16 @@ const CreateChannelForm = () => {
     const history = useHistory()
     let resChannel;
 
+    const reloadServer = () => {
+      setTimeout(() => {
+        dispatch(loadServersThunk(user.id))
+      }, 100)
+    }
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       const data = await dispatch(createChannelThunk(serverId, name))
-      .then(dispatch(loadServersThunk(user.id)))
+      .then(reloadServer())
       // history.push(`/servers/${serverId}/channels/${resChannel.id}`)
       return data
     };

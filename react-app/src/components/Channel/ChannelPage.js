@@ -21,6 +21,12 @@ const ChannelPage = () => {
     const servers = Object.values(useSelector((state) => state.servers))
     let resServer;
 
+    const reloadServer = () => {
+        setTimeout(() => {
+          dispatch(loadServersThunk(user.id))
+        }, 100)
+      }
+
 
         servers.forEach((server) => {
             if (server.id == serverId) resServer = server
@@ -29,19 +35,22 @@ const ChannelPage = () => {
         const handleDelete = () => {
             return dispatch(deleteChannelThunk(channelId))
             .then(dispatch(loadServersThunk(user.id)))
-           // .then(history.push(`/servers/${serverId}`))
+           .then(history.push(`/servers/${serverId}`))
            .then(() => {
                 if (resServer.channels.length <= 1) {
                     dispatch(deleteServerThunk(resServer.id))
                     .then(history.push('/'))
                 } else {
                     history.push(`/servers/${serverId}`)
+                    reloadServer()
                 }
            })
        }
 
     useEffect(() => {
+        if (channel) {
         dispatch(loadChannelThunk(channelId))
+        }
     }, [dispatch, channelId, resServer]);
 
     // NOT GETTING CHANNEL HERE

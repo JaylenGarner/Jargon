@@ -54,7 +54,7 @@ def create_server():
 @server_routes.route('/create-dm', methods=[ 'POST' ] )
 @login_required
 def create_direct_message():
-    user = User.query.get(current_user.id)
+    my_user = User.query.get(current_user.id)
     servers = Server.query.all()
     username = request.json[ "username" ]
 
@@ -70,7 +70,7 @@ def create_direct_message():
 
 
     server = Server (
-        name = f'{user.username}-{res_user.username}',
+        name = f'{my_user.username}-{res_user.username}',
         owner_id = int(current_user.id),
         image = f'{res_user.image}',
         public = False
@@ -94,12 +94,10 @@ def create_direct_message():
     db.session.commit()
 
     res_user.joined_servers.append(server)
-    user.joined_servers.append(server)
+    my_user.joined_servers.append(server)
     db.session.commit()
 
     return server.to_dict()
-
-
 
 
 # Edit a server

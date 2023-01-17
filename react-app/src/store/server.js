@@ -51,6 +51,9 @@ export const createServerThunk = (name, image) => async (dispatch) => {
       if (res.ok) {
         const newData = await res.json()
         dispatch(createServer(newData))
+        return res
+    } else {
+        return res
     }
 }
 

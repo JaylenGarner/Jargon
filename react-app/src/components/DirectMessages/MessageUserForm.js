@@ -23,7 +23,7 @@ const MessageUserForm = () => {
       setUsers(responseData.users);
     }
     fetchData();
-  }, [dispatch, error]);
+  }, [dispatch, error, username]);
 
 
       const handleSubmit = async (e) => {
@@ -37,10 +37,13 @@ const MessageUserForm = () => {
           })
          if (!usernames.includes(username)) {
           setError("User does not exist")
+          setUsername('')
          } else if (!data.ok) {
           setError("Conversation already exists")
+          setUsername('')
         } else {
           setError(null)
+          setUsername('')
         }
       }
 
