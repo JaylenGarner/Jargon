@@ -1,6 +1,20 @@
-# Flask React Project
+# Disbored (Discord Clone) React Project
 
-This is the starter for the Flask React project.
+Disbored(A discord clone) is a place where friends can come together and chat using live messaging so that users can chat real time! 
+
+### Techonologies used: React, Redux, Python, Flask, SQLAlchemy, CSS3 ###
+
+
+
+The main goal of this full-stack project was implement 4 featues which included: 
+ - Servers : The ability to create, read, edit, and delete a severs so that users can invite other uses and have a central
+ place of communication. 
+ - Channels : The ability to create, read, edit and delete a channel where they can all send messages within the servers.
+ - Messages: The ability to create and read messages within a channel so that all users can see the text and communicate. 
+ - Direct Messages: The ability to create and read messages between users. 
+
+
+
 
 ## Getting started
 1. Clone this repository (only this branch)
