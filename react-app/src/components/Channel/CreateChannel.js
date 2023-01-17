@@ -5,6 +5,8 @@ import { login } from '../../store/session';
 import { createChannelThunk } from '../../store/channel';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { loadServersThunk } from '../../store/server';
+import { useEffect } from 'react';
 import './CreateChannel.css'
 
 // TO DO
@@ -13,24 +15,29 @@ const CreateChannelForm = () => {
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState('');
     const user = useSelector(state => state.session.user);
+    const channel = useSelector(state => state.channel);
     const dispatch = useDispatch();
-    const {serverId} = useParams()
+    const {serverId, channelId} = useParams()
     const history = useHistory()
+    let resChannel;
 
-    const refresh = () => window.location.reload(true)
+    const reloadServer = () => {
+      setTimeout(() => {
+        dispatch(loadServersThunk(user.id))
+      }, 100)
+    }
 
     const handleSubmit = async (e) => {
-      // e.preventDefault();
-      // const data = await dispatch(createChannelThunk(serverId, name));
-      return dispatch(createChannelThunk(serverId, name))
-      .then(history.push(`/servers/${serverId}`))
-      .then(refresh())
-
-      // if (data) {
-      //   setErrors(data);
-      //   return <Redirect to='/' />;
-      // }
+      e.preventDefault();
+      const data = await dispatch(createChannelThunk(serverId, name))
+      .then(reloadServer())
+      // history.push(`/servers/${serverId}/channels/${resChannel.id}`)
+      return data
     };
+
+    useEffect(() => {
+      dispatch(loadServersThunk(user.id))
+    }, [dispatch, channelId])
 
     const updateName = (e) => {
       setName(e.target.value);

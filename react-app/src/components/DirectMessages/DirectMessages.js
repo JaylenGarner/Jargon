@@ -22,13 +22,10 @@ const DirectMessages = () => {
 
   if (servers) {
   for (let i = 0; i < servers.length; i++) {
-      let innerServers = servers[i]
-
-      innerServers.forEach((server) => {
+      let server = servers[i]
         if (server.public === false) {
           directMessageServs.push(server)
         }
-      });
   }
 }
 
@@ -51,6 +48,7 @@ const DirectMessages = () => {
 
           if (server) {
             getOtherUser(server)
+
             if (server.channels) {
               firstChannel = server.channels[0]
             }

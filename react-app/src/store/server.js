@@ -5,6 +5,7 @@ const CREATE_SERVER = 'servers/CREATE_SERVER';
 const CREATE_DIRECT_MESSAGE = 'servers/CREATE_DIRECT_MESSAGE'
 const EDIT_SERVER = 'servers/EDIT_SERVER';
 const DELETE_SERVER = 'servers/DELETE_SERVER';
+const CLEAR_SERVERS = 'servers/CLEAR_SERVERS';
 const ADD_USER = 'servers/ADD_USER'
 
 // GET
@@ -50,6 +51,9 @@ export const createServerThunk = (name, image) => async (dispatch) => {
       if (res.ok) {
         const newData = await res.json()
         dispatch(createServer(newData))
+        return res
+    } else {
+        return res
     }
 }
 
@@ -75,6 +79,9 @@ export const createDirectMessageThunk = (username) => async (dispatch) => {
       if (res.ok) {
         const newData = await res.json()
         dispatch(createDirectMessage(newData))
+        return res
+    } else {
+        return res
     }
 }
 
@@ -149,6 +156,15 @@ export const deleteServerThunk = (serverId) => async (dispatch) => {
     if (server.ok) dispatch(deleteServer(serverId))
 }
 
+const clearServers = () => {
+    return {
+        type: CLEAR_SERVERS
+    }
+}
+
+export const clearServersThunk = () => async (dispatch) => {
+    dispatch(clearServers())
+}
 
 export default function reducer(state = defaultState, action) {
     const newState = {...state}
@@ -157,19 +173,22 @@ export default function reducer(state = defaultState, action) {
         case LOAD_SERVERS:
             return {...newState, ...action.payload}
         case CREATE_SERVER:
-            newState[action.payload] = action.payload
+            newState[action.payload.id] = action.payload
             return newState;
         case CREATE_DIRECT_MESSAGE:
-            newState[action.payload] = action.payload
+            newState[action.payload.id] = action.payload
             return newState;
         case EDIT_SERVER:
-            newState[action.payload] = action.payload
+            newState[action.payload.id] = action.payload
             return newState;
         case ADD_USER:
             newState[action.payload] = action.payload
             return newState;
         case DELETE_SERVER:
             delete newState[action.serverId]
+            return newState
+        case CLEAR_SERVERS:
+            return defaultState;
         default:
             return state;
     }

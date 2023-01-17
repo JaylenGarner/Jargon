@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -8,29 +8,47 @@ import './MessageUserForm.css'
 
 
 const MessageUserForm = () => {
-    const [errors, setErrors] = useState([]);
+    const [error, setError] = useState(null);
     const [username, setUsername] = useState('');
     const user = useSelector(state => state.session.user);
-    const serversArr = []
     const servers = Object.values(useSelector((state) => state.servers))
     const dispatch = useDispatch();
     const history = useHistory()
-    const refresh = () => window.location.reload(true)
+    const [users, setUsers] = useState([]);
 
-    if (servers) {
-        for (let i = 0; i < servers.length; i++) {
-            let innerServers = servers[i]
-            innerServers.forEach((server) => {
-                serversArr.push(server)
-            });
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch('/api/users/');
+      const responseData = await response.json();
+      setUsers(responseData.users);
+    }
+    fetchData();
+  }, [dispatch, error, username]);
+
+
+      const handleSubmit = async (e) => {
+      e.preventDefault()
+
+      const data = await dispatch(createDirectMessageThunk(username));
+
+        let usernames = []
+          users.forEach((el) => {
+              usernames.push(el.username)
+          })
+         if (!usernames.includes(username)) {
+          setError("User does not exist")
+          setUsername('')
+        } else if (username === user.username) {
+         setError('You cannot message yourself')
+         setUsername('')
+         } else if (!data.ok) {
+          setError("Conversation already exists")
+          setUsername('')
+         } else {
+          setError(null)
+          setUsername('')
         }
       }
-
-    const handleSubmit = async (e) => {
-      return dispatch(createDirectMessageThunk(username))
-      .then(history.push(`/`))
-      .then(refresh())
-    }
 
     const updateUsername = (e) => {
       setUsername(e.target.value);
@@ -40,9 +58,11 @@ const MessageUserForm = () => {
     return (
       <form onSubmit={handleSubmit} className="dm-user-form-container">
         <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+
+        {/* {errors && errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))} */}
+        {(error !== null) && <h1 className='dm-user-error'>{error}</h1>}
         </div>
         <div>
           <p className='dm-user-header'>Direct message a user</p>
@@ -64,6 +84,6 @@ const MessageUserForm = () => {
         </div>
       </form>
     );
-  };
+  }
 
   export default MessageUserForm;

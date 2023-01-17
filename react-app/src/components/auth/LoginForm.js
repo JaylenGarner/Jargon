@@ -19,6 +19,14 @@ const LoginForm = () => {
     }
   };
 
+  const forDemo = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo-user@aa.io", "password"))
+    if (data) {
+      setErrors(data)
+    }
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -65,6 +73,9 @@ const LoginForm = () => {
         <p className='forgot-password'>Forgot your password?</p>
       <div>
         <button type='submit' className='login-button'>Login</button>
+      </div>
+      <div>
+        <button type='submit' className='login-button' onClick={forDemo}>Demo User</button>
       </div>
       <Link to='/sign-up' className='login-hyperlink'>
         <p className='register-link'>Need an account? Register</p>

@@ -4,6 +4,7 @@ import { editChannelThunk } from '../../store/channel';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Redirect } from "react-router-dom";
+import { loadServersThunk } from '../../store/server';
 import './EditChannel.css'
 
 
@@ -15,14 +16,12 @@ const EditChannelForm = () => {
     const {serverId, channelId} = useParams()
     const history = useHistory()
 
-    const refresh = () => window.location.reload(true)
-
     const handleSubmit = async (e) => {
-      // e.preventDefault();
+      e.preventDefault();
     //   return dispatch(editChannelThunk(channelId, name)).then(history.push(`/`))
       return dispatch(editChannelThunk(channelId, name))
       .then(history.push(`/servers/${serverId}/channels/${channelId}`))
-      .then(refresh())
+      .then(dispatch(loadServersThunk(user.id)))
     }
 
     const updateName = (e) => {
