@@ -1,6 +1,7 @@
 .nav-bar {
     /* Fix height to fit to screen (scrollable */
-    height: 1000px;
+    /* position: absolute; */
+    top: 0; right: 0; bottom: 0; left: 0;
     width: 75px;
     background-color: #202225;
     color: white;
@@ -8,9 +9,10 @@
 }
 
 .nav-server-logo-container .active {
-    background-color: #f0f0f0;
-    border: 1px solid transparent;
-    border-radius: 5px;
+    background-color: transparent;
+    border-bottom: 3px solid white;
+    border-radius: 2px;
+    height: 1px;
 }
 
 .hide-nav-bar {
@@ -37,6 +39,7 @@
     height: 50px;
     width: 50px;
     border-radius:50px;
+    padding-top: 10px;
 }
 
 .nav-server-logo-container {

@@ -80,7 +80,7 @@
     font-family: Montserrat;
 }
 
-.add-media-button {
+/* .add-media-button {
     color: #96989D;
     border: none;
     background: none;
@@ -88,19 +88,22 @@
     font-weight: bold;
     margin: 5px;
     margin-left: 10px;
-}
+} */
 
 .create-message-input {
+    position:fixed;
+    bottom: 0;
+    width: 62%;
     background-color: #40444b;
-    border: 1px solid #40444b ;
+    border: 2px solid #40444b ;
     border-radius: 5px;
     height:20px;
-    margin: 7px;
+    margin: 5px;
     font-family: Montserrat;
     color: whitesmoke;
 }
 
-.create-message-button {
+/* .create-message-button {
     background-color: transparent;
     color: #fff;
     border: none;
@@ -109,7 +112,7 @@
     margin: 8px;
     border-radius: 5px;
     cursor: pointer;
-}
+} */
 
 .create-message-button:hover {
     background-color: #414449;

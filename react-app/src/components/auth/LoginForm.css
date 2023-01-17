@@ -3,7 +3,7 @@
 .form-container {
     background-image: url('https://i.ibb.co/1RV16c5/dsicord-logo.png');
     background-repeat: no-repeat;
-    background-position: left 20px bottom 50px;
+    background-position: left 20px bottom 80px;
     background-size: 30%;
     padding-left: 200px;
     position: absolute;
@@ -41,6 +41,24 @@
 
 .login-button:hover {
     background-color: #677BC4 ;
+}
+
+.demo-button {
+    background-color: #7289DA ;
+    color: #7289DA;
+    text-align: center;
+    display: flex;
+    padding: 10px;
+    width: 83%;
+    padding-left: 100px;
+    padding-right: 100px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Montserrat;
+    margin-top: 10px;
 }
 
 .login-header {

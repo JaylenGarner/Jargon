@@ -21,7 +21,6 @@ const CreateMessage = ({channelName}) => {
     const reloadChannel = () => {
       setTimeout(() => {
         dispatch(loadChannelThunk(channelId))
-        setBody('')
       }, 100)
     }
 
@@ -51,7 +50,7 @@ const CreateMessage = ({channelName}) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div className='add-media-button'>+</div>
+        {/* <div className='add-media-button'>+</div> */}
         <div>
           <label htmlFor='body'></label>
           <input
@@ -65,7 +64,7 @@ const CreateMessage = ({channelName}) => {
           />
         </div>
         <div>
-          <button type='submit' onSubmit={handleSubmit} className='create-message-button'>Send</button>
+          {/* <button type='submit' onSubmit={handleSubmit} className='create-message-button'>Send</button> */}
         </div>
       </form>
     );

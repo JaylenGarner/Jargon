@@ -1,10 +1,10 @@
 .server-page-nav {
     /* Fix height to fit to screen (scrollable */
-    height: 1000px;
     width: 200px;
     background-color: #2F3136;
     color: white;
     text-align: center;
+    top: 0; right: 0; bottom: 0; left: 0;
 }
 
 .server-name-container {

@@ -40,7 +40,7 @@ const DirectMessages = () => {
 
     <nav className='dm-page-nav'>
       <div className='dms-header-container'>
-        {user && <span className='dms-header'>Direct Messages</span>}
+        {/* {user && <span className='dms-header'>Direct Messages</span>} */}
       </div>
       {user &&
       <div>
@@ -54,11 +54,11 @@ const DirectMessages = () => {
             }
 
             return (
-              <div key={server.id} className='nav-server-logo-container'>
+              <div key={server.id} className='nav-server-logo-container-dms'>
                 {firstChannel &&
                 <NavLink to={`/direct-messages/${server.id}/${firstChannel.id}`} exact={true} activeClassName='active'>
                 <img src={otherUser.image} className='dm-user-image'></img>
-                <h1>{otherUser.username}</h1>
+                <h3 className='dm-user-name'>{otherUser.username}</h3>
                 </NavLink>}
                </div>
             )
@@ -66,7 +66,7 @@ const DirectMessages = () => {
       })}
 
       <NavLink to={`/direct-messages/invite`} exact={true} activeClassName='active'>
-        <button>Message a user</button>
+        <button className='message-a-user-dm-button'>Message a user</button>
       </NavLink>
   </div>
       }

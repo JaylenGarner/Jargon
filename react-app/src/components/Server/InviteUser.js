@@ -18,6 +18,12 @@ const InviteUser = () => {
     let resServer;
     let serverMembers = []
 
+    const reloadServer = () => {
+      setTimeout(() => {
+        dispatch(loadServersThunk(user.id))
+      }, 100)
+    }
+
     servers.forEach((server) => {
       if (server.id == serverId) resServer = server
     });
@@ -42,8 +48,8 @@ const InviteUser = () => {
         } else {
           setError(null)
           const data = dispatch(addUserThunk(serverId, username))
+          .then(reloadServer)
           .then(history.push(`/servers/${serverId}`))
-          .then(dispatch(loadServersThunk(user.id)))
          }
     }
 
