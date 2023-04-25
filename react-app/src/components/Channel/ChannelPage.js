@@ -64,7 +64,7 @@ const ChannelPage = () => {
                 <div>
                     <div className='channel-name-header-container'>
                         <span className='channel-name-header-hashtag'>#   </span>
-                        <span className='channel-name-header'>Direct Message</span>
+                        <span className='channel-name-header'>Direct Messages</span>
                     </div>
                 </div>
                 <div className='channel-messages-container'>

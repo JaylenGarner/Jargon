@@ -1,46 +1,50 @@
 .dm-page-nav {
-    /* Fix height to fit to screen (scrollable */
     top: 0; right: 0; bottom: 0; left: 0;
     width: 200px;
-    background-color: #2F3136;
+    background-color: #940740;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1.5px solid white;
 }
 
-.nav-server-logo-container-dms {
-    background-color: #2F3136;
+.direct-message-nav-container {
+    background-color: #940740;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 12px;
+    font-weight: bold;
     font-family: Montserrat;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 200px;
 }
 
 .dm-user-name {
     color: white;
     width: 100%;
-    padding-left: 90px;
-    padding-top: 10px;
+    margin-left: 10px;
 }
+
 
 .dm-user-image {
     padding: 5px;
-    padding-left: 10px;
+    margin-left: 10px;
     height: 50px;
     width: 50px;
     border-radius:50px;
-    float: left;
 }
 
-.nav-server-logo-container-dms:hover {
-    background-color: #222327;
-}
-
-.dms-header-container {
-    padding-top: 10px;
-    color: #96989D;
-    font-size: 14px;
+.direct-message-nav-button {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.direct-message-nav-button:hover {
+    background-color: #c40854;
+    transition: 0.8s;
 }
 
 .dms-header {
@@ -49,11 +53,29 @@
     padding-bottom: 20px;
 }
 
-.message-a-user-dm-button {
-    color: #4EACEE;
+.message-a-user-button {
+    color: #dff6ff;
     border: none;
-    background: none;
     font-size: 16px;
-    padding: 8px;
-    padding-left: 40px;
+    font-weight: bold;
+    margin: 26px 0px 26px 26px;
+    padding: 6px 12px 6px 12px;
+    background: none;
+    border: 1px solid white;
+    transition: 0.5s;
+}
+
+.message-a-user-button:hover {
+    background-color: white;
+    color: #c40854;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.dm-navlink:active {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
 }

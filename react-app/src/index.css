@@ -8,7 +8,10 @@
 .app {
     height:100;
     display: flex;
-    background-color: #37393E;
+    margin: 0px;
+    background: linear-gradient(-45deg, #1a1a1d,#c40854, #950740, #93063f);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
     color: white;
     font-family: 'Montserrat';
     position: absolute;
@@ -24,3 +27,17 @@
 body {
     margin: 0px;
 }
+
+@keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }

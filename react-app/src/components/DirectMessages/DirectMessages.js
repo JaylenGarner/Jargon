@@ -39,11 +39,11 @@ const DirectMessages = () => {
   return (
 
     <nav className='dm-page-nav'>
-      <div className='dms-header-container'>
-        {/* {user && <span className='dms-header'>Direct Messages</span>} */}
-      </div>
       {user &&
-      <div>
+      <div className='direct-message-nav-container'>
+        <NavLink to={`/direct-messages/invite`} exact={true} activeClassName='active'>
+        <button className='message-a-user-button'>Message a user</button>
+      </NavLink>
       {directMessageServs.map((server) => {
 
           if (server) {
@@ -54,20 +54,21 @@ const DirectMessages = () => {
             }
 
             return (
-              <div key={server.id} className='nav-server-logo-container-dms'>
+              <div key={server.id} className=''>
                 {firstChannel &&
-                <NavLink to={`/direct-messages/${server.id}/${firstChannel.id}`} exact={true} activeClassName='active'>
-                <img src={otherUser.image} className='dm-user-image'></img>
-                <h3 className='dm-user-name'>{otherUser.username}</h3>
+                <NavLink to={`/direct-messages/${server.id}/${firstChannel.id}`} exact={true} className='dm-navlink'>
+                  <div className='direct-message-nav-button'>
+                    <div>
+                      <img src={otherUser.image} className='dm-user-image'></img>
+                    </div>
+                    <span className='dm-user-name'>{otherUser.username}</span>
+                  </div>
                 </NavLink>}
                </div>
             )
           }
       })}
 
-      <NavLink to={`/direct-messages/invite`} exact={true} activeClassName='active'>
-        <button className='message-a-user-dm-button'>Message a user</button>
-      </NavLink>
   </div>
       }
     </nav>

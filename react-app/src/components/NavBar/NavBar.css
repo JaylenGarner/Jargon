@@ -2,10 +2,13 @@
     /* Fix height to fit to screen (scrollable */
     /* position: absolute; */
     top: 0; right: 0; bottom: 0; left: 0;
-    width: 75px;
-    background-color: #202225;
+    width: 100px;
+    background-color: #1a1a1d;
     color: white;
-    padding-left: 12px;
+    /* padding-left: 12px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .nav-server-logo-container .active {
@@ -16,7 +19,7 @@
 }
 
 .hide-nav-bar {
-   background-color: #37393E;
+   background-color: #1a1a1d;
    height: 1000px;
    width: 75px;
    color: white;
@@ -24,9 +27,11 @@
 }
 
 .discord-logo-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 50px;
     /* padding-bottom: 8px; */
-    border-bottom: solid 0.2px #373A3F;
+    border-bottom: solid 0.2px #ecedef;
 }
 
 .discord-logo {
@@ -39,7 +44,7 @@
     height: 50px;
     width: 50px;
     border-radius:50px;
-    padding-top: 10px;
+    margin-top: 10px;
 }
 
 .nav-server-logo-container {
@@ -50,6 +55,7 @@
     height: 50px;
     width: 50px;
     border-radius:50px;
+    margin-top: 5px;
 }
 
 .logout-button {

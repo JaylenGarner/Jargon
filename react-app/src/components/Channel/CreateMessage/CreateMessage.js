@@ -29,8 +29,7 @@ const CreateMessage = ({channelName}) => {
       e.preventDefault()
       const data = await dispatch(createMessageThunk(channelId, body))
       .then(reloadChannel())
-      // .then(created = true)
-      // .then(created = false)
+      setBody('')
       return data
       }
     };
@@ -44,29 +43,30 @@ const CreateMessage = ({channelName}) => {
     }, [dispatch, channelId])
 
     return (
+      <div className='create-message-form-container'>
       <form onSubmit={handleSubmit} className='create-message-container'>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        {/* <div className='add-media-button'>+</div> */}
-        <div>
+        <div className='create-message-form-container'>
           <label htmlFor='body'></label>
-          <input
-            className='create-message-input'
-            name='body'
-            type='text'
-            placeholder={`MESSAGE #${channelName}`}
-            value={body}
-            onChange={updateBody}
-            required
-          />
+            <input
+              className='create-message-input'
+              name='body'
+              type='text'
+              placeholder={`MESSAGE #${channelName}`}
+              value={body}
+              onChange={updateBody}
+              required
+            />
         </div>
         <div>
           {/* <button type='submit' onSubmit={handleSubmit} className='create-message-button'>Send</button> */}
         </div>
       </form>
+      </div>
     );
   };
 
