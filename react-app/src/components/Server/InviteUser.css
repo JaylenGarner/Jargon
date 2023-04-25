@@ -1,0 +1,74 @@
+.invite-user-form-container {
+    background-image: url('https://i.ibb.co/MD1gy1h/discord-characters-6.png');
+    background-repeat: no-repeat;
+    background-position: left 10px bottom 40px;
+    background-size: 40%;
+    padding-left: 250px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
+    width: 20em;
+}
+
+.invite-user-header {
+    font-size: 20px;
+    font-family: Montserrat;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    padding-right: 60px;
+    padding-top: -20px;
+    color: black;
+}
+
+.invite-user-intro {
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: light;
+    padding-right: 45px;
+    padding-bottom: 30px;
+    margin: -5px;
+}
+
+.invite-user-input {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.invite-user-button-container {
+    margin-right: 24px;
+    margin-left: -15px;
+}
+
+.invite-user-button:hover {
+    background-color: #44474e ;
+}
+
+.invite-user-button {
+    background-color: rgb(151, 151, 151) ;
+    color: rgb(151, 151, 151);
+    display: flex;
+    padding: 10px;
+    width: 85%;
+    padding-left: 104px;
+    padding-right: 90px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Montserrat;
+    margin: 15px;
+}
+
+.invite-to-server-error {
+    color: black;
+}

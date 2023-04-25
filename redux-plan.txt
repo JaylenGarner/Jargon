@@ -1,0 +1,88 @@
+//*********************************** Discord redux store representation********************
+
+const store = {
+    session: {
+        user: {
+          id: 1,
+          username: "demo",
+          email: "test@test.com",
+          password: "password",
+          image: "image url",
+          userServers: [1, 2] **serverIds**,
+          createdAt: "timestamp",
+          updatedAt: "timestamp"
+        }
+    },
+
+    *** Public servers that the user is a member of will always be rendered in the nav bar, so they should always be in the store ***
+
+    servers: {
+
+        1: {
+          id: 1,
+          owner_id: 1,
+          name: "Server Name",
+          image: "Image URL",
+          public: true,
+          privateMemberId: null,
+          serverMembers: [1, 2, 3, 4] **userIds**,
+          serverChannels: [1, 2] ***channelIds***,
+        },
+        2: {
+          id: 2,
+          owner_id: 1,
+          name: "Server Name",
+          image: "Image URL",
+          public: false,
+          privateMemberId: 2,
+          // SQLalchemy to back-populate
+          // In Server Model, 'to_id' method for populating serverMembers
+          // use list that we got back from sqlalchemy to grab server member id's from user model
+          // Private Server, only ever 2
+          serverMembers: [1, 2] **userIds**,
+          serverChannels: [1, 2] ***channelIds***,
+        }
+    },
+
+        *** ('/') Render all Private Servers that the user is a member of, all servers will already be in the store ***
+
+        *** ('/:serverId')  Load all the speficied server's channels into the store ***
+
+        // Private Servers will only have 1 channel
+        channels: {
+        1: {
+          id: 1,
+          server_id: 1,
+          name: 'Channel name',
+          channelMessages: [1, 2] ***channelIds***,
+        },
+        2: {
+          id: 2,
+          server_id: 1,
+          name: 'Channel name',
+          channelMessages: [1, 2] ***channelIds***,
+        }
+        },
+
+        *** ('/:serverId/:channelId') Load all the speficied channel's messages into the store ***
+
+        messages: {
+          1: {
+          id: 1,
+          userId: 1,
+          channelId: 1,
+          body: 'Message body',
+          createdAt: 'timestamp',
+          updatedAt: 'timestamp'
+          },
+          2: {
+          id: 2,
+          userId: 2,
+          channelId: 1,
+          body: 'Message body',
+          createdAt: 'timestamp',
+          updatedAt: 'timestamp'
+          },
+        }
+    }
+}

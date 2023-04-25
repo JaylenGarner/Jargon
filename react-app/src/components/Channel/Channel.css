@@ -1,0 +1,102 @@
+
+
+.channel-name-header-container {
+    border-bottom: solid 1.5px white;
+    padding-bottom: 10px;
+    padding-top:10px;
+    padding-left: 15px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+    width: calc(98.8vw - 300px);
+}
+
+.channel-name-header-hashtag {
+    color: white;
+    font-size: 20px;
+    font-weight: 5000;
+}
+
+.channel-welcome-area-header {
+    font-weight: 500;
+    font-size: 32px;
+    padding-left: 15px;
+}
+
+.channel-welcome-area-notification {
+  color: #B9BBBE;
+  padding-left: 20px;
+}
+
+.channel-permissions-container {
+    padding-top: 25px;
+    /* padding-left: 20px; */
+}
+
+.channel-permission-buttons {
+    color: #4EACEE;
+    margin-left: 20px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.channel-permission-buttons:hover {
+    background-color: #414449;
+    border-radius: 4px;
+}
+
+
+.channel-message {
+    display: flex;
+    font-size: 14px;
+    height: 60px;
+    padding-bottom: 25px;
+}
+
+.channel-message:hover {
+    border-radius: 4px;
+}
+
+.channel-message-user-image-container {
+    padding: 20px;
+}
+.channel-message-user-image {
+    height: 50px;
+    width: 50px;
+    border-radius:50px;
+}
+
+.message-content-container {
+    font-family: Montserrat;
+}
+
+
+.create-message-form-container {
+    position: fixed;
+    bottom: 10px;
+    left: 300px; /* Set the left position to the sidebar width */
+    right: 10px; /* Set the right margin */
+    background-color: #1a1a1d;
+    border: 1.5px solid white;
+    border-radius: 5px;
+    height: 40px; /* Increase the height to accommodate the input field */
+    margin: 5px 5px 5px 18px;
+    font-family: Montserrat;
+    color: whitesmoke;
+    display: flex; /* Add flexbox to center the input field */
+    justify-content: center; /* Center the input field horizontally */
+    align-items: center; /* Center the input field vertically */
+}
+
+.create-message-input {
+    width: 60%; /* Set the width of the input field to 90% of the container */
+    background-color: transparent; /* Make the input field background transparent */
+    border: none; /* Remove the border */
+    outline: none; /* Remove the outline */
+    color: whitesmoke; /* Set the text color */
+    text-align: center; /* Center the text within the input field */
+    font-family: Montserrat; /* Set the font family */
+    font-size: 18px;
+}

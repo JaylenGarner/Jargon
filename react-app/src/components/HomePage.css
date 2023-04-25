@@ -1,0 +1,106 @@
+.header-image-home {
+    width: 95%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.header-image-home2 {
+    width: 100%;
+}
+
+.nav-bar-homepage {
+    position: absolute;
+    right: 0;
+    /* background-color: grey; */
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    margin-right: 50px;
+}
+
+.nav-bar-login {
+    padding: 20px;
+    text-decoration: none;
+    font-family: Montserrat;
+}
+
+.nav-bar-signup {
+    text-decoration: none;
+    font-family: Montserrat;
+    padding: 10px;
+}
+
+.nav-bar-github {
+    text-decoration: none;
+    padding: 10px;
+}
+
+.home-intro {
+    font-family: Montserrat;
+    font-weight: bold;
+    background-color: #7289da;
+    border: 1px solid transparent;
+    border-radius: 40px;
+    margin: 100px;
+    padding: 30px;
+}
+
+.home-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+
+.home-login-button {
+    width: 200px;
+    height: 80px;
+    border-radius: 100px; /* half of the width and height */
+    background-color: #7289da; /* discord blue color */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px #b3b3b3;
+
+}
+
+.home-signup-button{
+    width: 200px;
+    height: 80px;
+    border-radius: 100px; /* half of the width and height */
+    background-color: #5a5a5a; /* discord blue color */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-left: 50px;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+.disbored-home-header {
+    font-size: 120px;
+    text-align: center;
+    padding: 0px;
+}
+
+.certified-coder-boys {
+    text-align: center;
+    font-size: 60px;
+    text-decoration: none;
+    color: white;
+}
+
+.github-logo-container {
+text-align: center;
+padding-bottom: 20px;
+}
+
+.github-logo {
+    height: 70px;
+    width: 70px;
+    border-radius: 20px;
+}

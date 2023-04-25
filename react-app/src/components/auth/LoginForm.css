@@ -1,0 +1,114 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,600,700%7CWork+Sans:300,400,700,900%27);
+
+.form-container {
+    background-image: url('https://i.ibb.co/1RV16c5/dsicord-logo.png');
+    background-repeat: no-repeat;
+    background-position: left 20px bottom 80px;
+    background-size: 30%;
+    padding-left: 200px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #2e3035;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    width: 20em;
+}
+
+.login-hyperlink {
+    color: white
+}
+
+.login-button {
+    background-color: #7289DA ;
+    color: #7289DA;
+    text-align: center;
+    display: flex;
+    padding: 20px;
+    width: 83%;
+    padding-left: 100px;
+    padding-right: 100px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Montserrat;
+}
+
+.login-button:hover {
+    background-color: #677BC4 ;
+}
+
+.demo-button {
+    background-color: #7289DA ;
+    color: #7289DA;
+    text-align: center;
+    display: flex;
+    padding: 10px;
+    width: 83%;
+    padding-left: 100px;
+    padding-right: 100px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Montserrat;
+    margin-top: 10px;
+}
+
+.login-header {
+    font-size: 20px;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: center;
+    padding-right: 50px;
+}
+
+.password-input {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.email-input {
+    width: 80%;
+    display: flex;
+}
+
+
+.email-header {
+    display: flex;
+    font-size: 10px;
+    color: rgb(151, 151, 151);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+.password-header {
+    display: flex;
+    font-size: 10px;
+    color: rgb(151, 151, 151);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.forgot-password {
+    font-size: 12px;
+    color: rgb(151, 151, 151);
+    display: flex;
+    align-items: flex-start;
+    font-family: Montserrat;
+}
+
+.register-link {
+    font-size: 12px;
+    color: rgb(151, 151, 151);
+    display: flex;
+    align-items: flex-start;
+    font-family: Montserrat;
+}

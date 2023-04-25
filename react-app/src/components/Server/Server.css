@@ -1,0 +1,117 @@
+.server-page-nav {
+    /* Fix height to fit to screen (scrollable */
+    width: 200px;
+    background-color: #2F3136;
+    color: white;
+    text-align: center;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.server-name-container {
+    border-bottom: solid 1.5px #202225;
+    padding-bottom: 10px;
+    padding-top:10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.text-channels-header-container {
+    padding-top: 10px;
+    color: #96989D;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.text-channels-header {
+    padding-top: 6px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.server-channel-name-header-container {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.server-channel-name-header-container:hover {
+    text-align: left;
+    padding-left: 5px;
+    background-color: #414449;
+}
+
+.server-channel-name-header {
+    color: #96989D;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.create-channel-button {
+    color: #96989D;
+    border: none;
+    background: none;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.add-user-to-server-button {
+    color: #4EACEE;
+    margin-left: 20px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.add-user-to-server-button:hover {
+    background-color: #414449;
+    border-radius: 4px;
+}
+
+
+.server-buttons-container {
+    text-align: left;
+    margin: -10px;
+}
+
+.edit-to-server-header {
+    color: #96989D;
+    border: none;
+    background: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: Montserrat;
+}
+
+.edit-user-to-server-button {
+    color: #4EACEE;
+    margin-left: 20px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.edit-user-to-server-button:hover {
+    background-color: #414449;
+    border-radius: 4px;
+}
+
+.delete-server-button {
+    color: #4EACEE;
+    margin-left: 20px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.delete-server-button:hover {
+    background-color: #414449;
+    border-radius: 4px;
+}

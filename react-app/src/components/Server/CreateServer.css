@@ -1,0 +1,91 @@
+.create-form-container {
+    background-image: url('https://i.ibb.co/YpkQn0j/discord-heroes.png');
+    background-repeat: no-repeat;
+    background-position: left -5px bottom 50px;
+    background-size: 50%;
+    padding-left: 300px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
+    width: 20em;
+}
+
+.create-form-header {
+    font-size: 20px;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: center;
+    padding-right: 50px;
+    color: black;
+}
+
+.create-form-intro {
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: light;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    margin: -10px;
+}
+
+
+.create-form-server {
+    display: flex;
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.create-form-name-input {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-form-image {
+    display: flex;
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.create-form-image-input {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-form-button {
+    background-color: rgb(151, 151, 151) ;
+    color: rgb(151, 151, 151);
+    display: flex;
+    padding: 10px;
+    width: 85%;
+    padding-left: 90px;
+    padding-right: 90px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Montserrat;
+    margin: 15px;
+}
+
+.create-form-button:hover {
+    background-color: #44474e ;
+}
+
+.create-form-button-container {
+    margin-right: 24px;
+    margin-left: -15px;
+}

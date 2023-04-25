@@ -1,0 +1,76 @@
+.create-channel-form-container {
+    background-image: url('https://i.ibb.co/3p7tZxy/discord-characters-3.png');
+    background-repeat: no-repeat;
+    background-position: left 60px bottom 20px;
+    background-size: 30%;
+    padding-left: 300px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
+    width: 20em;
+}
+
+.create-channel-header {
+    font-size: 20px;
+    font-family: Montserrat;
+    display: flex;
+    justify-content: center;
+    padding-right: 50px;
+    color: black;
+}
+
+.create-channel-intro {
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: light;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    margin: -5px;
+}
+
+.create-channel-name {
+    display: flex;
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+.create-channel-name-input {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-channel-button-2-container {
+    margin-right: 24px;
+    margin-left: -15px;
+}
+
+.create-channel-button-2:hover {
+    background-color: #44474e ;
+}
+
+.create-channel-button-2{
+    background-color: rgb(151, 151, 151) ;
+    color: rgb(151, 151, 151);
+    display: flex;
+    padding: 10px;
+    width: 85%;
+    padding-left: 90px;
+    padding-right: 90px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Montserrat;
+    margin: 15px;
+}
