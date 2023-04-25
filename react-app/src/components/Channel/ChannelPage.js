@@ -53,7 +53,6 @@ const ChannelPage = () => {
         }
     }, [dispatch, channelId, resServer]);
 
-    // NOT GETTING CHANNEL HERE
     if (!channel) {
         return null
     } else if (!resServer) {
@@ -78,14 +77,14 @@ const ChannelPage = () => {
 
                             <br></br>
                             <div className='message-content-container'>
-                            <h3>{message.user.username}</h3>
+                            <h3 className='message-username'>{message.user.username}</h3>
                             <span className='message-body'>{message.body}</span>
                             </div>
                         </div>
                     )
                 })}
                 </div>
-                <div>
+                <div >
                     <CreateMessage channelName={channel.name}/>
                 </div>
             </div>

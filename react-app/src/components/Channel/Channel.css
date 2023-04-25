@@ -47,72 +47,58 @@
     border-radius: 4px;
 }
 
-<<<<<<< HEAD
-/* .channel-messages-container {
+.message-username {
+    padding-top: 5px;
+}
 
-} */
-
-.channel-message {
-    display: flex;
-    border-bottom: solid 0.2px #43464C;
-    border-top: solid 0.2px #43464C;
-    background-color: #5a5a5a;
-=======
 
 .channel-message {
     display: flex;
->>>>>>> master
     font-size: 14px;
     height: 60px;
     padding-bottom: 25px;
 }
 
-.channel-message:hover {
-<<<<<<< HEAD
-    background-color: #414449;
-=======
->>>>>>> master
-    border-radius: 4px;
-}
 
 .channel-message-user-image-container {
     padding: 20px;
 }
+
 .channel-message-user-image {
     height: 50px;
     width: 50px;
     border-radius:50px;
 }
 
-.message-content-container {
-    font-family: Montserrat;
-}
-
-
 .create-message-form-container {
     position: fixed;
     bottom: 10px;
-    left: 300px; /* Set the left position to the sidebar width */
-    right: 10px; /* Set the right margin */
+    left: 300px;
+    right: 10px;
     background-color: #1a1a1d;
     border: 1.5px solid white;
     border-radius: 5px;
-    height: 40px; /* Increase the height to accommodate the input field */
+    height: 40px;
     margin: 5px 5px 5px 18px;
     font-family: Montserrat;
     color: whitesmoke;
-    display: flex; /* Add flexbox to center the input field */
-    justify-content: center; /* Center the input field horizontally */
-    align-items: center; /* Center the input field vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .create-message-input {
-    width: 60%; /* Set the width of the input field to 90% of the container */
-    background-color: transparent; /* Make the input field background transparent */
-    border: none; /* Remove the border */
-    outline: none; /* Remove the outline */
-    color: whitesmoke; /* Set the text color */
-    text-align: center; /* Center the text within the input field */
-    font-family: Montserrat; /* Set the font family */
+    width: 60%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: whitesmoke;
+    text-align: center;
+    font-family: Montserrat;
     font-size: 18px;
+}
+
+.channel-messages-container {
+    overflow: scroll;
+    height: calc(100vh - 105px);
 }
