@@ -63,10 +63,11 @@ function ServerUsersList() {
   return (
     // <div className='server-page-nav-container'>
     <nav className='server-users-nav'>
-      <h1>Members</h1>
-      <div>{userComponents}</div>
+      <div className='server-users-nav-content'>
+      <span className='server-nav-header'>Members</span>
+      <div className='server-nav-users-container'>{userComponents}</div>
+      </div>
       </nav>
-    //   </div>
   );
   } else {
     return null

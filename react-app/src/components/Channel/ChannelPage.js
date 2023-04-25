@@ -93,22 +93,23 @@ const ChannelPage = () => {
         return (
             <div className='channel-page-container'>
                 <div>
-                    <div className='channel-name-header-container'>
+                    <div className='channel-header-container'>
+                        <div>
                         <span className='channel-name-header-hashtag'>#   </span>
                         <span className='channel-name-header'>{channel.name}</span>
-                    </div>
-                    <h2 className='channel-welcome-area-header'>Welcome to #{channel.name}!</h2>
-                    <span className='channel-welcome-area-notification'>This is the start of the #{channel.name} channel.</span>
-
-                <div className='channel-permissions-container'>
-                {(user.id == resServer.owner_id) &&
-                    <div>
+                        </div>
+                        <div className='channel-permissions-container'>
+                            {(user.id == resServer.owner_id) &&
+                        <div>
                         <NavLink to={`/servers/${serverId}/channels/${channelId}/edit-channel`} exact={true} activeClassName='active'>
                             <button className='channel-permission-buttons'>Edit Channel</button>
                         </NavLink>
                         <button onClick={handleDelete} className='channel-permission-buttons'>Delete Channel</button>
                     </div>}
                 </div>
+                    </div>
+
+
 
                 </div>
                 <div className='channel-messages-container'>

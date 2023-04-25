@@ -1,6 +1,6 @@
 
 
-.channel-name-header-container {
+.channel-header-container {
     border-bottom: solid 1.5px white;
     padding-bottom: 10px;
     padding-top:10px;
@@ -9,12 +9,20 @@
     font-weight: bold;
     font-size: 20px;
     width: calc(98.8vw - 300px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .channel-name-header-hashtag {
     color: white;
     font-size: 20px;
-    font-weight: 5000;
+    font-weight: 900;
+    margin-right: 6px;
+}
+
+.channel-name-header {
+    margin-right: 60px;
 }
 
 .channel-welcome-area-header {
@@ -29,28 +37,33 @@
 }
 
 .channel-permissions-container {
-    padding-top: 25px;
-    /* padding-left: 20px; */
+    margin-right: 205px;
 }
 
 .channel-permission-buttons {
-    color: #4EACEE;
-    margin-left: 20px;
-    border: none;
+    color: white;
     background: none;
+    border: none;
     font-size: 16px;
-    padding: 8px;
+    padding: 0px 5px 0px 5px;
+    margin-right: 15px;
+    font-weight: 900;
+    transition: 1.5s;
 }
 
 .channel-permission-buttons:hover {
-    background-color: #414449;
-    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 1s;
+}
+
+.channel-delete {
+    outline: wheat;
 }
 
 .message-username {
     padding-top: 5px;
 }
-
 
 .channel-message {
     display: flex;
@@ -101,4 +114,5 @@
 .channel-messages-container {
     overflow: scroll;
     height: calc(100vh - 105px);
+    width: calc(100vw - 500px);
 }

@@ -1,14 +1,15 @@
 .server-page-nav {
     /* Fix height to fit to screen (scrollable */
     width: 200px;
-    background-color: #2F3136;
+    background-color: #940740;
     color: white;
     text-align: center;
     top: 0; right: 0; bottom: 0; left: 0;
+    border-right: 1.5px solid white;
 }
 
 .server-name-container {
-    border-bottom: solid 1.5px #202225;
+    border-bottom: solid 1.5px white;
     padding-bottom: 10px;
     padding-top:10px;
     font-weight: bold;
@@ -17,7 +18,7 @@
 
 .text-channels-header-container {
     padding-top: 10px;
-    color: #96989D;
+    color: white;
     font-size: 14px;
     display: flex;
     justify-content: space-around;
@@ -41,7 +42,7 @@
 }
 
 .server-channel-name-header {
-    color: #96989D;
+    color: white;
     border: none;
     background: none;
     font-size: 16px;
@@ -50,12 +51,21 @@
 }
 
 .create-channel-button {
-    color: #96989D;
+    color: white;
     border: none;
     background: none;
     font-size: 22px;
     font-weight: bold;
+    transition: 2s;
 }
+
+.create-channel-button:hover {
+    cursor: pointer;
+    transform: rotate(360deg);
+    transition: 1s;
+    font-size: 25px;
+}
+
 
 .add-user-to-server-button {
     color: #4EACEE;
