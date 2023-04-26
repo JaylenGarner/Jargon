@@ -74,15 +74,15 @@ const ServerPage = () => {
                 <br></br>
                     {(resServer.owner_id == user.id) &&
                     <div className='server-buttons-container'>
-                        <NavLink to={`/servers/${serverId}/invite`} exact={true} activeClassName='active' className= 'server-add-user-button'>
-                        <button className='add-user-to-server-button'>Add User</button>
+                        <NavLink to={`/servers/${serverId}/invite`} exact={true} >
+                        <button className='server-admin-button'>Add User</button>
                         </NavLink>
                 <br></br>
-                <NavLink to={`/servers/${serverId}/edit-server`} exact={true} activeClassName='active'>
-                    <button className='edit-user-to-server-button'>Edit Server</button>
+                <NavLink to={`/servers/${serverId}/edit-server`} exact={true} >
+                    <button className='server-admin-button'>Edit Server</button>
                 </NavLink>
                     <br></br>
-                    <button onClick={() => handleDelete(serverId)} className='delete-server-button'>Delete Server</button>
+                    <button onClick={() => handleDelete(serverId)} className='server-admin-button delete-button'>Delete Server</button>
                 </div>
                 }
             </nav>

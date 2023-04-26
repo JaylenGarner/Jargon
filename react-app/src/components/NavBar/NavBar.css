@@ -13,7 +13,7 @@
 
 .nav-server-logo-container .active {
     background-color: transparent;
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid white;
     border-radius: 2px;
     height: 1px;
 }
@@ -22,10 +22,10 @@
    visibility: hidden;
 }
 
-.discord-logo-container {
+.jargon-logo-container {
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 50px;
+    /* width: 50px; */
     /* padding-bottom: 8px; */
     border-bottom: solid 0.2px #ecedef;
 }
@@ -33,7 +33,17 @@
 .discord-logo {
     height: 50px;
     width: 50px;
-    border-radius: 15px;
+    border-radius: 4px;
+    transition: 1s;
+}
+
+.discord-logo:hover {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    border-radius: 4px;
+    opacity: .50;
+    transition: 1s;
 }
 
 .create-server-logo {
@@ -41,6 +51,14 @@
     width: 50px;
     border-radius:50px;
     margin-top: 10px;
+    transition: 1s;
+
+}
+
+.create-server-logo:hover {
+    opacity: .50;
+    transition: 1s;
+    cursor: pointer;
 }
 
 .nav-server-logo-container {
@@ -52,17 +70,28 @@
     width: 50px;
     border-radius:50px;
     margin-top: 5px;
+    transition: 1s;
+}
+
+.nav-server-logo:hover {
+    cursor: pointer;
+    opacity: .50;
+    transition: 0.5s;
 }
 
 .logout-button {
-    color: #4EACEE;
-    border: none;
+    color: white;
+    border: 1px solid white;
     background: none;
     font-size: 16px;
-    padding: 6px;
+    padding: 8px;
+    transition: 1s;
+    font-weight: bold;
 }
 
 .logout-button:hover {
-    background-color: #414449;
-    border-radius: 4px;
+    background-color: #c40854;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
 }
