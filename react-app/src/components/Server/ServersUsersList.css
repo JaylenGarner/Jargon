@@ -1,11 +1,12 @@
 .server-users-nav {
-    top: 0; right: 0; bottom: 60px;
+    top: 0; right: 0; bottom: 0px;
     position: absolute;
     width: 200px;
     border-left: 1.5px solid white;
     color: white;
     text-align: center;
     right: 0px;
+    z-index: 1;
 }
 
 .server-users-nav-content {

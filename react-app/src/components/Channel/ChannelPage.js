@@ -61,12 +61,14 @@ const ChannelPage = () => {
         return (
             <div className='channel-page-container'>
                 <div>
-                    <div className='channel-name-header-container'>
+                    <div className='channel-header-container'>
+                        <div>
                         <span className='channel-name-header-hashtag'>#   </span>
                         <span className='channel-name-header'>Direct Messages</span>
+                        </div>
                     </div>
                 </div>
-                <div className='channel-messages-container'>
+                <div className='channel-messages-container-dm'>
 
                 { channel.messages && channel.messages.map((message) => {
                     return (
@@ -85,7 +87,7 @@ const ChannelPage = () => {
                 })}
                 </div>
                 <div >
-                    <CreateMessage channelName={channel.name}/>
+                    <CreateMessage channelName={channel.name} type={'dm'}/>
                 </div>
             </div>
         )
@@ -112,7 +114,12 @@ const ChannelPage = () => {
 
 
                 </div>
-                <div className='channel-messages-container'>
+                <div className='channel-messages-container-channel'>
+
+                <div className='channel-welcome-area-container'>
+                <h2 className='channel-welcome-area-header'>Welcome to #{channel.name}!</h2>
+                <span className='channel-welcome-area-notification'>This is the start of the #{channel.name} channel.</span>
+                </div>
 
                 { channel.messages && channel.messages.map((message) => {
                     return (
@@ -131,7 +138,7 @@ const ChannelPage = () => {
                 })}
                 </div>
                 <div>
-                    <CreateMessage channelName={channel.name}/>
+                    <CreateMessage channelName={channel.name} type={'channel'}/>
                 </div>
             </div>
         )

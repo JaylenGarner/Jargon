@@ -9,7 +9,7 @@ import { loadServersThunk } from '../../../store/server';
 
 // TO DO
 // REDIRECT TO NEWLY CREATED CHANNEL
-const CreateMessage = ({channelName}) => {
+const CreateMessage = ({channelName, type}) => {
     const [errors, setErrors] = useState([]);
     const [body, setBody] = useState('');
     const user = useSelector(state => state.session.user);
@@ -50,7 +50,8 @@ const CreateMessage = ({channelName}) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div className='create-message-form-container'>
+        {}
+        <div className={`create-message-form-container-${type}`}>
           <label htmlFor='body'></label>
             <input
               className='create-message-input'
