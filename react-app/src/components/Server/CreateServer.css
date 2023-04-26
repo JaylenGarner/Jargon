@@ -1,9 +1,4 @@
 .create-form-container {
-    background-image: url('https://i.ibb.co/YpkQn0j/discord-heroes.png');
-    background-repeat: no-repeat;
-    background-position: left -5px bottom 50px;
-    background-size: 50%;
-    padding-left: 300px;
     position: absolute;
     text-align: center;
     top: 50%;
@@ -11,81 +6,80 @@
     transform: translate(-50%, -50%);
     border: 1px solid transparent;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #1a1a1d;
     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
-    width: 20em;
+    width: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .create-form-header {
-    font-size: 20px;
+    font-size: 26px;
     font-family: Montserrat;
     display: flex;
     justify-content: center;
-    padding-right: 50px;
-    color: black;
+    color: white;
 }
 
 .create-form-intro {
     font-size: 14px;
-    color: rgb(0, 0, 0);
+    font-weight: bold;
+    color: white;
     font-family: Montserrat;
     font-weight: light;
-    padding-right: 30px;
-    padding-bottom: 20px;
-    margin: -10px;
+    padding-bottom: 15px;
 }
 
-
-.create-form-server {
-    display: flex;
-    font-size: 10px;
-    color: rgb(0, 0, 0);
-    font-family: Montserrat;
-    font-weight: bold;
-}
 
 .create-form-name-input {
-    width: 80%;
+    width: 70%;
     display: flex;
-    justify-content: flex-end;
+    margin-left: 80px;
+    height: 24px;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-.create-form-image {
-    display: flex;
-    font-size: 10px;
-    color: rgb(0, 0, 0);
-    font-family: Montserrat;
-    font-weight: bold;
-}
 
 .create-form-image-input {
-    width: 80%;
+    width: 70%;
     display: flex;
-    justify-content: flex-end;
+    margin-left: 80px;
+    height: 24px;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .create-form-button {
-    background-color: rgb(151, 151, 151) ;
-    color: rgb(151, 151, 151);
-    display: flex;
+    margin-top: 20px;
     padding: 10px;
-    width: 85%;
-    padding-left: 90px;
-    padding-right: 90px;
-    border: 1px solid transparent;
-    border-radius: 5px;
+    width: 220px;
+    border-radius: 4px;
+    border: none;
+    font-size: 18px;
+    background: none;
+    border: 1px solid white;
     color: white;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: Montserrat;
-    margin: 15px;
+    transition: 1s;
+    margin-bottom: 30px;
 }
 
 .create-form-button:hover {
-    background-color: #44474e ;
+    background-color: #c40854 ;
+    transition: 1s;
+    border-radius: 12px;
+    font-size: 19px;
+    cursor: pointer;
+
 }
 
-.create-form-button-container {
-    margin-right: 24px;
-    margin-left: -15px;
+.invite-user-error {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.invite-error-container {
+    padding-bottom: 20px;
 }

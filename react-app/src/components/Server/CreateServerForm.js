@@ -33,6 +33,8 @@ const CreateServerForm = () => {
       setError(null)
     }
 
+    history.push('/')
+
   };
 
   useEffect(() => {
@@ -50,14 +52,10 @@ const CreateServerForm = () => {
   return (
     <form onSubmit={handleSubmit} className='create-form-container'>
       <div>
-      {(error !== null) && <h1 className='dm-user-error'>{error}</h1>}
-      </div>
-      <div>
       <h1 className='create-form-header'>Create a server</h1>
       <p className='create-form-intro'>Your server is where you and your friends hang out.
           Make yours and start talking.
       </p>
-        <p className='create-form-server'>SERVER NAME</p>
         <input
           className='create-form-name-input'
           name='name'
@@ -69,7 +67,6 @@ const CreateServerForm = () => {
         />
       </div>
       <div>
-        <p className='create-form-image'>SERVER IMAGE</p>
         <input
           className='create-form-image-input'
           name='image'
@@ -81,6 +78,10 @@ const CreateServerForm = () => {
         />
         <div className='create-form-button-container'>
         <button type='submit' className='create-form-button'>Create Server</button>
+        <br></br>
+        <div className='invite-error-container'>
+        {(error !== null) && <span className='invite-user-error'>{error}</span>}
+        </div>
         </div>
       </div>
     </form>
