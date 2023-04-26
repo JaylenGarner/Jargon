@@ -18,7 +18,6 @@ const EditChannelForm = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-    //   return dispatch(editChannelThunk(channelId, name)).then(history.push(`/`))
       return dispatch(editChannelThunk(channelId, name))
       .then(history.push(`/servers/${serverId}/channels/${channelId}`))
       .then(dispatch(loadServersThunk(user.id)))
@@ -37,7 +36,6 @@ const EditChannelForm = () => {
         </div>
         <div>
           <h1 className='edit-channel-header'>Edit Channel</h1>
-          <p className='edit-channel-name'>Channel Name</p>
           <input
             className='edit-channel-name-input'
             name='name'

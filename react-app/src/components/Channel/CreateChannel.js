@@ -19,19 +19,12 @@ const CreateChannelForm = () => {
     const dispatch = useDispatch();
     const {serverId, channelId} = useParams()
     const history = useHistory()
-    let resChannel;
-
-    const reloadServer = () => {
-      setTimeout(() => {
-        dispatch(loadServersThunk(user.id))
-      }, 1500)
-    }
 
     const handleSubmit = async (e) => {
       e.preventDefault();
       const data = await dispatch(createChannelThunk(serverId, name))
-      .then(reloadServer())
-      // history.push(`/servers/${serverId}/channels/${resChannel.id}`)
+      // .then(reloadServer())
+      history.push(`/servers/${serverId}/channels/${channel.id}`)
       return data
     };
 
@@ -52,10 +45,6 @@ const CreateChannelForm = () => {
         </div>
         <div>
           <h1 className='create-channel-header'>Create a channel</h1>
-          <p className='create-channel-intro'>
-            Send messages, images, GIFs, emoji, opinions, and puns
-          </p>
-          <p className='create-channel-name'>CHANNEL NAME</p>
           <input
             className='create-channel-name-input'
             name='name'
@@ -66,8 +55,8 @@ const CreateChannelForm = () => {
             required
           />
         </div>
-        <div className='create-channel-button-2-container'>
-          <button type='submit' className='create-channel-button-2'>Create Channel</button>
+        <div>
+          <button type='submit' className='channel-form-button'>Create Channel</button>
         </div>
       </form>
     );

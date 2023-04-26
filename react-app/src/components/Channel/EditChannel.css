@@ -1,9 +1,4 @@
 .edit-channel-form-container {
-    background-image: url('https://i.ibb.co/XD73Kfp/discord-character-4.png');
-    background-repeat: no-repeat;
-    background-position: left 60px bottom 20px;
-    background-size: 25%;
-    padding-left: 300px;
     position: absolute;
     text-align: center;
     top: 50%;
@@ -11,18 +6,20 @@
     transform: translate(-50%, -50%);
     border: 1px solid transparent;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #1a1a1d;
     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
-    width: 20em;
+    width: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .edit-channel-header {
-    font-size: 20px;
+    font-size: 26px;
     font-family: Montserrat;
     display: flex;
     justify-content: center;
-    padding-right: 50px;
-    color: black;
+    color: white;
 }
 
 .edit-channel-name {
@@ -34,29 +31,33 @@
 }
 
 .edit-channel-name-input {
-    width: 80%;
+    width: 70%;
     display: flex;
-    justify-content: flex-end;
+    margin-left: 80px;
+    height: 24px;
+    font-size: 18px;
+    margin-bottom: 5px;
 }
 
-.edit-channel-button-container {
-    margin-right: 24px;
-    margin-left: -15px;
-}
 
 .edit-channel-button {
-    background-color: rgb(151, 151, 151) ;
-        color: rgb(151, 151, 151);
-        display: flex;
-        padding: 10px;
-        width: 85%;
-        padding-left: 90px;
-        padding-right: 90px;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        color: white;
-        font-size: 15px;
-        cursor: pointer;
-        font-family: Montserrat;
-        margin: 15px;
+    margin-top: 20px;
+    padding: 10px;
+    width: 220px;
+    border-radius: 4px;
+    border: none;
+    font-size: 18px;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    transition: 1s;
+    margin-bottom: 30px;
+}
+
+.edit-channel-button:hover {
+    background-color: #c40854 ;
+    transition: 1s;
+    border-radius: 12px;
+    font-size: 19px;
+    cursor: pointer;
 }
