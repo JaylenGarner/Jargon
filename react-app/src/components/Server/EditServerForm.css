@@ -1,9 +1,4 @@
 .edit-server-form-container {
-    background-image: url('https://i.ibb.co/rwSS20W/discord-characters-2.png');
-    background-repeat: no-repeat;
-    background-position: left 10px bottom 20px;
-    background-size: 45%;
-    padding-left: 300px;
     position: absolute;
     text-align: center;
     top: 50%;
@@ -11,32 +6,29 @@
     transform: translate(-50%, -50%);
     border: 1px solid transparent;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #1a1a1d;
     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
-    width: 20em;
+    width: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .edit-form-header {
-    font-size: 20px;
+    font-size: 26px;
     font-family: Montserrat;
     display: flex;
     justify-content: center;
-    padding-right: 50px;
-    color: black;
-}
-
-.edit-form-server {
-    display: flex;
-    font-size: 10px;
-    color: rgb(0, 0, 0);
-    font-family: Montserrat;
-    font-weight: bold;
+    color: white;
 }
 
 .edit-form-name-input {
-    width: 80%;
+    width: 70%;
     display: flex;
-    justify-content: flex-end;
+    margin-left: 80px;
+    height: 24px;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .edit-form-image-server {
@@ -48,34 +40,35 @@
 }
 
 .edit-form-image-input {
-    width: 80%;
+    width: 70%;
     display: flex;
-    justify-content: flex-end;
+    margin-left: 80px;
+    height: 24px;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 
-.edit-form-button-container {
-    margin-right: 24px;
-    margin-left: -15px;
-}
+
 
 .edit-form-button:hover {
-    background-color: #44474e ;
+    background-color: #c40854 ;
+    transition: 1s;
+    border-radius: 12px;
+    font-size: 19px;
+    cursor: pointer;
 }
 
 .edit-form-button {
-        background-color: rgb(151, 151, 151) ;
-        color: rgb(151, 151, 151);
-        display: flex;
-        padding: 10px;
-        width: 85%;
-        padding-left: 90px;
-        padding-right: 90px;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        color: white;
-        font-size: 15px;
-        cursor: pointer;
-        font-family: Montserrat;
-        margin: 15px;
+    margin-top: 20px;
+    padding: 10px;
+    width: 220px;
+    border-radius: 4px;
+    border: none;
+    font-size: 18px;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    transition: 1s;
+    margin-bottom: 30px;
 }

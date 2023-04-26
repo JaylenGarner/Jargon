@@ -11,17 +11,18 @@ import './EditServerForm.css'
 // REDIRECT USER TO NEWLY CREATED SERVER , NEED TO GET SERVER ID POST CREATION
 
 const EditServerForm = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const {serverId} = useParams();
+  const user = useSelector(state => state.session.user);
+  const server = useSelector(state => state.servers[serverId]);
+
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
   const [image, SetImage] = useState('');
-  const user = useSelector(state => state.session.user);
-  const {serverId} = useParams();
-  const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleSubmit = async (e) => {
 
-    // const data = await dispatch(editServerThunk(serverId, name, image));
     return dispatch(editServerThunk(serverId, name, image))
     .then(history.push(`/servers/${serverId}`))
   };
@@ -34,6 +35,15 @@ const EditServerForm = () => {
     SetImage(e.target.value);
   };
 
+  if (server && name === '') {
+    setName(server.name)
+  }
+
+  if (server && image === '') {
+    SetImage(server.image)
+  }
+
+
   return (
     <form onSubmit={handleSubmit} className='edit-server-form-container'>
       <div>
@@ -43,24 +53,22 @@ const EditServerForm = () => {
       </div>
       <div>
         <h1 className='edit-form-header'>Edit Server</h1>
-        <p className='edit-form-server'>Server Name</p>
         <input
           className='edit-form-name-input'
           name='name'
           type='text'
-          placeholder={name}
+          placeholder='Enter your server name'
           value={name}
           onChange={updateName}
           required
         />
       </div>
       <div>
-        <p className='edit-form-image-server'>Server Image</p>
         <input
           className='edit-form-image-input'
           name='image'
           type='text'
-          placeholder={image}
+          placeholder='Enter a valid image url'
           value={image}
           onChange={updateImage}
           required

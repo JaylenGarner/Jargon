@@ -34,7 +34,6 @@ const CreateServerForm = () => {
     }
 
     history.push('/')
-
   };
 
   useEffect(() => {
