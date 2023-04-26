@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   const forDemo = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login("demo-user@aa.io", "password"))
+    const data = await dispatch(login("demo@aa.io", "password"))
     if (data) {
       setErrors(data)
     }
@@ -36,7 +36,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/direct-messages'/>;
   }
 
   return (
@@ -48,7 +48,7 @@ const LoginForm = () => {
         ))}
       </div>
         <h1 className='login-header'>WELCOME BACK!</h1>
-        <p className='email-header'>EMAIL</p>
+
         <label htmlFor='email'></label>
         <input
           className='email-input'
@@ -59,7 +59,7 @@ const LoginForm = () => {
           onChange={updateEmail}
           required
         />
-        <p className='password-header'>PASSWORD</p>
+
         <label htmlFor='password'></label>
         <input
           className='password-input'
@@ -70,12 +70,11 @@ const LoginForm = () => {
           onChange={updatePassword}
           required
         />
-        <p className='forgot-password'>Forgot your password?</p>
       <div>
         <button type='submit' className='login-button'>Login</button>
       </div>
       <div>
-        <button type='submit' className='demo-button' onClick={forDemo}>Demo User</button>
+        <button type='submit' className='login-button' onClick={forDemo}>Demo User</button>
       </div>
       <Link to='/sign-up' className='login-hyperlink'>
         <p className='register-link'>Need an account? Register</p>

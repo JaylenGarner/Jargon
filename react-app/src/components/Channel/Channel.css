@@ -1,4 +1,7 @@
-
+.channel-page-container {
+    position: fixed;
+    left: 300px;
+}
 
 .channel-header-container {
     border-bottom: solid 1.5px white;

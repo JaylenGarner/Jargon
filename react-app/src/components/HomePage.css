@@ -1,21 +1,21 @@
-.header-image-home {
-    width: 95%;
-    padding-top: 50px;
-    padding-bottom: 20px;
+
+.home-container {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
 }
 
-.header-image-home2 {
-    width: 100%;
+
+.home-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.nav-bar-homepage {
-    position: absolute;
-    right: 0;
-    /* background-color: grey; */
-    padding: 5px;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    margin-right: 50px;
+.jargon-logo {
+    width: 140px;
+    height: 96px;
+    margin-left: 20px;
 }
 
 .nav-bar-login {
@@ -45,62 +45,9 @@
     padding: 30px;
 }
 
-.home-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 20px;
-}
 
-
-.home-login-button {
-    width: 200px;
-    height: 80px;
-    border-radius: 100px; /* half of the width and height */
-    background-color: #7289da; /* discord blue color */
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    box-shadow: 3px 3px 3px #b3b3b3;
-
-}
-
-.home-signup-button{
-    width: 200px;
-    height: 80px;
-    border-radius: 100px; /* half of the width and height */
-    background-color: #5a5a5a; /* discord blue color */
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    margin-left: 50px;
-    box-shadow: 2px 2px 2px #888888;
-}
-
-.disbored-home-header {
+.home-header {
     font-size: 120px;
     text-align: center;
     padding: 0px;
-}
-
-.certified-coder-boys {
-    text-align: center;
-    font-size: 60px;
-    text-decoration: none;
-    color: white;
-}
-
-.github-logo-container {
-text-align: center;
-padding-bottom: 20px;
-}
-
-.github-logo {
-    height: 70px;
-    width: 70px;
-    border-radius: 20px;
 }

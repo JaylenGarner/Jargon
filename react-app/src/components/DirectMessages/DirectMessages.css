@@ -1,5 +1,5 @@
 .dm-page-nav {
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0; right: 0; bottom: 0; left: 100px;
     width: 200px;
     background-color: #940740;
     color: white;
@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     border-right: 1.5px solid white;
+    position: fixed;
 }
 
 .direct-message-nav-container {

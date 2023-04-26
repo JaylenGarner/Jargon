@@ -19,11 +19,7 @@
 }
 
 .hide-nav-bar {
-   background-color: #1a1a1d;
-   height: 1000px;
-   width: 75px;
-   color: white;
-   padding-left: 12px;
+   visibility: hidden;
 }
 
 .discord-logo-container {
