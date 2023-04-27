@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editChannelThunk } from '../../store/channel';
 import { useHistory } from 'react-router-dom';
@@ -10,11 +10,13 @@ import './EditChannel.css'
 
 const EditChannelForm = () => {
     const [errors, setErrors] = useState([]);
-    const [name, setName] = useState('');
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const {serverId, channelId} = useParams()
     const history = useHistory()
+
+    const channel = useSelector((state) => state.channels[channelId])
+    const [name, setName] = useState('');
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -26,6 +28,11 @@ const EditChannelForm = () => {
     const updateName = (e) => {
       setName(e.target.value);
     };
+
+    useEffect(() => {
+      if (channel) setName(channel.name)
+    }, [])
+
 
     return (
       <form onSubmit={handleSubmit} className="edit-channel-form-container">

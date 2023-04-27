@@ -19,6 +19,8 @@ import DirectMessages from './components/DirectMessages/DirectMessages';
 import DirectMessageChat from './components/DirectMessages/DirectMessageChat';
 import MessageUserForm from './components/DirectMessages/MessageUserForm';
 import ServerUsersList from './components/Server/ServerUsersList';
+import ServerPageMessage from './components/ServerPageMessage';
+import DmPageMessage from './components/DmPageMessage';
 import HomePage from './components/HomePage';
 import FourOFour from './components/fourOFour';
 
@@ -57,6 +59,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/servers/:serverId' exact={true} >
           <ServerPage />
+          <ServerPageMessage />
           <ServerUsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/create-server' exact={true} >
@@ -89,6 +92,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/direct-messages' exact={true} >
           <DirectMessages />
+          <DmPageMessage />
         </ProtectedRoute>
         <ProtectedRoute path='/direct-messages/invite' exact={true} >
           <DirectMessages />

@@ -1,0 +1,24 @@
+.server-page-message-container {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    /* background-color: #1a1a1d; */
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.25);
+    width: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.server-page-image {
+    width: 200px;
+    height: 200px;
+    border-radius:100px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}

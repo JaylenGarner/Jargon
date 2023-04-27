@@ -111,13 +111,17 @@ export default function reducer(state = defaultState, action) {
 
     switch (action.type) {
         case LOAD_CHANNEL:
-            return {...action.payload}
+            newState[action.payload.id] = action.payload
+            return newState
         case CREATE_CHANNEL:
-            return {...action.payload}
+            newState[action.payload.id] = action.payload
+            return newState
         case EDIT_CHANNEL:
-            return {...action.payload}
+            newState[action.payload.id] = action.payload
+            return newState;
         case DELETE_CHANNEL:
             delete newState[action.channelId]
+            return newState
         case CLEAR_CHANNEL:
             return defaultState
         default:

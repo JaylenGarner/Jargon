@@ -16,45 +16,59 @@ const ChannelPage = () => {
     const dispatch = useDispatch();
     const { serverId, channelId } = useParams()
     const user = useSelector((state) => state.session.user)
-    const channel = useSelector((state) => state.channel)
+    const channel = useSelector((state) => state.channels[channelId])
     const history = useHistory()
     const servers = Object.values(useSelector((state) => state.servers))
     let resServer;
 
-    const reloadServer = () => {
-        setTimeout(() => {
-          dispatch(loadServersThunk(user.id))
-        }, 1500)
-      }
+    const firstChannel = () => {
+        const first = resServer.channels[0]
 
+        if (first.id !== channelId) {
+            return first.id
+        }
+
+        return resServer.channels[1].id
+    }
+
+    const reloadServer = () => {
+          dispatch(loadServersThunk(user.id))
+      }
 
         servers.forEach((server) => {
             if (server.id == serverId) resServer = server
         });
 
         const handleDelete = () => {
-            return dispatch(deleteChannelThunk(channelId))
-            .then(dispatch(loadServersThunk(user.id)))
-           .then(history.push(`/servers/${serverId}`))
-           .then(() => {
+            dispatch(deleteChannelThunk(channelId))
+            history.push(`/servers/${serverId}`)
+
+            const first = firstChannel()
+
+                if (resServer.channels.length > 1)  {
+                    console.log('HIT 1')
+                    history.push(`/servers/${serverId}/channels/${resServer.channels[1].id}`)
+                    return reloadServer()
+                }
+
                 if (resServer.channels.length <= 1) {
-                    dispatch(deleteServerThunk(resServer.id))
+                    console.log('HIT 2')
+                   return  dispatch(deleteServerThunk(resServer.id))
                     .then(history.push('/'))
                 } else {
-                    history.push(`/servers/${serverId}`)
-                    reloadServer()
+
+                    console.log(first, 'FIRST')
+                    history.push(`/servers/${serverId}/channels/${first}`)
+                    return reloadServer()
                 }
-           })
        }
 
     useEffect(() => {
-        if (channel) {
         dispatch(loadChannelThunk(channelId))
-        }
     }, [dispatch, channelId, resServer]);
 
     if (!channel) {
-        return null
+        return <></>
     } else if (!resServer) {
         return null
     } else if (!resServer.public) {

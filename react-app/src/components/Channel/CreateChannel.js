@@ -15,21 +15,21 @@ const CreateChannelForm = () => {
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState('');
     const user = useSelector(state => state.session.user);
-    const channel = useSelector(state => state.channel);
+    const channels = useSelector(state => state.channels);
     const dispatch = useDispatch();
     const {serverId, channelId} = useParams()
     const history = useHistory()
 
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       const data = await dispatch(createChannelThunk(serverId, name))
-      // .then(reloadServer())
-      history.push(`/servers/${serverId}/channels/${channel.id}`)
+      history.push(`/servers/${serverId}`)
+      dispatch(loadServersThunk(user.id))
       return data
     };
 
     useEffect(() => {
-      dispatch(loadServersThunk(user.id))
     }, [dispatch, channelId])
 
     const updateName = (e) => {

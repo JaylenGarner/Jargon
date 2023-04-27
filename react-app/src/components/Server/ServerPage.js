@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { deleteServerThunk } from '../../store/server';
+import { deleteServerThunk, loadServersThunk } from '../../store/server';
 import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -9,21 +9,14 @@ import ChannelPage from '../Channel/ChannelPage';
 import InviteUser from './InviteUser';
 import './Server.css';
 
-// TO DO
-// NEEDS TO REDIRECT HOME UPON DELETING A SERVER
-// WHEN OPENING A SERVER, AUTOMATICALLY OPEN GENERAL CHANNEL
-
 const ServerPage = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams()
     const user = useSelector((state) => state.session.user)
     const servers = Object.values(useSelector((state) => state.servers))
-    console.log(servers)
     const history = useHistory()
     let resServer;
     let firstChannel;
-
-    if (resServer) firstChannel = resServer.channels[0]
 
     const handleDelete = (serverId) => {
         dispatch(deleteServerThunk(serverId))
@@ -31,8 +24,8 @@ const ServerPage = () => {
     }
 
     useEffect(() => {
-
-    }, [dispatch, resServer])
+        dispatch(loadServersThunk(serverId))
+    }, [dispatch])
 
         servers.forEach((server) => {
             if (server.id == serverId) resServer = server
