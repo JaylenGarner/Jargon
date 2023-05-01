@@ -52,9 +52,7 @@ const CreateServerForm = () => {
     <form onSubmit={handleSubmit} className='create-form-container'>
       <div>
       <h1 className='create-form-header'>Create a server</h1>
-      <p className='create-form-intro'>Your server is where you and your friends hang out.
-          Make yours and start talking.
-      </p>
+
         <input
           className='create-form-name-input'
           name='name'
