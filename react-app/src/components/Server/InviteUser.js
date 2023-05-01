@@ -68,12 +68,10 @@ const InviteUser = () => {
 
     return (
       <form onSubmit={handleSubmit} className="invite-user-form-container">
-        {(error !== null) && <h1 className='invite-to-server-error'>{error}</h1>}
+        {(error !== null) && <span className='invite-user-error'>{error}</span>}
         <div>
-          <p className='invite-user-header' >Invite user</p>
-          <p className='invite-user-intro'>
-            Invite a user to the server!
-          </p>
+          <span className='invite-user-header' >Invite user</span>
+          <span className='invite-user-message'>Utilize user 'jay' for test purposes</span>
           <input
             className='invite-user-input'
             name='invite'
