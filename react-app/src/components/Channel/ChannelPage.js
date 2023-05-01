@@ -70,19 +70,23 @@ const ChannelPage = () => {
                 <div className='channel-messages-container-dm'>
 
                 { messages && messages.map((message) => {
-                    return (
-                        <div className='channel-message'>
-                            <div className='channel-message-user-image-container'>
-                            <img src={message.user.image} className='channel-message-user-image'></img>
-                            </div>
 
-                            <br></br>
-                            <div className='message-content-container'>
-                            <h3 className='message-username'>{message.user.username}</h3>
-                            <span className='message-body'>{message.body}</span>
+                    if (message.channel_id == channelId) {
+                        return (
+                            <div className='channel-message'>
+                                <div className='channel-message-user-image-container'>
+                                <img src={message.user.image} className='channel-message-user-image'></img>
+                                </div>
+
+                                <br></br>
+                                <div className='message-content-container'>
+                                <h3 className='message-username'>{message.user.username}</h3>
+                                <span className='message-body'>{message.body}</span>
+                                </div>
                             </div>
-                        </div>
-                    )
+                        )
+                    }
+
                 })}
                 </div>
                 <div >
