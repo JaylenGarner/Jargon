@@ -71,7 +71,7 @@ const InviteUser = () => {
         {(error !== null) && <span className='invite-user-error'>{error}</span>}
         <div>
           <span className='invite-user-header' >Invite user</span>
-          <span className='invite-user-message'>Utilize user 'jay' for test purposes</span>
+          <span className='invite-user-message'>Utilize user 'jay' for demo purposes</span>
           <input
             className='invite-user-input'
             name='invite'

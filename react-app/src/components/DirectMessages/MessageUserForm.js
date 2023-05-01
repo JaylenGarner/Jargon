@@ -46,10 +46,8 @@ const MessageUserForm = () => {
       if (convoExists === true) {
         setError("Conversation already exists")
         setUsername('')
-        console.log("TRUE")
       } else {
         const data = await dispatch(createDirectMessageThunk(username));
-        console.log('FALSE')
         let usernames = []
           users.forEach((el) => {
               usernames.push(el.username)
@@ -82,16 +80,13 @@ const MessageUserForm = () => {
       <form onSubmit={handleSubmit} className="dm-user-form-container">
         <div>
 
-        {/* {errors && errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))} */}
-        {(error !== null) && <h1 className='dm-user-error'>{error}</h1>}
+        {(error !== null) && <span className='dm-user-error'>{error}</span>}
         </div>
         <div>
-          <p className='dm-user-header'>Direct message a user</p>
-          <p className='dm-user-intro'>
-            Start a conversation!
-          </p>
+          <span className='dm-user-header'>Direct message a user</span>
+          <span className='dm-user-intro'>
+          Utilize user 'jay' for demo purposes
+          </span>
           <input
             className='dm-user-input'
             name='invite'
