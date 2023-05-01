@@ -75,3 +75,19 @@ def delete_channel(id):
     db.session.commit()
 
     return 'The channel has been deleted'
+
+# Get all messages
+@channel_routes.route('/<int:id>/messages')
+@login_required
+def get_messages(id):
+
+    res = {}
+
+    messages = Message.query.all()
+
+    for message in messages:
+        if (message.channel_id == id):
+            res[f'{message.id}'] = message.to_dict()
+
+
+    return res

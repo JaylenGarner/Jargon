@@ -182,7 +182,7 @@ export default function reducer(state = defaultState, action) {
             newState[action.payload.id] = action.payload
             return newState;
         case ADD_USER:
-            newState[action.payload] = action.payload
+            newState[action.payload.id] = action.payload
             return newState;
         case DELETE_SERVER:
             delete newState[action.serverId]

@@ -1,9 +1,17 @@
 const defaultState = {}
 
+const LOAD_MESSAGES = 'message/LOAD_MESSAGES'
 const CREATE_MESSAGE = 'message/CREATE_MESSAGE';
 // const DELETE_MESSAGE = 'message/DELETE_MESSAGE';
 
-// POST
+
+
+const loadMessages = payload => {
+    return {
+        type: LOAD_MESSAGES,
+        payload
+    }
+}
 
 const createMessage = payload => {
     return {
@@ -11,6 +19,17 @@ const createMessage = payload => {
         payload
     }
 }
+
+export const loadMessagesThunk = (channelId) => async (dispatch) => {
+
+    const res = await fetch(`/api/channels/${channelId}/messages`)
+
+    if (res.ok) {
+        const newData = await res.json()
+        dispatch(loadMessages(newData))
+    }
+}
+
 
 export const createMessageThunk = (channelId, body) => async (dispatch) => {
 
@@ -31,25 +50,16 @@ export const createMessageThunk = (channelId, body) => async (dispatch) => {
     }
 }
 
-// DELETE
-
-// const deleteMessage = (messageId) => {
-//     return {
-//         type: DELETE_SERVER,
-//         messageId
-//     }
-// }
-
-// export const deleteMessageThunk = (messageId) => async (dispatch) => {
-
-// }
 
 export default function reducer(state = defaultState, action) {
     const newState = {...state}
 
     switch (action.type) {
+        case LOAD_MESSAGES:
+            return {...newState, ...action.payload}
         case CREATE_MESSAGE:
-            return {...action.payload}
+            newState[action.payload.id] = action.payload
+            return newState;
         default:
             return state;
     }

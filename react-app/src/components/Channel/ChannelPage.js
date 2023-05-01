@@ -10,6 +10,7 @@ import { loadServersThunk } from '../../store/server';
 import CreateMessage from './CreateMessage/CreateMessage';
 import { deleteServerThunk } from '../../store/server';
 import './Channel.css';
+import { loadMessagesThunk } from '../../store/message';
 
 
 const ChannelPage = () => {
@@ -19,6 +20,7 @@ const ChannelPage = () => {
     const channel = useSelector((state) => state.channels[channelId])
     const history = useHistory()
     const servers = Object.values(useSelector((state) => state.servers))
+    const messages = Object.values(useSelector((state) => state.messages))
     let resServer;
 
     const firstChannel = () => {
@@ -30,6 +32,10 @@ const ChannelPage = () => {
 
         return resServer.channels[1].id
     }
+
+    useEffect(() => {
+        dispatch(loadMessagesThunk(channelId))
+    }, [])
 
     const reloadServer = () => {
           dispatch(loadServersThunk(user.id))
@@ -84,7 +90,7 @@ const ChannelPage = () => {
                 </div>
                 <div className='channel-messages-container-dm'>
 
-                { channel.messages && channel.messages.map((message) => {
+                { messages && messages.map((message) => {
                     return (
                         <div className='channel-message'>
                             <div className='channel-message-user-image-container'>

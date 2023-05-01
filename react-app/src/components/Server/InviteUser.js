@@ -19,9 +19,7 @@ const InviteUser = () => {
     let serverMembers = []
 
     const reloadServer = () => {
-      setTimeout(() => {
         dispatch(loadServersThunk(user.id))
-      }, 1500)
     }
 
     servers.forEach((server) => {
