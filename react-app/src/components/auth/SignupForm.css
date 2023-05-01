@@ -15,11 +15,15 @@
     background-color: #1a1a1d;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
     width: 500px;
+    padding-top: 10px;
 }
 
 .signup-header {
     font-size: 24px;
     text-align: center;
+    font-weight: bold;
+    padding-bottom: 8px;
+    padding-top: 8px;
 }
 
 .signup-hyperlink {
@@ -79,5 +83,13 @@
 .account-owner:hover {
     color: #c40854;
     transition: 1s;
+    text-align: center;
+}
+
+.signup-error {
+    font-size: 24px;
+    padding: 8px;
+    color: #c40854;
+    font-weight: bold;
     text-align: center;
 }

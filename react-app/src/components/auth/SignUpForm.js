@@ -18,7 +18,13 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+
+    if (!(password === repeatPassword)) {
+      setErrors(['Your passwords must match'])
+    } else if (!email.includes('@')) {
+      setErrors(['Please enter a valid email address'])
+    } else {
+      setErrors([]); // clear any previous errors
       const data = await dispatch(signUp(username, email, password, image));
       if (data) {
         setErrors(data)
@@ -50,16 +56,17 @@ const SignUpForm = () => {
     return <Redirect to='/' />;
   }
 
+
   return (
     <div className='signup-container'>
     <form onSubmit={onSignUp} className="signup-form">
+    {errors.length > 0 &&
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+         {errors.map((error) => (
+          <div className='signup-error'>{error}</div>
         ))}
-      </div>
-      <div>
-        <h1 className='signup-header'>Create an account</h1>
+      </div>}
+        <span className='signup-header'>Create an account</span>
         <input
           className='signup-input'
           type='text'
@@ -69,7 +76,6 @@ const SignUpForm = () => {
           placeholder='Username'
           required
         ></input>
-      </div>
       <div>
         <input
           className='signup-input'
