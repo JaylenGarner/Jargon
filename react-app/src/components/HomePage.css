@@ -5,17 +5,21 @@
     height: 100vh;
 }
 
+.home-header {
+    margin: 0px;
+}
 
 .home-header-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .jargon-logo {
     width: 140px;
     height: 96px;
-    margin-left: 20px;
+    /* margin-left: 20px; */
 }
 
 .nav-bar-login {
@@ -50,4 +54,24 @@
     font-size: 120px;
     text-align: center;
     padding: 0px;
+    margin-right: 10px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+}
+
+.social-logo {
+    width: 60px;
+    padding: 15px 5px 0px 5px;
+    height: 60px;
+    transition: 1s;
+}
+
+.social-logo:hover {
+    transition: 1s;
+    height: 70px;
+    width: 70px;
+    opacity: 50%;
 }
