@@ -1,6 +1,7 @@
 const defaultState = {}
 
 const LOAD_CHANNEL = 'channels/LOAD_CHANNEL';
+const LOAD_CHANNELS = 'channels/LOAD_CHANNELS'
 const CREATE_CHANNEL = 'channels/CREATE_CHANNEL';
 const EDIT_CHANNEL = 'channels/EDIT_CHANNEL';
 const CLEAR_CHANNEL = 'channels/CLEAR_CHANNEL'
@@ -20,6 +21,22 @@ export const loadChannelThunk = (channelId) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(loadChannel(data))
+      }
+}
+
+const loadChannels = payload => {
+    return {
+        type: LOAD_CHANNELS,
+        payload
+    }
+}
+
+export const loadChannelsThunk = (serverId) => async (dispatch) => {
+    const res = await fetch(`/api/servers/${serverId}/channels`)
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(loadChannels(data))
       }
 }
 
@@ -113,6 +130,8 @@ export default function reducer(state = defaultState, action) {
         case LOAD_CHANNEL:
             newState[action.payload.id] = action.payload
             return newState
+        case LOAD_CHANNELS:
+            return {...newState, ...action.payload};
         case CREATE_CHANNEL:
             newState[action.payload.id] = action.payload
             return newState

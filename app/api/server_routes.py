@@ -157,3 +157,18 @@ def invite_user(id):
         return {"msg": "User has been added"}
     else:
         return {"msg": "User is already a member of the server"}
+
+
+# Get Channels
+@server_routes.route('/<int:id>/channels')
+@login_required
+def get_channels(id):
+    res = {}
+
+    channels = Channel.query.all()
+
+    for channel in channels:
+        if channel.server_id == id:
+            res[f'{channel.id}'] = channel.to_dict()
+
+    return res

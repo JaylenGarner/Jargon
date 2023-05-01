@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { loadChannelThunk } from '../../store/channel';
+import { loadChannelThunk, loadChannelsThunk } from '../../store/channel';
 import { useEffect } from 'react';
 import { deleteChannelThunk } from '../../store/channel';
 import { loadServersThunk } from '../../store/server';

@@ -8,11 +8,13 @@ import { useEffect } from 'react';
 import ChannelPage from '../Channel/ChannelPage';
 import InviteUser from './InviteUser';
 import './Server.css';
+import { loadChannelsThunk } from '../../store/channel';
 
 const ServerPage = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams()
     const user = useSelector((state) => state.session.user)
+    const channels = Object.values(useSelector((state) => state.channels))
     const servers = Object.values(useSelector((state) => state.servers))
     const history = useHistory()
     let resServer;
@@ -25,13 +27,14 @@ const ServerPage = () => {
 
     useEffect(() => {
         dispatch(loadServersThunk(serverId))
+        dispatch(loadChannelsThunk(serverId))
     }, [dispatch])
 
         servers.forEach((server) => {
             if (server.id == serverId) resServer = server
         });
 
-    if (!resServer) {
+    if (!resServer || !channels) {
         return null
     } else {
         return (
@@ -48,19 +51,22 @@ const ServerPage = () => {
                         </NavLink>}
 
                     </div>
-                 {resServer.channels.map((channel) => {
+                 {channels.map((channel) => {
                         if (!channel) {
                             return null
                         } else {
-                            return (
-                                <div key={channel.id} >
-                                    <NavLink to={`/servers/${serverId}/channels/${channel.id}`} exact={true} activeClassName='active'>
-                                        <div className='server-channel-name-header-container'>
-                                        <button className='server-channel-name-header'># {channel.name}</button>
-                                        </div>
-                                    </NavLink>
-                                </div>
-                            )
+
+                            if (channel.server_id == serverId) {
+                                return (
+                                    <div key={channel.id} >
+                                        <NavLink to={`/servers/${serverId}/channels/${channel.id}`} exact={true} activeClassName='active'>
+                                            <div className='server-channel-name-header-container'>
+                                            <button className='server-channel-name-header'># {channel.name}</button>
+                                            </div>
+                                        </NavLink>
+                                    </div>
+                                )
+                            }
                         }
                     })}
                 </div>

@@ -43,5 +43,4 @@ def user_servers(user_id):
     for server in res_servers:
         res[f'{server.id}'] = server.to_dict()
 
-    # return {'servers': [server.to_dict() for server in res_servers]}
     return res
