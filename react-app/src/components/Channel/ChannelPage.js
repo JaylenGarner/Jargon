@@ -23,15 +23,6 @@ const ChannelPage = () => {
     const messages = Object.values(useSelector((state) => state.messages))
     let resServer;
 
-    const firstChannel = () => {
-        const first = resServer.channels[0]
-
-        if (first.id !== channelId) {
-            return first.id
-        }
-
-        return resServer.channels[1].id
-    }
 
     useEffect(() => {
         dispatch(loadMessagesThunk(channelId))
@@ -49,22 +40,10 @@ const ChannelPage = () => {
             dispatch(deleteChannelThunk(channelId))
             history.push(`/servers/${serverId}`)
 
-            const first = firstChannel()
-
-                if (resServer.channels.length > 1)  {
-                    console.log('HIT 1')
-                    history.push(`/servers/${serverId}/channels/${resServer.channels[1].id}`)
-                    return reloadServer()
-                }
-
                 if (resServer.channels.length <= 1) {
-                    console.log('HIT 2')
                    return  dispatch(deleteServerThunk(resServer.id))
                     .then(history.push('/'))
                 } else {
-
-                    console.log(first, 'FIRST')
-                    history.push(`/servers/${serverId}/channels/${first}`)
                     return reloadServer()
                 }
        }
