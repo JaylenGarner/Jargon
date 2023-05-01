@@ -44,7 +44,7 @@ const LoginForm = () => {
     <form onSubmit={onLogin} className="form-container">
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div key={ind} className='login-error'>{error}</div>
         ))}
       </div>
         <h1 className='login-header'>WELCOME BACK!</h1>
