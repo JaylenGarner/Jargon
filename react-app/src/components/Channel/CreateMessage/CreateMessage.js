@@ -22,13 +22,11 @@ const CreateMessage = ({channelName, type}) => {
     }
 
     const handleSubmit = async (e) => {
-      if (user) {
       e.preventDefault()
       const data = await dispatch(createMessageThunk(channelId, body))
-      .then(reloadChannel())
-      setBody('')
-      return data
-      }
+      .then(setBody(''))
+
+      reloadChannel()
     };
 
     const updateBody = (e) => {
@@ -36,7 +34,8 @@ const CreateMessage = ({channelName, type}) => {
     };
 
     useEffect(() => {
-      // dispatch(loadChannelThunk(channelId))
+      dispatch(loadChannelThunk(channelId))
+      reloadChannel()
     }, [dispatch, channelId])
 
     return (
@@ -60,9 +59,7 @@ const CreateMessage = ({channelName, type}) => {
               required
             />
         </div>
-        <div>
-          {/* <button type='submit' onSubmit={handleSubmit} className='create-message-button'>Send</button> */}
-        </div>
+
       </form>
       </div>
     );
