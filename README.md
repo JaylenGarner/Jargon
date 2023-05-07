@@ -2,7 +2,8 @@
 
 By _[Jaylen Garner](https://github.com/JaylenGarner)_
 
-SurReel is a dynamic platform for visual storytelling. It lets you explore captivating content and connect with like-minded individuals through an immersive home feed and interactive live chat features. Join SurReel today and start sharing your unique perspective with the world!
+Jargon is a communication platform that connects users with similar interests. By joining or creating servers, users can engage in conversations across multiple channels with like-minded individuals. Join now to get in on the Jargon.
+
 
 ## Index
 
@@ -27,66 +28,32 @@ SurReel is a dynamic platform for visual storytelling. It lets you explore capti
 ### Login/Signup
 Jargon is a Discord clone that immediately directs users to the login page upon accessing the site. From there, users can choose to sign up or sign in, with the added option to sign in as a "Demo" user. Any attempt to access site pages without a login will redirect users to the login page.
 
-![image](https://user-images.githubusercontent.com/93837049/232918402-9f97503c-071f-4052-9285-04db031a876a.png)
+<img width="1406" alt="Screenshot 2023-05-07 at 11 50 43 AM" src="https://user-images.githubusercontent.com/93837049/236688236-800d8751-391b-45d7-8cc4-5d426388ac4b.png">
 
+### Direct Messages
+When logging into the site, the user is greeted with the direct messages area, which displays conversations that they have with other users. The user is also provided with the option to choose a user to start a conversation with.
 
-### Feed
-When logging into the site, the user is greeted with their feed, which displays posts from the users they follow. If the user is not following anyone, they will be presented with the following message "There are no posts in your feed, get started by following other users" and a button that navigates them to a page that displays all of the application's users.
+<img width="1184" alt="Screenshot 2023-05-07 at 11 52 25 AM" src="https://user-images.githubusercontent.com/93837049/236688308-63bcf665-eb58-4fc2-a037-51de394b6592.png">
 
-<img width="1129" alt="Screenshot 2023-04-18 at 6 11 16 PM" src="https://user-images.githubusercontent.com/93837049/232918554-ba733613-3355-4fd2-a619-94ff218bf7e6.png">
+The conversation page enables users to view all messages exchanged within a particular conversation, as well as compose and send new messages.
 
-Users on SurReel can like and unlike posts on their feed by simply clicking on the heart icon located beneath a post's image. If a user selects 'Likes' under a post's image, a modal will appear overlaying the page, listing the relevant users.
+<img width="1406" alt="Screenshot 2023-05-07 at 12 08 21 PM" src="https://user-images.githubusercontent.com/93837049/236689089-b3c66c37-56c6-4c14-8731-c2301c52bdcb.png">
 
-In addition, users can also leave comments on posts and view a post's page by selecting its 'view all comments' button.
 
 ### Navigation Bar
 
-SurReel's navbar features several links, including the user's home feed, a form to create a post, a view of all direct messaging chats, and a list of the application's current users. The option to log out is also present in the navbar.
+Jargon's navigation bar presents images of servers that the user is a member of. By selecting a specific server, the user is redirected to that server's page, where they can access all relevant information and functionalities. Additionally, the navbar provides options to create a new server or log out of the current session. To navigate back to the direct messages page, users can select the Jargon logo at the top of the navbar. 
 
-To navigate to their own profile, users can simply select their profile picture.
+### Server Page
 
-### Profile
+Upon selecting a server on Jargon, the user is directed to a new page that displays all the channels within that server. By default, the user is directed to the server's "general" channel, but they can navigate to other channels by selecting their name on the sidebar. The page also features a list of all the members within the server.
 
-Clicking on a user's username or profile picture on most areas of SurReel will redirect you to their profile. On their profile, you can view all of the user's posts, and above their posts, you will see their total number of posts, followers, and following. Additionally, a follow button is present, and its functionality will change depending on the current user's relationship with the user:
+For users who own the server, additional options are available in the sidebar. These include the ability to add new members, create new channels, edit the server settings, and delete the server entirely.
 
-- If neither user follows each other: The button will display 'Follow'
-- If the user is following the current user, but the current user is not following the user: The button will display 'Follow back'
-- If the current user follows the user: The button will display 'Unfollow'
+<img width="1401" alt="Screenshot 2023-05-07 at 12 06 51 PM" src="https://user-images.githubusercontent.com/93837049/236689033-2c33f69d-8f08-47b9-bda8-d8ca66a498eb.png">
 
-<img width="1275" alt="Screenshot 2023-04-18 at 6 12 35 PM" src="https://user-images.githubusercontent.com/93837049/232918775-33e55cf7-6dd8-44fc-8f63-8f4184bb6cca.png">
+### Channel Page
 
-If you select either 'followers' or 'following', a modal will appear overlaying the page, listing the relevant users.
+On the channel page, users can view all messages that have been sent within that particular channel. Additionally, users can draft and send messages to the channel.
 
-Lastly, selecting any displayed post will redirect you to the post's page. 
-
-### Post Page
-
-When selecting a post, SurReel will redirect you to a new page displaying the image at a much larger size, along with its caption and comments. Here, you can like, unlike, comment on the post, and view all of its likes.
-
-If a user wants to edit or delete their comment, they can select the '...' button located next to the comment.
-
-In addition, the owner of the post can edit or delete it by selecting the corresponding buttons labeled as such.
-
-<img width="1158" alt="Screenshot 2023-04-18 at 6 14 14 PM" src="https://user-images.githubusercontent.com/93837049/232919194-4bfc4459-0be1-430a-aa5b-7ac9cde976a9.png">
-
-### Create a Post
-
-Selecting 'Create a Post' in the navbar will redirect the user to a form where they can create a new post. The form allows the user to select an image file from their system and set a caption. As soon as an image is selected, a preview of the post will be displayed beneath the form.
-
-<img width="425" alt="Screenshot 2023-04-18 at 6 21 25 PM" src="https://user-images.githubusercontent.com/93837049/232919340-5053e203-8d82-4b41-be4e-182903cdb85d.png">
-
-After the user submits the post, they will see an animation indicating that the image is uploading to the S3 bucket. Once the upload is complete, the user will be redirected to their profile.
-
-### Messages
-
-The direct messaging area displays a user's existing conversations, allowing them to easily browse and select the one they want to participate in. Once selected, the user will be redirected to the conversation's chat room where they can send and receive messages.
-
-If a user selects the draft icon, they will be redirected to the create chat room page, where they can create a new conversation.
-
-### Create Chat Room
-
-On this page, the user will see a checklist displaying all of the application's users, allowing them to select who they want to start a conversation with.
-
-### Chat Room
-
-Here, the user can view a feed of all messages that have been created in the room in real-time with web sockets.
+If a user is the owner of the channel, they have the ability to edit the channel and delete the channel entirely.
