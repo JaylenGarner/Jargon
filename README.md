@@ -2,7 +2,7 @@
 
 By _[Jaylen Garner](https://github.com/JaylenGarner)_
 
-Jargon is a communication platform that connects users with similar interests. By joining or creating servers, users can engage in conversations across multiple channels with like-minded individuals. Join now to get in on the Jargon.
+Jargon is a communication platform that connects users with similar interests. By joining or creating servers, users can engage in conversations across multiple channels with like-minded individuals. Join now to get in on the [Jargon.](https://jargon.onrender.com/)
 
 
 ## Index
