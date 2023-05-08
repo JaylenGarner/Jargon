@@ -1,8 +1,8 @@
 # Jargon
 
-By _[Jaylen Garner](https://github.com/JaylenGarner)_
+By _[Jaylen Garner](https://github.com/JaylenGarner)_, _[Kirlbert Mendez](https://github.com/kaynomic)_, and _[Bryant Del Toro](https://github.com/bdt008)_
 
-Jargon is a communication platform that connects users with similar interests. By joining or creating servers, users can engage in conversations across multiple channels with like-minded individuals. Join now to get in on the [Jargon.](https://jargon.onrender.com/)
+Jargon is a communication platform that connects users with similar interests. By joining or creating servers, users can engage in conversations across multiple channels with like-minded individuals. Join now to get in on the _[Jargon.](https://jargon.onrender.com/)_
 
 
 ## Index
